@@ -145,14 +145,6 @@ Record when the source evidence was captured.
 #### Analyzed At
 Record when the two analyses were completed.
 
-#### Discovered By
-For this workflow, use:
-- `Human` when the user directly supplied the URL.
-- `n8n` only when the reference was introduced through the n8n collection workflow.
-- `Designer` only when another automated design workflow explicitly supplied it.
-
-Do not guess.
-
 #### Evidence Quality
 Set:
 - `High` when the source has substantial direct evidence such as URL + DOM/CSS + screenshots/assets.
@@ -235,7 +227,6 @@ Before completing the workflow, verify:
 - Analysis Version is populated
 - Captured At is populated when evidence was captured
 - Analyzed At is populated when analysis completed
-- Discovered By is populated
 - Evidence Quality is populated
 - Reuse Count is 0 for a new record
 - **Human Preference is empty**
