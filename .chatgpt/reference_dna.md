@@ -27,6 +27,7 @@ Use all supplied evidence. Prefer concrete evidence over visual guesswork.
 ## Instructions
 
 ### 1. Identity & provenance
+
 Capture:
 - reference name
 - URL
@@ -34,10 +35,12 @@ Capture:
 - original URL vs analyzed URL
 - capture/analyze date if available
 - analysis version
-- who/what introduced the reference if known
 - whether the reference is intended to be reusable across projects
 
+Do not track who introduced the reference. Inspiration references in this system are assumed to be human-supplied.
+
 ### 2. Inspiration scope
+
 Determine which dimensions the reference is useful for:
 - overall visual language
 - typography
@@ -55,6 +58,7 @@ For each relevant dimension, describe the degree of influence it could reasonabl
 Do not assign an overall quality score.
 
 ### 3. Typography
+
 Describe observable typography characteristics:
 - primary and secondary family, only when identifiable
 - serif/sans/mono or other category
@@ -72,6 +76,7 @@ Describe observable typography characteristics:
 Do not invent exact font names when they cannot be established from evidence.
 
 ### 4. Layout
+
 Describe:
 - content width
 - alignment
@@ -85,6 +90,7 @@ Describe:
 - responsive behavior when evidence exists
 
 ### 5. Composition
+
 Describe:
 - hero composition
 - focal point
@@ -96,6 +102,7 @@ Describe:
 - relationship between text, media, and empty space
 
 ### 6. Color
+
 Describe:
 - dominant background
 - secondary surfaces
@@ -110,6 +117,7 @@ Describe:
 Use approximate descriptions or values only when supported by evidence.
 
 ### 7. Geometry
+
 Describe:
 - corner-radius character
 - borders
@@ -121,6 +129,7 @@ Describe:
 - other recurring geometry
 
 ### 8. Imagery
+
 Describe:
 - role of imagery
 - visual style
@@ -132,6 +141,7 @@ Describe:
 - whether imagery acts as content, atmosphere, or interruption
 
 ### 9. Motion
+
 Describe only observable or supplied evidence:
 - motion intensity
 - transitions
@@ -142,16 +152,19 @@ Describe only observable or supplied evidence:
 - approximate timing/easing when technically observable
 
 ### 10. Distinctive design characteristics
+
 Identify the visual principles that make this reference recognizable or particularly useful as inspiration.
 
 Keep these at the level of design principles, not copied implementation details.
 
 ### 11. Human assessment
+
 If the user has supplied likes, dislikes, or explicit borrowing instructions, preserve them separately from your own analysis.
 
 Do not invent human preferences.
 
 ### 12. Design axes
+
 Summarize the reference using normalized qualitative axes such as:
 - typography: editorial / neutral / technical / expressive / etc.
 - density: sparse / low / medium / high / dense
@@ -163,6 +176,7 @@ Summarize the reference using normalized qualitative axes such as:
 Use the vocabulary that best describes the evidence. Do not force the reference into predefined labels when they are inaccurate.
 
 ### 13. Technical evidence
+
 Record available evidence:
 - viewport(s)
 - pages captured
@@ -186,7 +200,6 @@ inspiration:
   url:
 
   source:
-    discovered_by:
     added_at:
     captured_at:
     analysis_version:
