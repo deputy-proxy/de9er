@@ -6,17 +6,16 @@ id: traffic-light-painting-hero
 name: "Traffic light painting hero"
 category: heroes
 summary: >
-  A full-bleed nighttime city scene with animated long-exposure traffic trails,
-  proposition-led copy, and a tactile shutter-speed controller.
+  A full-bleed black canvas with flowing warm-white and red long-exposure light trails,
+  proposition-led copy, and a minimal shutter-speed controller.
 principle: >
   Make the visual metaphor itself interactive: changing exposure length changes
-  the intensity and reach of the light trails, so the control demonstrates the
-  photographic idea instead of acting as unrelated decoration.
+  the glow, width, and intensity of the parallel light trails.
 characteristics:
   composition: immersive
   density: medium
   typography: expressive
-  imagery: procedural-3d
+  imagery: procedural-2d
   geometry: environmental
   motion: ambient-and-interactive
   alignment: left
@@ -31,14 +30,14 @@ suitability:
     - "Create an atmospheric first impression"
     - "Demonstrate a meaningful product control before the visitor scrolls"
   good_when:
-    - "A nighttime city and light-trail metaphor is relevant to the product"
+    - "An abstract long-exposure light-trail metaphor is relevant to the product"
     - "The hero can dedicate the full first viewport to one message and one control"
   avoid_when:
     - "The brand or product has no connection to photography, light, travel, or motion"
     - "The page needs a dense navigation or conversion form in the first viewport"
 structure:
   regions:
-    - "Full-viewport Three.js canvas"
+    - "Full-viewport animated 2D canvas"
     - "Contrast gradient overlay"
     - "Left-aligned headline, supporting copy, and two actions"
     - "Bottom-right shutter-speed control panel"
@@ -51,16 +50,15 @@ structure:
 implementation:
   semantic_html: "Use a semantic section, one h1, paragraph, native links, labelled range input, output, and native preset buttons."
   css_approach: "Use the shared Tailwind build for base styling and a small component stylesheet for full-bleed layering, glass control panel, and slider details."
-  javascript: "Use Three.js 0.187.0. Render an authored city street, building windows, street lamps, traffic light trails, and subtle camera drift. Shutter speed updates trail intensity and spread. Pause when offscreen or hidden, cap pixel ratio, handle resize/context loss, and respect reduced motion."
+  javascript: "Use a 2D canvas to draw a fan of smooth, parallel warm-white and red light trails. Animate the shared vanishing point and curve geometry. Shutter speed updates trail glow and intensity. Pause when offscreen or hidden, cap pixel ratio, and respect reduced motion."
   optional_dependencies:
-    - "Three.js 0.187.0 from jsDelivr through an import map."
 performance_notes:
-  - "Keep the city geometry and traffic trails bounded; cap device pixel ratio at 1.55."
+  - "Keep the trail count bounded and cap device pixel ratio at 2."
   - "Pause the render loop when the hero is outside the viewport or the tab is hidden."
   - "Reduced-motion users receive a stable scene."
-  - "If WebGL initialization fails, keep the copy and controls visible over the CSS background."
+  - "If canvas rendering is unavailable, keep the copy and controls visible over the CSS background."
 responsive:
-  desktop: "Copy sits in the left half; the full city perspective and shutter controller remain visible."
+  desktop: "Copy sits in the upper-left; the light-trail fan fills the canvas and the shutter controller floats in the upper-right."
   tablet: "Reduce camera depth and preserve the control panel in the lower-right corner."
   mobile: "Move copy toward the upper half and make the shutter panel full-width near the bottom."
 accessibility:
@@ -73,31 +71,26 @@ provenance:
     - name: "User-provided ReactBits hero reference"
       url: "https://pro.reactbits.dev/"
       captured_at: "2026-10-31"
-      evidence: "Supplied HTML shows the headline, supporting copy, dual actions, full-bleed Three.js canvas, and shutter-speed control with six values."
-      notes: "The original canvas implementation was not included in the supplied HTML. This demo recreates the visible composition and interaction with original Three.js scene code."
-    - name: "Three.js documentation"
-      url: "https://threejs.org/docs/"
-      captured_at: "2026-10-31"
-      evidence: "Technical reference for scene, geometry, lights, and renderer lifecycle."
-      notes: "Supports API usage, not the visual composition."
+      evidence: "Supplied HTML shows the headline, supporting copy, dual actions, canvas, and shutter-speed control with six values. The screen recording clarifies the canvas artwork as abstract flowing light trails."
+      notes: "The supplied HTML did not include the original canvas implementation. A screen recording later clarified the actual abstract light-trail animation."
   evidence:
     - "The supplied reference contains the visible content and control structure."
-    - "The Three.js city, buildings, traffic trails, lighting, and animation in this demo are original implementation."
+    - "The flowing warm-white and red light trails and their motion are an original canvas implementation guided by the recording."
   limitations:
-    - "The source reference's original Three.js scene source was not supplied, so pixel-identical 3D artwork cannot be guaranteed."
-    - "Three.js loads from a CDN and requires network access for the 3D scene."
-  originality_notes: "Original procedural city scene and code; no third-party brand assets or copied source code."
+    - "The source reference's original canvas code was not supplied, so exact pixel-level matching cannot be guaranteed."
+    - "The animation uses native canvas and has no rendering-library dependency."
+  originality_notes: "Original canvas animation guided by the user-provided reference recording."
 lifecycle:
   status: implemented
   created_at: "2026-10-31"
   updated_at: "2026-10-31"
   validated_at:
-  maintainer_notes: "Source-level implementation. Verify browser rendering, responsive layout, reduced motion, keyboard operation, WebGL failure, context loss, and performance on real devices before marking validated."
+  maintainer_notes: "Source-level implementation. Verify browser rendering, responsive layout, reduced motion, keyboard operation, canvas availability and performance on real devices before marking validated."
 ```
 
 ## Composition
 
-A cinematic night-city canvas fills the viewport. The left-side message stays quiet and readable while the street perspective and traffic trails carry the visual weight. The shutter controller sits in the lower-right corner, matching the reference's compact camera-control treatment.
+A near-black canvas fills the viewport. Parallel warm-white and red trails converge near the upper portion of the frame, then fan outward in long, fluid curves. Their vanishing point drifts horizontally, making the composition feel like a continuous long exposure. The shutter controller floats in the upper-right.
 
 ## Interaction
 
@@ -109,6 +102,6 @@ The range input and six preset buttons select shutter speeds from 1/15s to 30s. 
 - Component styling: [component CSS](../../../components/traffic-light-painting-hero.css)
 - Component behavior: [component JavaScript](../../../components/traffic-light-painting-hero.js)
 - Runnable demo: [index.html](../../examples/traffic-light-painting-hero/index.html)
-- Three.js version: 0.187.0, pinned through jsDelivr import map.
+- Rendering: native 2D canvas, no external rendering dependency.
 
-The supplied reference HTML exposed the page structure but not the original WebGL scene source. This implementation reproduces the visible composition and interaction with an original procedural city scene; the 3D artwork is therefore a faithful recreation, not a pixel-identical copy of the unavailable canvas.
+The user-provided screen recording is the visual reference. The implementation recreates its abstract fan of flowing light trails rather than introducing a literal city or road scene.
