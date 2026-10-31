@@ -1,0 +1,105 @@
+# Canonical record contract for a reusable design pattern.
+# Keep evidence, interpretation, and implementation advice distinct.
+schema_version: "1.0"
+
+required:
+  - id
+  - name
+  - category
+  - summary
+  - principle
+  - characteristics
+  - suitability
+  - implementation
+  - responsive
+  - accessibility
+  - provenance
+  - lifecycle
+
+fields:
+  id:
+    type: string
+    rule: "kebab-case; stable after publication"
+  name:
+    type: string
+  category:
+    enum: [heroes, navigation, typography, section-compositions, image-treatments, grids, footers, interactions]
+  summary:
+    type: string
+    rule: "One or two sentences describing the pattern, not praising it"
+  principle:
+    type: string
+    rule: "Reusable design principle independent of the source's brand or assets"
+  characteristics:
+    type: object
+    fields:
+      composition: [symmetric, balanced, asymmetric, fragmented, layered, linear, modular, freeform]
+      density: [sparse, low, medium, high, dense]
+      typography: [editorial, neutral, technical, expressive, display-led, mixed]
+      imagery: [none, inline, contained, cropped, full-bleed, layered, mixed]
+      geometry: [soft, restrained, sharp, expressive, mixed]
+      motion: [static, subtle, moderate, expressive]
+      alignment: [left, centered, right, mixed, edge-aligned]
+    rule: "Use only values supported by the pattern; extend vocabulary deliberately"
+  suitability:
+    type: object
+    fields:
+      audiences: [string]
+      contexts: [string]
+      objectives: [string]
+      good_when: [string]
+      avoid_when: [string]
+  structure:
+    type: object
+    rule: "Describe spatial relationships and content slots, not pixel-perfect source measurements"
+  variants:
+    type: array
+    rule: "Meaningful alternatives that preserve the underlying principle"
+  implementation:
+    type: object
+    fields:
+      semantic_html: string
+      css_approach: string
+      javascript: string
+      optional_dependencies: [string]
+      performance_notes: [string]
+  responsive:
+    type: object
+    fields:
+      desktop: string
+      tablet: string
+      mobile: string
+      behavior_changes: [string]
+  accessibility:
+    type: object
+    fields:
+      keyboard: string
+      semantics: string
+      motion: string
+      contrast: string
+  provenance:
+    type: object
+    fields:
+      references:
+        type: array
+        item_fields: [name, url, captured_at, evidence, notes]
+      evidence: [string]
+      inferences: [string]
+      limitations: [string]
+      originality_notes: string
+  lifecycle:
+    type: object
+    fields:
+      status: [candidate, analyzed, authored, implemented, validated, published, deprecated]
+      created_at: string
+      updated_at: string
+      validated_at: string
+      maintainer_notes: string
+
+rules:
+  - "Do not fabricate source measurements, technologies, responsive behavior, or interactions."
+  - "Do not include copied source copy, logos, or proprietary assets in examples."
+  - "A pattern must express one recognizable principle; split unrelated ideas."
+  - "A published pattern requires a runnable example and completed validation checklist."
+  - "Human preference must be explicit and stored separately from analytical findings."
+  - "A missing value is preferable to an invented value."
