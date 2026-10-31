@@ -37,6 +37,7 @@
   let timer = null;
   let paused = false;
   let transition = null;
+  let progressTween = null;
   let transitionToken = 0;
 
   function updateMember(member, index) {
@@ -64,10 +65,10 @@
       gsap.to(tabs[index].querySelector('.tab-index'), { color: '#d3c6a1', duration: 0.3, ease: 'power2.out', overwrite: true });
       gsap.to(tabs.map((tab) => tab.querySelector('.tab-arrow')), { opacity: 0, x: -3, y: 3, duration: 0.2, overwrite: true });
       gsap.to(tabs[index].querySelector('.tab-arrow'), { opacity: 1, x: 0, y: 0, duration: 0.3, ease: 'power2.out', overwrite: true });
-      gsap.fromTo(markers.map((marker) => marker.querySelector('span')),
-        { scaleX: 0.72, opacity: 0.55 },
-        { scaleX: 1, opacity: 0.7, duration: 0.25, overwrite: true });
-      gsap.to(markers[index].querySelector('span'), { scaleX: 1, opacity: 1, duration: 0.35, ease: 'power2.out', overwrite: true });
+      gsap.to(markers.map((marker) => marker.querySelector('span')), {
+        scaleX: 0, opacity: 0.55, duration: 0.2, ease: 'power2.out', overwrite: true
+      });
+      gsap.set(markers[index].querySelector('span'), { scaleX: 0, opacity: 1 });
     }
   }
 
@@ -112,13 +113,32 @@
     timer = null;
   }
 
+  function stopProgress() {
+    if (progressTween) progressTween.kill();
+    progressTween = null;
+  }
+
   function restartTimer() {
     stopTimer();
+    stopProgress();
+    const markerFills = markers.map((marker) => marker.querySelector('span'));
+    if (animationsEnabled()) {
+      gsap.set(markerFills, { scaleX: 0, transformOrigin: 'left center', opacity: 0.55 });
+      gsap.set(markerFills[activeIndex], { opacity: 1 });
+    } else {
+      gsap?.set(markerFills, { scaleX: 0 });
+      if (gsap) gsap.set(markerFills[activeIndex], { scaleX: 1, opacity: 1 });
+    }
     if (paused || reducedMotion.matches || document.hidden) {
       card.classList.add('is-paused');
       return;
     }
     card.classList.remove('is-paused');
+    if (animationsEnabled()) {
+      progressTween = gsap.to(markerFills[activeIndex], {
+        scaleX: 1, duration: interval / 1000, ease: 'none', overwrite: true
+      });
+    }
     timer = window.setTimeout(() => render(activeIndex + 1, false), interval);
   }
 
@@ -126,6 +146,7 @@
     paused = true;
     card.classList.add('is-paused');
     stopTimer();
+    if (progressTween) progressTween.pause();
   }
 
   function resume() {
