@@ -18,7 +18,7 @@ Each implemented pattern has an independent, runnable demonstration.
 ## Running
 Open any `index.html` directly in a browser or serve this directory with a static HTTP server. No package manager, bundler, framework, remote font, or external asset is required.
 
-The examples use original placeholder copy and CSS-built visuals. They demonstrate structure and hierarchy, not production brand designs. The interactive product preview uses a small browser-native script.
+The examples use original placeholder copy and CSS-built visuals. They demonstrate structure and hierarchy, not production brand designs. The interactive product preview uses a small browser-native interaction; the form demo uses a tiny script to prevent submission and show an inline status.
 
 ## Lifecycle
 Examples remain in `implemented` status until browser, responsive, keyboard, contrast, and assistive-technology checks are recorded. See [hero collection review](../validation/hero-patterns-review.md).
