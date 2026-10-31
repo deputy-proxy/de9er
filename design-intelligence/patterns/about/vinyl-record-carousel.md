@@ -110,7 +110,7 @@ lifecycle:
   created_at: "2026-10-31"
   updated_at: "2026-10-31"
   validated_at:
-  maintainer_notes: "Standalone vanilla HTML/CSS/JS example with a pinned Three.js ES module and CSS fallback. Source-level checks are pending; real-browser visual, responsive and assistive-technology validation remain outstanding."
+  maintainer_notes: "Standalone vanilla HTML/CSS/JS example with a pinned Three.js ES module and CSS fallback. JavaScript syntax, HTML parsing, catalogue integration and diff checks passed. Real-browser visual, responsive and assistive-technology validation remain outstanding."
 ```
 
 ## Design rationale
