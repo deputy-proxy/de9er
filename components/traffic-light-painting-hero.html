@@ -1,0 +1,36 @@
+<!-- Traffic Light Painting Hero
+     Include components/traffic-light-painting-hero.css and load Three.js 0.187.0
+     with the import map documented in the pattern record. Load components/traffic-light-painting-hero.js as a module after the pinned Three.js import map.
+-->
+<section class="traffic-hero" data-traffic-hero aria-labelledby="traffic-hero-title">
+  <canvas class="traffic-hero__canvas" aria-hidden="true"></canvas>
+  <div class="traffic-hero__shade" aria-hidden="true"></div>
+  <div class="traffic-hero__status" data-scene-status role="status" aria-live="polite">Preparing city simulation</div>
+  <div class="traffic-hero__content">
+    <div class="traffic-hero__copy">
+      <h1 class="traffic-hero__title" id="traffic-hero-title">Paint the city with traffic.</h1>
+      <p class="traffic-hero__description">Handheld long exposures on your phone. Slow the shutter and watch the light draw itself.</p>
+      <div class="traffic-hero__actions">
+        <a class="traffic-hero__button traffic-hero__button--primary" href="#get-the-app">Get the app <span aria-hidden="true">↗</span></a>
+        <a class="traffic-hero__button traffic-hero__button--secondary" href="#gallery">See the gallery <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="traffic-hero__control" role="group" aria-label="Shutter speed controls">
+    <div class="traffic-hero__control-top">
+      <label class="traffic-hero__control-label" for="traffic-shutter">Shutter</label>
+      <output class="traffic-hero__value" data-shutter-value for="traffic-shutter">4 s</output>
+    </div>
+    <input class="traffic-hero__range" id="traffic-shutter" data-shutter-range type="range" min="0" max="5" step="1" value="3" aria-label="Shutter speed">
+    <div class="traffic-hero__scale" aria-hidden="true"><span>1/15</span><span>1/4</span><span>1</span><span>4</span><span>15</span><span>30</span></div>
+    <div class="traffic-hero__presets" role="group" aria-label="Choose shutter speed">
+      <button class="traffic-hero__preset" type="button" data-shutter-preset="0" aria-pressed="false">1/15</button>
+      <button class="traffic-hero__preset" type="button" data-shutter-preset="1" aria-pressed="false">1/4</button>
+      <button class="traffic-hero__preset" type="button" data-shutter-preset="2" aria-pressed="false">1</button>
+      <button class="traffic-hero__preset" type="button" data-shutter-preset="3" aria-pressed="true">4</button>
+      <button class="traffic-hero__preset" type="button" data-shutter-preset="4" aria-pressed="false">15</button>
+      <button class="traffic-hero__preset" type="button" data-shutter-preset="5" aria-pressed="false">30</button>
+    </div>
+  </div>
+  <div class="traffic-hero__footnote">Night photography · Long exposure study</div>
+</section>

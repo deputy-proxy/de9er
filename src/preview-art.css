@@ -63,3 +63,9 @@
 .prism-object { width:62px;height:82px;background:linear-gradient(120deg,#e2eaf4,#61738d 35%,#b9c9df 58%,#303f54);clip-path:polygon(50% 0,100% 24%,85% 100%,15% 100%,0 24%);transform:rotate(24deg);box-shadow:0 0 32px #9db9df66; }
 .prism-orbit { position:absolute;width:145px;height:48px;border:1px solid #9cb8df77;border-radius:50%;transform:rotate(-22deg); }
 .portal-rings { width:112px;height:112px;border:2px solid #a8c2e4;border-radius:50%;box-shadow:0 0 0 9px #9ab6d522,0 0 0 20px #9ab6d522,0 0 0 32px #9ab6d511,0 0 45px #90b4e866,inset 0 0 24px #8caedb66;transform:perspective(180px) rotateY(-22deg); }
+
+
+/* Traffic-light painting hero card preview */
+.traffic-preview{background:linear-gradient(180deg,#101824 0%,#11151d 52%,#080a0e 100%)}
+.traffic-preview-road{position:absolute;left:31%;right:27%;top:22%;bottom:-35%;transform:perspective(90px) rotateX(20deg);background:linear-gradient(90deg,#10141b,#242b35 48%,#11151b);clip-path:polygon(34% 0,66% 0,100% 100%,0 100%)}
+.traffic-preview-trails{position:absolute;left:30%;right:20%;top:53%;height:3px;transform:rotate(-8deg);background:linear-gradient(90deg,transparent,#ff514c 25%,#ffc66e 43%,#7cbcff 63%,transparent);filter:drop-shadow(0 0 5px #ff6a54);box-shadow:0 8px 0 -1px #ffb56a,0 15px 0 -1px #6baaff}

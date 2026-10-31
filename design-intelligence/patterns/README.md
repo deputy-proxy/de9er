@@ -25,7 +25,7 @@ Patterns describe reusable design decisions at the level of composition, hierarc
 
 ## Hero collection
 
-Fifteen implemented patterns form the current hero collection. The first ten establish common composition approaches; the additional five explore advanced Three.js/WebGL motion. They are a curated starting set, not a quota or a claim of universal best practice.
+Sixteen implemented patterns form the current hero collection. The first ten establish common composition approaches; the additional five explore advanced Three.js/WebGL motion. They are a curated starting set, not a quota or a claim of universal best practice.
 
 | Pattern | Best suited to | Demo |
 |---|---|---|
@@ -44,6 +44,7 @@ Fifteen implemented patterns form the current hero collection. The first ten est
 | [Liquid topography field](./heroes/liquid-topography-field.md) | Change, discovery, and complex systems represented as terrain | [Open](../examples/liquid-topography-field/index.html) |
 | [Product prism stage](./heroes/product-prism-stage.md) | A central product with a small supporting capability ecosystem | [Open](../examples/product-prism-stage/index.html) |
 | [Spatial portal gateway](./heroes/spatial-portal-gateway.md) | An invitation into a new product or brand environment | [Open](../examples/spatial-portal-gateway/index.html) |
+| [Traffic light painting](./heroes/traffic-light-painting-hero.md) | Photography products and visual stories about long exposure | [Open](../examples/traffic-light-painting-hero/index.html) |
 
 See [example instructions](../examples/README.md) and [validation status](../validation/hero-patterns-review.md).
 
