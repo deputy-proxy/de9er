@@ -69,7 +69,7 @@
     const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
     camera.position.set(0, 0, 8);
     let renderer, active = true, visible = true, disposed = false;
-    const clock = new THREE.Timer();
+    const clock = new THREE.Timer(); clock.connect(document);
     const pointer = new THREE.Vector2();
     const targetPointer = new THREE.Vector2();
 
