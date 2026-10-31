@@ -69,7 +69,7 @@
     const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
     camera.position.set(0, 0, 10);
     let renderer, active = true, visible = true, disposed = false;
-    const clock = new THREE.Timer(); clock.connect(document);
+    const clock = new THREE.Timer(); clock.connect(document); clock.connect(document);
     const pointer = new THREE.Vector2();
     const targetPointer = new THREE.Vector2();
 
@@ -81,6 +81,7 @@
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1.15;
       scene.fog = new THREE.FogExp2(0x0a0d14, 0.035);
+      const root=new THREE.Group();scene.add(root);const core=new THREE.Mesh(new THREE.IcosahedronGeometry(.72,4),new THREE.MeshPhysicalMaterial({color:0x9bb5d8,metalness:.65,roughness:.2,clearcoat:1,emissive:0x1d3555,emissiveIntensity:.5}));root.add(core);const coreWire=new THREE.Mesh(new THREE.IcosahedronGeometry(.9,2),new THREE.MeshBasicMaterial({color:0xc6d8f1,wireframe:true,transparent:true,opacity:.14}));root.add(coreWire);const orbitLines=[];[2.05,2.65,3.25].forEach((r,i)=>{const curve=new THREE.EllipseCurve(0,0,r,r*.52,0,Math.PI*2,false,0);const pts=curve.getPoints(180).map(p=>new THREE.Vector3(p.x,p.y,0));const line=new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(pts),new THREE.LineBasicMaterial({color:[0x6f91bf,0x8aa6cb,0x536f9c][i],transparent:true,opacity:.45}));line.rotation.x=[.25,1.02,1.55][i];line.rotation.y=[.2,.8,-.45][i];root.add(line);orbitLines.push(line);});const count=720,geo=new THREE.SphereGeometry(.026,7,7),mat=new THREE.MeshBasicMaterial({color:0xc4d7f3}),particles=new THREE.InstancedMesh(geo,mat,count),dummy=new THREE.Object3D(),data=[];for(let i=0;i<count;i++){const orbit=i%3,angle=Math.random()*Math.PI*2,radius=[2.05,2.65,3.25][orbit]*(.82+Math.random()*.18);data.push({orbit,angle,radius,speed:(.12+Math.random()*.2)*(Math.random()>.5?1:-1),phase:Math.random()*6.28});}const colors=[new THREE.Color(0x8caedc),new THREE.Color(0xd2e4ff),new THREE.Color(0x6c83ad)];data.forEach((d,i)=>particles.setColorAt(i,colors[d.orbit].clone().multiplyScalar(.55+Math.random()*.65)));root.add(particles);const ambient=new THREE.PointLight(0x8eafd8,32,12);ambient.position.set(2,2,3);scene.add(ambient);const orbitLight=new THREE.PointLight(0x456b9f,18,10);orbitLight.position.set(-3,-1,-2);scene.add(orbitLight);
       undefined
       function resize(){
         const width = Math.max(1, stage.clientWidth), height = Math.max(1, stage.clientHeight);
@@ -92,7 +93,7 @@
       }
       function render(time){
         pointer.lerp(targetPointer, .035);
-        data.forEach((d,i)=>{const a=d.angle+time*d.speed;const r=d.radius;dummy.position.set(Math.cos(a)*r,Math.sin(a)*r*.52,Math.sin(a*.5+d.phase)*.34);dummy.scale.setScalar(.72+.28*(Math.sin(a*2+d.phase)*.5+.5));dummy.updateMatrix();particles.setMatrixAt(i,dummy.matrix);});particles.instanceMatrix.needsUpdate=true; root.rotation.y = time * .11 + pointer.x * .12; root.rotation.x = Math.sin(time * .18) * .12 + pointer.y * .08; core.rotation.y = -time * .22; core.rotation.x = time * .13; orbitLines.forEach((line,i)=>{line.rotation.y = time * (.06 + i*.012); line.rotation.x = Math.sin(time*.13+i)*.12;}); particles.rotation.y = -time*.035;
+        data.forEach((d,i)=>{const a=d.angle+time*d.speed,r=d.radius;dummy.position.set(Math.cos(a)*r,Math.sin(a)*r*.52,Math.sin(a*.5+d.phase)*.34);dummy.scale.setScalar(.72+.28*(Math.sin(a*2+d.phase)*.5+.5));dummy.updateMatrix();particles.setMatrixAt(i,dummy.matrix);});particles.instanceMatrix.needsUpdate=true;root.rotation.y=time*.11+pointer.x*.12;root.rotation.x=Math.sin(time*.18)*.12+pointer.y*.08;core.rotation.y=-time*.22;core.rotation.x=time*.13;orbitLines.forEach((line,i)=>{line.rotation.y=time*(.06+i*.012);line.rotation.x=Math.sin(time*.13+i)*.12;});particles.rotation.y=-time*.035;
         renderer.render(scene,camera);
       }
       function loop(){
