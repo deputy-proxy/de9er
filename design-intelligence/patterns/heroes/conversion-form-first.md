@@ -58,7 +58,7 @@ variants:
 implementation:
   semantic_html: "Use a real form with associated labels, suitable input types, required states, and production success/error responses."
   css_approach: "Use a restrained panel with clear field spacing and visible focus; never use placeholders as labels."
-  javascript: "Use minimal browser-native JavaScript only for the essential preview state; provide a static default."
+  javascript: "The example prevents submission and displays an inline status. Production behavior requires a real endpoint and explicit success/error states."
   optional_dependencies: []
   performance_notes:
     - "No external images, fonts, packages, or frameworks."
