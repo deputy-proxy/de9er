@@ -51,6 +51,7 @@ If these cannot be answered, do not select Three.js yet.
 | Pattern ID | Best-fit signal | Main caution |
 |---|---|---|
 | team-profile-carousel | A small team benefits from one focused profile at a time. | Avoid for large directories or when visitors need to compare many people simultaneously. |
+| vinyl-record-carousel | A curated creative catalogue benefits from a tactile, spatial browsing experience. | Avoid for large utilitarian catalogues or when rapid scanning/filtering is required. |
 
 ## Fit dimensions
 Consider audience and context, objective and information hierarchy, content and asset fit, visual-direction compatibility, responsiveness, accessibility, performance, implementation complexity and originality.

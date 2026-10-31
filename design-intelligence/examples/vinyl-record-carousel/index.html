@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101014">
+  <meta name="description" content="A dimensional record carousel for introducing a record label, its artists and releases.">
+  <title>Vinyl record carousel · DE9ER</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script type="module" src="assets/js/main.js"></script>
+</head>
+<body>
+  <main class="page-shell">
+    <header class="page-header">
+      <a class="wordmark" href="../../../index.html">DE9ER <span>/ PATTERN 017</span></a>
+      <a class="back-link" href="../../../index.html">Back to glossary <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <section class="label-section" aria-labelledby="label-title">
+      <div class="intro">
+        <div>
+          <p class="eyebrow"><span></span> AN INDEPENDENT RECORD LABEL</p>
+          <h1 id="label-title">A label for<br>the <em>long listen.</em></h1>
+        </div>
+        <div class="intro-side">
+          <p>Twenty-four artists. Hundreds of records. One independent point of view.</p>
+          <dl class="stats">
+            <div><dt>Records</dt><dd>286</dd></div>
+            <div><dt>Artists</dt><dd>24</dd></div>
+            <div><dt>Pressing plant</dt><dd>1</dd></div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="rail-shell" data-rail role="region" tabindex="0" aria-roledescription="carousel" aria-label="Album rail. Drag, swipe or use the arrow keys to browse.">
+        <div class="rail-stage" aria-hidden="true">
+          <canvas id="record-scene"></canvas>
+          <div class="stage-vignette"></div>
+        </div>
+        <div class="fallback-rail" id="fallback-rail" hidden></div>
+        <div class="active-caption" aria-live="polite" aria-atomic="true">
+          <span class="caption-rule"></span>
+          <span class="album-title" id="album-title">Pink eclipse</span>
+          <span class="artist-name" id="artist-name">Iona Vale</span>
+        </div>
+        <div class="rail-controls">
+          <button class="arrow" type="button" data-prev aria-label="Previous record"><span aria-hidden="true">←</span></button>
+          <div class="record-progress" role="group" aria-label="Choose a record" id="record-progress"></div>
+          <button class="arrow" type="button" data-next aria-label="Next record"><span aria-hidden="true">→</span></button>
+        </div>
+        <p class="rail-hint">DRAG TO EXPLORE <span>·</span> ARROW KEYS TO BROWSE</p>
+      </div>
+    </section>
+    <footer class="page-footer"><span>DESIGN INTELLIGENCE LIBRARY</span><span>VINYL RECORD CAROUSEL · 017</span></footer>
+  </main>
+</body>
+</html>

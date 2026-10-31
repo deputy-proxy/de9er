@@ -52,3 +52,4 @@ See [example instructions](../examples/README.md) and [validation status](../val
 | Pattern | Best suited to | Demo |
 |---|---|---|
 | [Team profile carousel](./about/team-profile-carousel.md) | Introducing a small team through focused individual profiles | [Open](../examples/team-profile-carousel/index.html) |
+| [Vinyl record carousel](./about/vinyl-record-carousel.md) | Presenting a curated catalogue as a tactile, dimensional collection | [Open](../examples/vinyl-record-carousel/index.html) |

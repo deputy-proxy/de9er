@@ -122,6 +122,11 @@
     .interactive .mini-toggle { display:flex; gap:4px; margin-top:8px; }
     .interactive .mini-toggle i { width:22px; height:6px; background:#393940; border-radius:3px; }
     .interactive .mini-toggle i:first-child { background:#d4d4d8; }
+    .record-preview { background:radial-gradient(ellipse at 50% 55%,#393044 0,#17151e 52%,#09090b 100%); perspective:400px; }
+    .record-stack { position:relative;width:160px;height:100px;transform-style:preserve-3d;transform:rotateX(12deg) rotateY(-18deg); }
+    .record-stack i { position:absolute;width:83px;height:83px;left:43px;top:8px;border-radius:50%;background:radial-gradient(circle,#bd8bb4 0 12px,#242128 13px 17px,transparent 18px),repeating-radial-gradient(circle,#222 0 2px,#3d3a43 3px 4px,#17171b 5px 7px);box-shadow:0 8px 18px #0009; }
+    .record-stack i:nth-child(1){transform:translateZ(-12px) translateX(-16px)}.record-stack i:nth-child(2){transform:translateZ(-6px) translateX(-8px)}.record-stack i:nth-child(3){transform:translateZ(0)}
+    .record-stack b { position:absolute;z-index:2;width:63px;height:63px;left:8px;top:18px;background:linear-gradient(135deg,#d6a37f,#60465c);border:3px solid #1b1820;box-shadow:0 9px 20px #000a;transform:translateZ(12px) rotate(-7deg); }
     .team-preview { background:radial-gradient(ellipse at 75% 45%,#4b4b4c 0,#24252b 38%,#101115 76%); }
     .team-preview .mini { display:grid; grid-template-columns:.42fr 1fr; gap:10px; padding:9px; }
     .team-preview .mini-list { display:grid; align-content:center; gap:7px; }
@@ -218,7 +223,7 @@
         <nav class="side-nav">
           <a class="active" href="#patterns">All patterns <span class="count">16</span></a>
           <a href="#patterns" data-side-filter="heroes">Heroes <span class="count">15</span></a>
-          <a href="#patterns" data-side-filter="about">About <span class="count">1</span></a>
+          <a href="#patterns" data-side-filter="about">About <span class="count">2</span></a>
           <a href="#planned">Navigation <span class="count">—</span></a>
           <a href="#planned">Typography <span class="count">—</span></a>
           <a href="#planned">Section compositions <span class="count">—</span></a>
@@ -235,7 +240,7 @@
         </nav>
         <div class="side-note">
           <strong>Glossary status</strong>
-          <p>16 patterns implemented across hero compositions and about patterns. Browser and accessibility validation is still in progress.</p>
+          <p>17 patterns implemented across hero compositions and about patterns. Browser and accessibility validation is still in progress.</p>
         </div>
       </aside>
 
@@ -275,10 +280,10 @@
             <button class="filter" type="button" data-filter="navigation" aria-pressed="false">Navigation <span>0</span></button>
             <button class="filter" type="button" data-filter="sections" aria-pressed="false">Sections <span>0</span></button>
             <button class="filter" type="button" data-filter="typography" aria-pressed="false">Typography <span>0</span></button>
-            <button class="filter" type="button" data-filter="about" aria-pressed="false">About <span>1</span></button>
+            <button class="filter" type="button" data-filter="about" aria-pressed="false">About <span>2</span></button>
             <button class="filter" type="button" data-filter="interactions" aria-pressed="false">Interactions <span>0</span></button>
           </div>
-          <div class="results-line"><span id="result-count" aria-live="polite">Showing 16 patterns</span><span>STATUS: IMPLEMENTED</span></div>
+          <div class="results-line"><span id="result-count" aria-live="polite">Showing 17 patterns</span><span>STATUS: IMPLEMENTED</span></div>
 
           <div class="grid" id="pattern-grid">
             <article class="card" data-category="heroes" data-name="Editorial type-led hero" data-search="editorial type led typography text dominant headline proposition publisher consultancy cultural organization portfolio sparse asymmetric">
@@ -358,6 +363,10 @@
             <article class="card" data-category="about" data-name="Team profile carousel" data-search="team profile carousel people experts staff about page leadership members directory biography portrait tabs selector navigation contact">
               <div class="preview team-preview" aria-hidden="true"><div class="mini"><div class="mini-list"><i></i><i></i><i></i><i></i><i></i></div><div class="mini-person"></div></div><span class="preview-label">16 / Team profiles</span></div>
               <div class="card-body"><div class="card-top"><span class="category">About · Team presentation</span><span class="status">Implemented</span></div><h3>Team profile carousel</h3><p>Pairs a selectable team list with one prominent profile, giving each person room for a portrait, role, biography and contact links.</p><div class="tags"><span class="tag">People</span><span class="tag">Carousel</span><span class="tag">Profile</span></div><div class="card-links"><a href="https://github.com/deputy-proxy/de9er/blob/main/design-intelligence/patterns/about/team-profile-carousel.md">Pattern details <span>↗</span></a><a href="https://deputy-proxy.github.io/de9er/design-intelligence/examples/team-profile-carousel/">Live demo <span>↗</span></a></div></div>
+            </article>
+            <article class="card" data-category="about" data-name="Vinyl record carousel" data-search="vinyl record carousel album rail discography record label artists releases catalogue three.js webgl 3d music culture identity collection">
+              <div class="preview record-preview" aria-hidden="true"><div class="record-stack"><i></i><i></i><i></i><b></b></div><span class="preview-label">17 / Vinyl collection</span></div>
+              <div class="card-body"><div class="card-top"><span class="category">About · Catalogue presentation</span><span class="status">Implemented</span></div><h3>Vinyl record carousel</h3><p>Presents a curated discography as a dimensional rail of sleeves and records, bringing one release into focus at a time.</p><div class="tags"><span class="tag">Three.js</span><span class="tag">Discography</span><span class="tag">3D carousel</span></div><div class="card-links"><a href="https://github.com/deputy-proxy/de9er/blob/main/design-intelligence/patterns/about/vinyl-record-carousel.md">Pattern details <span>↗</span></a><a href="https://deputy-proxy.github.io/de9er/design-intelligence/examples/vinyl-record-carousel/">Live demo <span>↗</span></a></div></div>
             </article>
 
             <div class="empty" id="empty"><strong>No matching patterns</strong>Try another search term or category.</div>

@@ -23,10 +23,11 @@
 ## About collection
 
 - [team-profile-carousel](./team-profile-carousel/index.html)
+- [vinyl-record-carousel](./vinyl-record-carousel/index.html)
 
 ## Running
 
-Open any `index.html` directly in a browser or serve this directory with a static HTTP server. No package manager, bundler, or framework is required. The first ten hero examples work offline; the five Three.js examples load the pinned Three.js module from jsDelivr. The team profile carousel also works offline and uses CSS-built sample portraits.
+Open any `index.html` directly in a browser or serve this directory with a static HTTP server. No package manager, bundler, or framework is required. The first ten hero examples work offline; the five advanced hero Three.js examples load the pinned Three.js module from jsDelivr. The team profile carousel also works offline and uses CSS-built sample portraits. The vinyl record carousel uses a pinned Three.js module from jsDelivr and includes a static CSS fallback if WebGL or the CDN is unavailable.
 
 ## Lifecycle
 
