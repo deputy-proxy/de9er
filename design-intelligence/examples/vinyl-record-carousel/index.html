@@ -1,30 +1,31 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="[color-scheme:dark] [--bg:#101014] [--paper:#f2efe9] [--muted:#8e8b91] [--line:rgba(255,255,255,.13)] [--accent:#b197fc] [font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe_UI',sans-serif] [background:var(--bg)] [color:var(--paper)]">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#101014">
   <meta name="description" content="A dimensional record carousel for introducing a record label, its artists and releases.">
   <title>Vinyl record carousel · DE9ER</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="../../../assets/css/tailwind.css">
+
   <script type="module" src="assets/js/main.js"></script>
 </head>
-<body>
-  <main class="page-shell">
-    <header class="page-header">
-      <a class="wordmark" href="../../../index.html">DE9ER <span>/ PATTERN 017</span></a>
-      <a class="back-link" href="../../../index.html">Back to glossary <span aria-hidden="true">↗</span></a>
+<body class="min-h-screen antialiased [margin:0] [min-width:320px] [background:radial-gradient(ellipse_at_50%_55%,#24212c_0%,#151419_48%,#101014_78%)] [min-height:100vh] [color-scheme:dark] [--bg:#101014] [--paper:#f2efe9] [--muted:#8e8b91] [--line:rgba(255,255,255,.13)] [--accent:#b197fc] [font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe_UI',sans-serif] [background:var(--bg)] [color:var(--paper)]">
+  <main class="page-shell [width:min(1240px,calc(100%_-_80px))] [margin:auto] max-[760px]:[width:calc(100%_-_36px)]">
+    <header class="page-header [height:76px] [border-bottom:1px_solid_var(--line)] [display:flex] [align-items:center] [justify-content:space-between] max-[760px]:[height:62px]">
+      <a class="wordmark [color:var(--paper)] [text-decoration:none] [font-size:12px] [letter-spacing:.08em] [font-weight:700] [&_span]:[font:10px_ui-monospace,SFMono-Regular,Menlo,monospace] [&_span]:[color:var(--muted)] [&_span]:[margin-left:8px]" href="../../../index.html">DE9ER <span>/ PATTERN 017</span></a>
+      <a class="back-link [color:var(--paper)] [text-decoration:none] [font-size:12px] [letter-spacing:.08em] [color:#c7c2cb] [&_span]:[margin-left:8px]" href="../../../index.html">Back to glossary <span aria-hidden="true">↗</span></a>
     </header>
 
-    <section class="label-section" aria-labelledby="label-title">
-      <div class="intro">
+    <section class="label-section [padding-top:58px] max-[760px]:[padding-top:40px]" aria-labelledby="label-title">
+      <div class="intro [display:grid] [grid-template-columns:1.1fr_.9fr] [align-items:end] [gap:60px] [position:relative] [z-index:2] max-[760px]:[grid-template-columns:1fr] max-[760px]:[gap:25px]">
         <div>
-          <p class="eyebrow"><span></span> AN INDEPENDENT RECORD LABEL</p>
-          <h1 id="label-title">A label for<br>the <em>long listen.</em></h1>
+          <p class="eyebrow [font:10px_ui-monospace,SFMono-Regular,Menlo,monospace] [letter-spacing:.17em] [color:#aaa5af] [display:flex] [align-items:center] [gap:10px] [margin:0_0_22px] [&_span]:[width:7px] [&_span]:[height:7px] [&_span]:[border-radius:50%] [&_span]:[background:#d9b46c] [&_span]:[box-shadow:0_0_14px_#d9b46c] max-[760px]:[margin-bottom:17px]"><span></span> AN INDEPENDENT RECORD LABEL</p>
+          <h1 id="label-title" class="[font-size:clamp(54px,7vw,94px)] [line-height:.91] [letter-spacing:-.075em] [margin:0] [font-weight:500] [&_em]:[font-family:Georgia,'Times_New_Roman',serif] [&_em]:[font-weight:500] [&_em]:[color:#d4c2ff] max-[760px]:[font-size:clamp(55px,13vw,82px)]">A label for<br>the <em>long listen.</em></h1>
         </div>
-        <div class="intro-side">
+        <div class="intro-side [max-width:390px] [justify-self:end] [width:100%] [padding-bottom:4px] [&>p]:[font-size:15px] [&>p]:[line-height:1.65] [&>p]:[color:#c1bdc5] [&>p]:[margin:0_0_27px] [&>p]:[max-width:340px] max-[760px]:[justify-self:start] max-[760px]:[max-width:none] max-[760px]:[&>p]:[font-size:13px] max-[760px]:[&>p]:[margin-bottom:17px]">
           <p>Twenty-four artists. Hundreds of records. One independent point of view.</p>
-          <dl class="stats">
+          <dl class="stats [display:grid] [grid-template-columns:repeat(3,1fr)] [border-top:1px_solid_var(--line)] [margin:0] [padding-top:15px] [gap:12px] [&_div]:[display:flex] [&_div]:[flex-direction:column] [&_div]:[gap:5px] [&_dt]:[font:9px_ui-monospace,SFMono-Regular,Menlo,monospace] [&_dt]:[letter-spacing:.08em] [&_dt]:[color:#8e8994] [&_dd]:[font:500_24px_Georgia,'Times_New_Roman',serif] [&_dd]:[margin:0] [&_dd]:[color:#f4f0f7] max-[760px]:[padding-top:12px] max-[760px]:[&_dd]:[font-size:21px] max-[420px]:[&_dt]:[font-size:8px] max-[420px]:[&_dd]:[font-size:19px]">
             <div><dt>Records</dt><dd>286</dd></div>
             <div><dt>Artists</dt><dd>24</dd></div>
             <div><dt>Pressing plant</dt><dd>1</dd></div>
@@ -32,26 +33,26 @@
         </div>
       </div>
 
-      <div class="rail-shell" data-rail role="region" tabindex="0" aria-roledescription="carousel" aria-label="Album rail. Drag, swipe or use the arrow keys to browse.">
-        <div class="rail-stage" aria-hidden="true">
+      <div class="rail-shell [height:510px] [position:relative] [margin-top:10px] [isolation:isolate] [&:focus-visible]:[outline:2px_solid_#d4c2ff] [&:focus-visible]:[outline-offset:4px] [&:focus-visible]:[border-radius:5px] max-[760px]:[height:430px] max-[760px]:[margin-top:0] max-[420px]:[height:380px]" data-rail role="region" tabindex="0" aria-roledescription="carousel" aria-label="Album rail. Drag, swipe or use the arrow keys to browse.">
+        <div class="rail-stage [position:absolute] [inset:0] [overflow:hidden] [&_canvas]:[width:100%] [&_canvas]:[height:100%] [&_canvas]:[display:block] [&_canvas]:[outline:0] [&_canvas]:[cursor:grab] [&_canvas]:[touch-action:pan-y] [&_canvas:active]:[cursor:grabbing]" aria-hidden="true">
           <canvas id="record-scene"></canvas>
-          <div class="stage-vignette"></div>
+          <div class="stage-vignette [position:absolute] [inset:0] [pointer-events:none] [background:linear-gradient(90deg,#101014_0%,transparent_17%,transparent_83%,#101014_100%),linear-gradient(0deg,#101014_0%,transparent_28%,transparent_80%,#101014_100%)] max-[760px]:[background:linear-gradient(90deg,#101014_0%,transparent_8%,transparent_92%,#101014_100%),linear-gradient(0deg,#101014_0%,transparent_25%,transparent_85%,#101014_100%)]"></div>
         </div>
-        <div class="fallback-rail" id="fallback-rail" hidden></div>
-        <div class="active-caption" aria-live="polite" aria-atomic="true">
-          <span class="caption-rule"></span>
-          <span class="album-title" id="album-title">Pink eclipse</span>
-          <span class="artist-name" id="artist-name">Iona Vale</span>
+        <div class="fallback-rail [position:absolute] [inset:20px_0_90px] [display:flex] [align-items:center] [justify-content:center] [gap:12px] [overflow:hidden]" id="fallback-rail" hidden></div>
+        <div class="active-caption [position:absolute] [left:50%] [top:70%] [transform:translate(-50%,-50%)] [display:flex] [flex-direction:column] [align-items:center] [gap:7px] [pointer-events:none] [text-align:center] [text-shadow:0_2px_18px_#000] max-[760px]:[top:73%]" aria-live="polite" aria-atomic="true">
+          <span class="caption-rule [width:28px] [height:1px] [background:var(--accent)] [margin-bottom:5px]"></span>
+          <span class="album-title [font:italic_500_29px_Georgia,'Times_New_Roman',serif] [letter-spacing:-.02em] max-[760px]:[font-size:25px]" id="album-title">Pink eclipse</span>
+          <span class="artist-name [font:10px_ui-monospace,SFMono-Regular,Menlo,monospace] [letter-spacing:.16em] [text-transform:uppercase] [color:#aaa5af]" id="artist-name">Iona Vale</span>
         </div>
-        <div class="rail-controls">
-          <button class="arrow" type="button" data-prev aria-label="Previous record"><span aria-hidden="true">←</span></button>
-          <div class="record-progress" role="group" aria-label="Choose a record" id="record-progress"></div>
-          <button class="arrow" type="button" data-next aria-label="Next record"><span aria-hidden="true">→</span></button>
+        <div class="rail-controls [position:absolute] [bottom:32px] [left:50%] [transform:translateX(-50%)] [display:flex] [align-items:center] [gap:22px] max-[760px]:[bottom:30px] max-[760px]:[gap:14px]">
+          <button class="arrow [width:38px] [height:38px] [border:1px_solid_rgba(255,255,255,.2)] [border-radius:50%] [background:rgba(15,14,19,.65)] [color:#eee] [display:grid] [place-items:center] [font-size:20px] [cursor:pointer] [transition:background_.2s,border-color_.2s,transform_.2s] [&:hover]:[background:#292431] [&:hover]:[border-color:#b197fc] [&:hover]:[transform:scale(1.06)] [&:focus-visible]:[outline:2px_solid_#d4c2ff] [&:focus-visible]:[outline-offset:4px]" type="button" data-prev aria-label="Previous record"><span aria-hidden="true">←</span></button>
+          <div class="record-progress [display:flex] [align-items:center] [gap:10px]" role="group" aria-label="Choose a record" id="record-progress"></div>
+          <button class="arrow [width:38px] [height:38px] [border:1px_solid_rgba(255,255,255,.2)] [border-radius:50%] [background:rgba(15,14,19,.65)] [color:#eee] [display:grid] [place-items:center] [font-size:20px] [cursor:pointer] [transition:background_.2s,border-color_.2s,transform_.2s] [&:hover]:[background:#292431] [&:hover]:[border-color:#b197fc] [&:hover]:[transform:scale(1.06)] [&:focus-visible]:[outline:2px_solid_#d4c2ff] [&:focus-visible]:[outline-offset:4px]" type="button" data-next aria-label="Next record"><span aria-hidden="true">→</span></button>
         </div>
-        <p class="rail-hint">DRAG TO EXPLORE <span>·</span> ARROW KEYS TO BROWSE</p>
+        <p class="rail-hint [font:10px_ui-monospace,SFMono-Regular,Menlo,monospace] [letter-spacing:.17em] [color:#aaa5af] [position:absolute] [bottom:0] [left:50%] [transform:translateX(-50%)] [margin:0] [white-space:nowrap] [font-size:8px] [color:#77727d] [&_span]:[padding:0_7px] [&_span]:[color:#c6b5f4] max-[760px]:[font-size:7px]">DRAG TO EXPLORE <span>·</span> ARROW KEYS TO BROWSE</p>
       </div>
     </section>
-    <footer class="page-footer"><span>DESIGN INTELLIGENCE LIBRARY</span><span>VINYL RECORD CAROUSEL · 017</span></footer>
+    <footer class="page-footer [border-top:1px_solid_var(--line)] [height:55px] [display:flex] [align-items:center] [justify-content:space-between] [font:9px_ui-monospace,SFMono-Regular,Menlo,monospace] [letter-spacing:.13em] [color:#77727d] max-[760px]:[font-size:8px] max-[760px]:[letter-spacing:.08em] max-[420px]:[&_span:last-child]:[max-width:125px] max-[420px]:[&_span:last-child]:[text-align:right]"><span>DESIGN INTELLIGENCE LIBRARY</span><span>VINYL RECORD CAROUSEL · 017</span></footer>
   </main>
 </body>
 </html>

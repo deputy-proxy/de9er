@@ -1,0 +1,14 @@
+.portrait::before{ content: ""; position: absolute; width: 47%; height: 115%; left: 30%; bottom: -25%; border-radius: 48% 48% 0 0; background: linear-gradient(150deg,#b5a18c,#544e4c 64%,#292b31); filter: drop-shadow(20px 0 35px #0008); transform: rotate(-7deg); }
+.portrait::after{ content: ""; position: absolute; width: 21%; aspect-ratio: .76; left: 43%; top: 12%; border-radius: 48% 48% 44% 44%; background: radial-gradient(ellipse at 48% 36%,#d4bca5 0 39%,#70594e 42% 57%,#302b2b 60%); box-shadow: 0 10px 35px #0006; transform: rotate(-6deg); }
+.portrait--two::before{ left: 38%; width: 45%; background: linear-gradient(150deg,#5d6865,#242d31 68%); transform: rotate(7deg); }
+.portrait--two::after{ left: 50%; background: radial-gradient(ellipse at 50% 36%,#b77e61 0 39%,#392a25 42% 59%,#191b1c 62%); transform: rotate(5deg); }
+.portrait--three::before{ left: 26%; width: 50%; background: linear-gradient(150deg,#b4a08b,#51463f 68%); transform: rotate(-2deg); }
+.portrait--three::after{ left: 43%; background: radial-gradient(ellipse at 50% 35%,#d0a98c 0 39%,#5b4134 42% 60%,#201d1c 63%); }
+.portrait--four::before{ left: 35%; background: linear-gradient(150deg,#aaa2b5,#494452 68%); transform: rotate(4deg); }
+.portrait--four::after{ left: 49%; background: radial-gradient(ellipse at 50% 36%,#c99e83 0 39%,#3e2c29 42% 58%,#1c1b20 61%); transform: rotate(3deg); }
+.portrait--five::before{ left: 27%; background: linear-gradient(150deg,#b6a17f,#4c4438 68%); transform: rotate(-5deg); }
+.portrait--five::after{ left: 42%; background: radial-gradient(ellipse at 50% 36%,#d3a783 0 39%,#46342b 42% 60%,#1d1c19 63%); transform: rotate(-4deg); }
+@keyframes progress-fill{ from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.portrait::before{ left: 20%; width: 68%; }
+.portrait::after{ left: 41%; width: 27%; }
+*, *::before, *::after{ scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }

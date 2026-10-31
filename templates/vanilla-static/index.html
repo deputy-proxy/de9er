@@ -6,43 +6,43 @@
   <meta name="theme-color" content="#f4f2ed">
   <meta name="description" content="Replace with a concise page description.">
   <title>Project name</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="../../assets/css/tailwind.css">
   <script type="module" src="assets/js/main.js"></script>
 </head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
-    <a class="brand" href="/" aria-label="Project name home">PROJECT NAME</a>
-    <nav aria-label="Main navigation">
-      <a href="#about">About</a>
-      <a href="#work">Work</a>
-      <a href="#contact">Contact</a>
+<body class="min-h-screen bg-stone-100 font-sans leading-relaxed text-stone-900 antialiased">
+  <a class="absolute left-4 top-4 z-10 -translate-y-[180%] bg-white px-4 py-3 text-sm shadow focus:translate-y-0 focus-visible:outline-2 focus-visible:outline-blue-700" href="#main">Skip to content</a>
+  <header class="mx-auto flex w-[min(100%-2rem,72rem)] flex-col items-start justify-between gap-4 py-6 sm:w-[min(100%-3rem,72rem)] sm:flex-row sm:items-center">
+    <a class="text-xs font-bold tracking-[.12em]" href="/" aria-label="Project name home">PROJECT NAME</a>
+    <nav class="flex flex-wrap gap-x-6 gap-y-3 text-sm" aria-label="Main navigation">
+      <a class="transition hover:text-emerald-800 focus-visible:outline-2 focus-visible:outline-emerald-800" href="#about">About</a>
+      <a class="transition hover:text-emerald-800 focus-visible:outline-2 focus-visible:outline-emerald-800" href="#work">Work</a>
+      <a class="transition hover:text-emerald-800 focus-visible:outline-2 focus-visible:outline-emerald-800" href="#contact">Contact</a>
     </nav>
   </header>
   <main id="main">
-    <section class="hero" aria-labelledby="hero-title">
-      <p class="eyebrow">A useful point of view</p>
-      <h1 id="hero-title">A clear, distinctive promise belongs here.</h1>
-      <p class="intro">Explain who this is for, what it helps them do, and why it matters.</p>
-      <a class="button" href="#contact">Primary action</a>
+    <section class="mx-auto grid min-h-[72svh] w-[min(100%-2rem,72rem)] content-center py-24 sm:w-[min(100%-3rem,72rem)] sm:py-36" aria-labelledby="hero-title">
+      <p class="mb-5 text-xs font-bold uppercase tracking-[.14em] text-stone-600">A useful point of view</p>
+      <h1 id="hero-title" class="max-w-[14ch] font-serif text-6xl font-normal leading-[.95] tracking-[-.06em] sm:text-8xl lg:text-[8.5rem]">A clear, distinctive promise belongs here.</h1>
+      <p class="my-8 max-w-2xl text-lg leading-relaxed text-stone-600 sm:text-xl">Explain who this is for, what it helps them do, and why it matters.</p>
+      <a class="inline-flex min-h-13 w-fit items-center justify-center bg-emerald-900 px-6 py-4 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-stone-900 focus-visible:outline-2 focus-visible:outline-emerald-800" href="#contact">Primary action</a>
     </section>
-    <section id="about" class="section">
-      <p class="eyebrow">About</p>
-      <h2>Build the page around the actual story.</h2>
-      <p>Replace this starter content with meaningful, specific information.</p>
+    <section id="about" class="mx-auto w-[min(100%-2rem,72rem)] border-t border-stone-300 py-20 sm:w-[min(100%-3rem,72rem)] sm:py-36">
+      <p class="mb-5 text-xs font-bold uppercase tracking-[.14em] text-stone-600">About</p>
+      <h2 class="max-w-[14ch] font-serif text-5xl font-normal leading-none tracking-[-.045em] sm:text-7xl">Build the page around the actual story.</h2>
+      <p class="mt-8 max-w-2xl text-lg leading-relaxed text-stone-600">Replace this starter content with meaningful, specific information.</p>
     </section>
-    <section id="work" class="section">
-      <p class="eyebrow">Selected work</p>
-      <h2>Show evidence, not decoration.</h2>
-      <p>Add real projects, product details, or proof relevant to the audience.</p>
+    <section id="work" class="mx-auto w-[min(100%-2rem,72rem)] border-t border-stone-300 py-20 sm:w-[min(100%-3rem,72rem)] sm:py-36">
+      <p class="mb-5 text-xs font-bold uppercase tracking-[.14em] text-stone-600">Selected work</p>
+      <h2 class="max-w-[14ch] font-serif text-5xl font-normal leading-none tracking-[-.045em] sm:text-7xl">Show evidence, not decoration.</h2>
+      <p class="mt-8 max-w-2xl text-lg leading-relaxed text-stone-600">Add real projects, product details, or proof relevant to the audience.</p>
     </section>
-    <section id="contact" class="section">
-      <p class="eyebrow">Next step</p>
-      <h2>Make the next action clear.</h2>
-      <a class="button" href="mailto:hello@example.com">Get in touch</a>
+    <section id="contact" class="mx-auto w-[min(100%-2rem,72rem)] border-t border-stone-300 py-20 sm:w-[min(100%-3rem,72rem)] sm:py-36">
+      <p class="mb-5 text-xs font-bold uppercase tracking-[.14em] text-stone-600">Next step</p>
+      <h2 class="max-w-[14ch] font-serif text-5xl font-normal leading-none tracking-[-.045em] sm:text-7xl">Make the next action clear.</h2>
+      <a class="mt-8 inline-flex min-h-13 w-fit items-center justify-center bg-emerald-900 px-6 py-4 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-stone-900 focus-visible:outline-2 focus-visible:outline-emerald-800" href="mailto:hello@example.com">Get in touch</a>
     </section>
   </main>
-  <footer class="site-footer">
+  <footer class="mx-auto flex w-[min(100%-2rem,72rem)] justify-between gap-8 border-t border-stone-300 py-6 text-sm text-stone-600 sm:w-[min(100%-3rem,72rem)]">
     <p>© <span data-current-year></span> Project name</p>
   </footer>
 </body>

@@ -30,7 +30,7 @@ A reusable skill library for designing, generating, reviewing, and deploying dis
 | 3D | Three.js, optional |
 | Hosting | GitHub Pages via GitHub Actions |
 
-The glossary and shared design-system UI use Tailwind CSS v4 with a small CLI build. Keep bespoke CSS for visual artwork and effects that do not map cleanly to utilities. Standalone examples are being migrated to this shared styling foundation in stages. Generated client websites belong in separate repositories, not here.
+The glossary and shared design-system UI use Tailwind CSS v4 with a small CLI build. Keep bespoke CSS for visual artwork and effects that do not map cleanly to utilities. All standalone examples load the shared Tailwind build. Use utility classes for new component and page styling; retain page-local CSS only for bespoke visual artwork, WebGL presentation, and effects that do not map cleanly to utilities. Both starter templates are utility-first and contain no page-specific layout stylesheet. Generated client websites belong in separate repositories, not here.
 
 ## Design preview gallery
 The searchable glossary and all standalone pattern demos are published through [GitHub Pages](https://deputy-proxy.github.io/de9er/). The Pages workflow publishes the glossary, standalone example pages, and each example’s local CSS/JS assets. The hero examples gallery embeds the actual standalone pages for live previews; it does not synthesize generic mockups. Internal prompts, skills, pattern research, and other repository files are not included in the published artifact. Pattern documentation links return to this repository.
