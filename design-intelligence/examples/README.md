@@ -20,7 +20,7 @@
 - [product-prism-stage](./product-prism-stage/index.html)
 - [spatial-portal-gateway](./spatial-portal-gateway/index.html)
 
-## Interaction collection
+## About collection
 
 - [team-profile-carousel](./team-profile-carousel/index.html)
 

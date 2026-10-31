@@ -33,7 +33,7 @@ A curated, implementation-aware knowledge base for selecting and adapting design
 candidate → analyzed → authored → implemented → validated → published
 
 ## Initial collection
-The current collection includes fifteen hero patterns and one interaction pattern, indexed in patterns/README.md with runnable examples under examples/. The five advanced Three.js examples are currently source-level implementations only. They must not be treated as validated visual references until browser evidence exists.
+The current collection includes fifteen hero patterns and one About pattern, indexed in patterns/README.md with runnable examples under examples/. The five advanced Three.js examples are currently source-level implementations only. They must not be treated as validated visual references until browser evidence exists.
 
 ## WebGL quality standard
 A WebGL scene must begin with a visual thesis and a designed composition, not an effect name. Choose the lightest experience family that achieves the intended result: authored 3D object, DOM-linked shader media, procedural world, spatial narrative, interactive instrument, atmosphere or hybrid 2D/3D. A 2D shader or CSS/GSAP treatment may be preferable to a 3D scene.

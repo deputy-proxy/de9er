@@ -8,4 +8,4 @@ Document variants and accessibility behavior. Avoid a giant catalog that makes e
 
 ## Implemented interaction reference
 
-- [Team profile carousel](../design-intelligence/patterns/interactions/team-profile-carousel.md) — one active team profile with a selectable member list, position controls, responsive layout and optional timed progression. [Open the standalone demo](../design-intelligence/examples/team-profile-carousel/index.html).
+- [Team profile carousel](../design-intelligence/patterns/about/team-profile-carousel.md) — one active team profile with a selectable member list, position controls, responsive layout and optional timed progression. [Open the standalone demo](../design-intelligence/examples/team-profile-carousel/index.html).

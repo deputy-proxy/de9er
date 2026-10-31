@@ -4,7 +4,7 @@
 schema_version: "1.0"
 id: team-profile-carousel
 name: "Team profile carousel"
-category: interactions
+category: about
 summary: "A focused team presentation pairs a selectable list of people with one prominent profile at a time. The active profile combines identity, role, a short biography and direct contact links."
 principle: "Give each person enough visual and editorial space to be memorable while keeping the full team discoverable in a compact, navigable selector."
 characteristics:
