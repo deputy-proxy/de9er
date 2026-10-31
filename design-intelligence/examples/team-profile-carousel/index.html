@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090a0d">
+  <meta name="description" content="A responsive team profile carousel with selectable people, animated transitions and keyboard controls.">
+  <title>Team Profile Carousel · DE9ER</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <main class="page-shell">
+    <header class="page-header">
+      <a class="wordmark" href="../../../index.html">DE9ER <span>/ PATTERN 016</span></a>
+      <a class="back-link" href="../../../index.html">Back to glossary <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <section class="team-section" aria-labelledby="team-title" data-team-carousel>
+      <div class="section-intro">
+        <p class="eyebrow"><span></span> THE PEOPLE BEHIND THE WORK</p>
+        <h1 id="team-title">Meet the <em>experts.</em></h1>
+        <p class="section-description">A closer look at the people shaping what comes next.</p>
+      </div>
+
+      <div class="team-layout">
+        <nav class="member-picker" aria-label="Choose a team member" role="group">
+          <button class="member-tab" type="button" data-member="0" aria-pressed="true">
+            <span class="tab-index">01</span><span class="tab-name">Alex Morgan</span><span class="tab-arrow" aria-hidden="true">↗</span>
+          </button>
+          <button class="member-tab" type="button" data-member="1" aria-pressed="false">
+            <span class="tab-index">02</span><span class="tab-name">Sam Rivera</span><span class="tab-arrow" aria-hidden="true">↗</span>
+          </button>
+          <button class="member-tab" type="button" data-member="2" aria-pressed="false">
+            <span class="tab-index">03</span><span class="tab-name">Jordan Lee</span><span class="tab-arrow" aria-hidden="true">↗</span>
+          </button>
+          <button class="member-tab" type="button" data-member="3" aria-pressed="false">
+            <span class="tab-index">04</span><span class="tab-name">Taylor Brooks</span><span class="tab-arrow" aria-hidden="true">↗</span>
+          </button>
+          <button class="member-tab" type="button" data-member="4" aria-pressed="false">
+            <span class="tab-index">05</span><span class="tab-name">Casey Kim</span><span class="tab-arrow" aria-hidden="true">↗</span>
+          </button>
+          <p class="picker-note">SELECT A PROFILE <span>01 — 05</span></p>
+        </nav>
+
+        <article class="profile-card" aria-live="polite" aria-atomic="true">
+          <div class="portrait portrait--one" data-portrait aria-hidden="true">
+            <span class="portrait-monogram" data-monogram>AM</span>
+            <span class="portrait-caption"><span data-figure>FIG. 01</span> <i data-figure-department>LEADERSHIP</i></span>
+          </div>
+          <div class="profile-shade" aria-hidden="true"></div>
+          <div class="profile-content">
+            <div class="profile-meta"><span data-number>01 / 05</span><span data-department>LEADERSHIP</span></div>
+            <div class="profile-copy">
+              <p class="profile-kicker">THE PEOPLE WHO MAKE IT HAPPEN</p>
+              <h2 data-name>Alex Morgan</h2>
+              <p class="profile-role" data-role>Founder &amp; CEO</p>
+              <p class="profile-bio" data-bio>Brings a clear point of view to complex problems and turns ambitious ideas into focused direction.</p>
+              <div class="profile-links">
+                <a data-github href="https://github.com/" target="_blank" rel="noreferrer" aria-label="Alex Morgan on GitHub">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6.1-1.5 6.1-6.7a5.2 5.2 0 0 0-1.4-3.6 4.8 4.8 0 0 0-.1-3.6s-1.2-.4-3.8 1.4a13.1 13.1 0 0 0-6.9 0C5.4.7 4.2 1.1 4.2 1.1a4.8 4.8 0 0 0-.1 3.6 5.2 5.2 0 0 0-1.4 3.6c0 5.2 3.1 6.4 6.1 6.7a3.4 3.4 0 0 0-.9 2.6V22"/></svg>
+                  <span>GitHub</span><b aria-hidden="true">↗</b>
+                </a>
+                <a data-email href="mailto:alex@example.com" aria-label="Email Alex Morgan">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3.5 6 8.5 7 8.5-7"/></svg>
+                  <span>Get in touch</span><b aria-hidden="true">↗</b>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="card-controls">
+            <span class="control-label">EXPLORE THE TEAM</span>
+            <div class="progress-list" role="group" aria-label="Select profile">
+              <button class="progress-button is-active" type="button" data-go="0" aria-label="Show Alex Morgan" aria-pressed="true"><span></span></button>
+              <button class="progress-button" type="button" data-go="1" aria-label="Show Sam Rivera" aria-pressed="false"><span></span></button>
+              <button class="progress-button" type="button" data-go="2" aria-label="Show Jordan Lee" aria-pressed="false"><span></span></button>
+              <button class="progress-button" type="button" data-go="3" aria-label="Show Taylor Brooks" aria-pressed="false"><span></span></button>
+              <button class="progress-button" type="button" data-go="4" aria-label="Show Casey Kim" aria-pressed="false"><span></span></button>
+            </div>
+            <div class="card-arrows">
+              <button type="button" data-prev aria-label="Previous team member">←</button>
+              <button type="button" data-next aria-label="Next team member">→</button>
+            </div>
+          </div>
+        </article>
+      </div>
+      <p class="interaction-hint"><span>↖</span> Use the names, progress markers or arrow keys to explore. The carousel pauses while you interact.</p>
+    </section>
+    <footer class="page-footer"><span>DESIGN INTELLIGENCE LIBRARY</span><span>TEAM PROFILE CAROUSEL · 016</span></footer>
+  </main>
+</body>
+</html>

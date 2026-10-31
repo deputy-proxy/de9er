@@ -46,6 +46,12 @@ If these cannot be answered, do not select Three.js yet.
 | typographic-brand-statement | The brand has a concise point of view. | Do not disguise a vague offer. |
 | interactive-product-preview | One interaction demonstrates meaningful behavior. | It must work with keyboard and touch. |
 
+## Initial interaction pattern index
+
+| Pattern ID | Best-fit signal | Main caution |
+|---|---|---|
+| team-profile-carousel | A small team benefits from one focused profile at a time. | Avoid for large directories or when visitors need to compare many people simultaneously. |
+
 ## Fit dimensions
 Consider audience and context, objective and information hierarchy, content and asset fit, visual-direction compatibility, responsiveness, accessibility, performance, implementation complexity and originality.
 

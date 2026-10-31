@@ -1,8 +1,6 @@
 # Working pattern examples
 
-[Open the searchable live gallery](https://deputy-proxy.github.io/de9er/) to preview all fifteen designs. Each card links to its standalone GitHub Pages demo.
-
-Each implemented pattern has an independent, runnable demonstration.
+[Open the searchable live gallery](https://deputy-proxy.github.io/de9er/) to preview implemented patterns. Each pattern has an independent, runnable demonstration.
 
 ## Hero collection
 
@@ -22,10 +20,14 @@ Each implemented pattern has an independent, runnable demonstration.
 - [product-prism-stage](./product-prism-stage/index.html)
 - [spatial-portal-gateway](./spatial-portal-gateway/index.html)
 
-## Running
-Open any `index.html` directly in a browser or serve this directory with a static HTTP server. No package manager, bundler, or framework is required. The first ten CSS examples work offline; the five Three.js examples load the pinned Three.js module from jsDelivr.
+## Interaction collection
 
-The first ten examples use original placeholder copy and CSS-built visuals. The five Three.js examples use original geometry, instanced meshes, physical materials, custom GLSL displacement, and animated camera motion. They load Three.js 0.187.0 from jsDelivr through an import map, so the WebGL enhancement requires network access; each keeps its HTML proposition and CSS fallback independent of the renderer. The scenes cap pixel ratio, pause when hidden/offscreen, and honor reduced-motion preferences.
+- [team-profile-carousel](./team-profile-carousel/index.html)
+
+## Running
+
+Open any `index.html` directly in a browser or serve this directory with a static HTTP server. No package manager, bundler, or framework is required. The first ten hero examples work offline; the five Three.js examples load the pinned Three.js module from jsDelivr. The team profile carousel also works offline and uses CSS-built sample portraits.
 
 ## Lifecycle
-Examples remain in `implemented` status until browser, responsive, keyboard, contrast, and assistive-technology checks are recorded. See [hero collection review](../validation/hero-patterns-review.md).
+
+Examples remain in `implemented` status until browser, responsive, keyboard, contrast, and assistive-technology checks are recorded. See [hero collection review](../validation/hero-patterns-review.md) and the individual pattern records.
