@@ -69,7 +69,7 @@
     const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
     camera.position.set(0, 0, 10);
     let renderer, active = true, visible = true, disposed = false;
-    const clock = new THREE.Timer();
+    const clock = new THREE.Timer(); clock.connect(document);
     const pointer = new THREE.Vector2();
     const targetPointer = new THREE.Vector2();
 
@@ -92,7 +92,7 @@
       }
       function render(time){
         pointer.lerp(targetPointer, .035);
-        root.rotation.y = time * .11 + pointer.x * .12; root.rotation.x = Math.sin(time * .18) * .12 + pointer.y * .08; core.rotation.y = -time * .22; core.rotation.x = time * .13; orbitLines.forEach((line,i)=>{line.rotation.y = time * (.06 + i*.012); line.rotation.x = Math.sin(time*.13+i)*.12;}); particles.rotation.y = -time*.035;
+        data.forEach((d,i)=>{const a=d.angle+time*d.speed;const r=d.radius;dummy.position.set(Math.cos(a)*r,Math.sin(a)*r*.52,Math.sin(a*.5+d.phase)*.34);dummy.scale.setScalar(.72+.28*(Math.sin(a*2+d.phase)*.5+.5));dummy.updateMatrix();particles.setMatrixAt(i,dummy.matrix);});particles.instanceMatrix.needsUpdate=true; root.rotation.y = time * .11 + pointer.x * .12; root.rotation.x = Math.sin(time * .18) * .12 + pointer.y * .08; core.rotation.y = -time * .22; core.rotation.x = time * .13; orbitLines.forEach((line,i)=>{line.rotation.y = time * (.06 + i*.012); line.rotation.x = Math.sin(time*.13+i)*.12;}); particles.rotation.y = -time*.035;
         renderer.render(scene,camera);
       }
       function loop(){
