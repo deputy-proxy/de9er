@@ -122,7 +122,17 @@
     .interactive .mini-toggle { display:flex; gap:4px; margin-top:8px; }
     .interactive .mini-toggle i { width:22px; height:6px; background:#393940; border-radius:3px; }
     .interactive .mini-toggle i:first-child { background:#d4d4d8; }
-    .card-body { padding: 14px 15px 13px; }
+
+    .three-preview { background: radial-gradient(ellipse at center,#202b3c 0,#111720 48%,#090b10 100%); }
+    .orbital-core { width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#e1efff,#6887b2 45%,#263d5c 75%);box-shadow:0 0 34px #9bbbe866;position:absolute; }
+    .orbital-preview i { position:absolute;width:100px;height:43px;border:1px solid #9cb7dc77;border-radius:50%;transform:rotate(-28deg); }
+    .orbital-preview i:nth-child(2){transform:rotate(55deg);width:125px;height:52px}.orbital-preview i:nth-child(3){transform:rotate(88deg);width:155px;height:60px}
+    .sculpture-shape { width:90px;height:90px;border:13px solid #9caec7;border-radius:34% 66% 43% 57%;transform:rotate(35deg) skew(-8deg);box-shadow:inset 0 0 22px #d9e8ff55,0 0 28px #8aa8d255;filter:drop-shadow(0 0 8px #a6c1e455); }
+    .terrain-preview { perspective:220px; }.terrain-lines { width:130%;height:90px;position:absolute;top:35px;transform:rotateX(58deg) rotateZ(-12deg);background:repeating-radial-gradient(ellipse at 50% 50%,transparent 0 8px,#9ab6d977 9px 10px,transparent 11px 17px);filter:drop-shadow(0 0 8px #8aaedb55); }
+    .prism-object { width:62px;height:82px;background:linear-gradient(120deg,#e2eaf4,#61738d 35%,#b9c9df 58%,#303f54);clip-path:polygon(50% 0,100% 24%,85% 100%,15% 100%,0 24%);transform:rotate(24deg);box-shadow:0 0 32px #9db9df66; }
+    .prism-orbit { position:absolute;width:145px;height:48px;border:1px solid #9cb8df77;border-radius:50%;transform:rotate(-22deg); }
+    .portal-rings { width:112px;height:112px;border:2px solid #a8c2e4;border-radius:50%;box-shadow:0 0 0 9px #9ab6d522,0 0 0 20px #9ab6d522,0 0 0 32px #9ab6d511,0 0 45px #90b4e866,inset 0 0 24px #8caedb66;transform:perspective(180px) rotateY(-22deg); }
+\n    .card-body { padding: 14px 15px 13px; }
     .card-top { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px; }
     .category { color:#a1a1aa; font-size:9px; text-transform:uppercase; letter-spacing:.1em; }
     .status { color:#a1a1aa; border:1px solid #303036; border-radius:4px; padding:3px 6px; font-size:8px; text-transform:uppercase; letter-spacing:.06em; white-space:nowrap; }
@@ -191,8 +201,8 @@
       <aside aria-label="Library navigation">
         <p class="side-label">Library</p>
         <nav class="side-nav">
-          <a class="active" href="#patterns">All patterns <span class="count">10</span></a>
-          <a href="#patterns" data-side-filter="heroes">Heroes <span class="count">10</span></a>
+          <a class="active" href="#patterns">All patterns <span class="count">15</span></a>
+          <a href="#patterns" data-side-filter="heroes">Heroes <span class="count">15</span></a>
           <a href="#planned">Navigation <span class="count">—</span></a>
           <a href="#planned">Typography <span class="count">—</span></a>
           <a href="#planned">Section compositions <span class="count">—</span></a>
@@ -216,12 +226,12 @@
       <main>
         <div class="eyebrow"><span class="eyebrow-dot"></span> DESIGN SYSTEMS / PATTERN GLOSSARY</div>
         <h1>Design patterns,<br>with a point of view.</h1>
-        <p class="intro">A practical index of reusable web compositions. Explore the underlying principle, understand when a pattern earns its place, and open a working example before bringing it into a project.</p>
+        <p class="intro">A practical index of reusable web compositions. Explore the underlying principle, understand when a pattern earns its place, and open a working example before bringing it into a project. Now with five advanced Three.js hero compositions.</p>
 
         <div class="stats" aria-label="Library statistics">
-          <div class="stat"><strong>10</strong><span>Patterns</span></div>
+          <div class="stat"><strong>15</strong><span>Patterns</span></div>
           <div class="stat"><strong>01</strong><span>Category populated</span></div>
-          <div class="stat"><strong>10</strong><span>Working demos</span></div>
+          <div class="stat"><strong>15</strong><span>Working demos</span></div>
         </div>
 
         <section id="patterns" aria-labelledby="patterns-title">
@@ -240,13 +250,13 @@
             </select>
           </div>
           <div class="filters" role="group" aria-label="Filter by category">
-            <button class="filter" type="button" data-filter="all" aria-pressed="true">All patterns <span>10</span></button>
-            <button class="filter" type="button" data-filter="heroes" aria-pressed="false">Heroes <span>10</span></button>
+            <button class="filter" type="button" data-filter="all" aria-pressed="true">All patterns <span>15</span></button>
+            <button class="filter" type="button" data-filter="heroes" aria-pressed="false">Heroes <span>15</span></button>
             <button class="filter" type="button" data-filter="navigation" aria-pressed="false">Navigation <span>0</span></button>
             <button class="filter" type="button" data-filter="sections" aria-pressed="false">Sections <span>0</span></button>
             <button class="filter" type="button" data-filter="typography" aria-pressed="false">Typography <span>0</span></button>
           </div>
-          <div class="results-line"><span id="result-count" aria-live="polite">Showing 10 patterns</span><span>STATUS: IMPLEMENTED</span></div>
+          <div class="results-line"><span id="result-count" aria-live="polite">Showing 15 patterns</span><span>STATUS: IMPLEMENTED</span></div>
 
           <div class="grid" id="pattern-grid">
             <article class="card" data-category="heroes" data-name="Editorial type-led hero" data-search="editorial type led typography text dominant headline proposition publisher consultancy cultural organization portfolio sparse asymmetric">
@@ -297,6 +307,31 @@
             <article class="card" data-category="heroes" data-name="Interactive product preview" data-search="interactive product preview demo toggle state change product interaction software live">
               <div class="preview interactive" aria-hidden="true"><div class="mini"><div class="mini-nav"><i class="mini-logo"></i><i class="mini-links"></i></div><div class="mini-body"><div><div class="mini-line bright" style="height:8px"></div><div class="mini-line dim" style="width:88%"></div><div class="mini-toggle"><i></i><i></i><i></i></div></div><div class="mini-panel"></div></div></div><span class="preview-label">10 / Interactive</span></div>
               <div class="card-body"><div class="card-top"><span class="category">Hero composition</span><span class="status">Implemented</span></div><h3>Interactive product preview</h3><p>Demonstrates one meaningful product behavior directly in the hero instead of relying on a static screenshot.</p><div class="tags"><span class="tag">Interactive</span><span class="tag">Product demo</span><span class="tag">Engagement</span></div><div class="card-links"><a href="design-intelligence/patterns/heroes/interactive-product-preview.md">Pattern details <span>↗</span></a><a href="design-intelligence/examples/interactive-product-preview/index.html">Live demo <span>↗</span></a></div></div>
+            </article>
+
+            <article class="card" data-category="heroes" data-name="Orbital particle field" data-search="three.js webgl 3d particles instanced mesh orbit network system technology connected data">
+              <div class="preview three-preview orbital-preview" aria-hidden="true"><div class="orbital-core"></div><i></i><i></i><i></i><span class="preview-label">11 / Orbital field</span></div>
+              <div class="card-body"><div class="card-top"><span class="category">Three.js hero</span><span class="status">Implemented</span></div><h3>Orbital particle field</h3><p>Instanced particles travel along layered orbital paths, turning abstract networks and connected systems into a spatial metaphor.</p><div class="tags"><span class="tag">Particles</span><span class="tag">Instancing</span><span class="tag">Spatial systems</span></div><div class="card-links"><a href="design-intelligence/patterns/heroes/orbital-particle-field.md">Pattern details <span>↗</span></a><a href="design-intelligence/examples/orbital-particle-field/index.html">Live demo <span>↗</span></a></div></div>
+            </article>
+
+            <article class="card" data-category="heroes" data-name="Kinetic type sculpture" data-search="three.js webgl 3d parametric torus knot reflective geometry kinetic typography brand sculpture">
+              <div class="preview three-preview sculpture-preview" aria-hidden="true"><div class="sculpture-shape"></div><span class="preview-label">12 / Kinetic sculpture</span></div>
+              <div class="card-body"><div class="card-top"><span class="category">Three.js hero</span><span class="status">Implemented</span></div><h3>Kinetic type sculpture</h3><p>A reflective parametric sculpture gives a concise brand statement a tactile, dimensional counterweight.</p><div class="tags"><span class="tag">Parametric geometry</span><span class="tag">Reflective</span><span class="tag">Brand-led</span></div><div class="card-links"><a href="design-intelligence/patterns/heroes/kinetic-type-sculpture.md">Pattern details <span>↗</span></a><a href="design-intelligence/examples/kinetic-type-sculpture/index.html">Live demo <span>↗</span></a></div></div>
+            </article>
+
+            <article class="card" data-category="heroes" data-name="Liquid topography field" data-search="three.js webgl glsl shader vertex displacement liquid terrain topography procedural wave landscape">
+              <div class="preview three-preview terrain-preview" aria-hidden="true"><div class="terrain-lines"></div><span class="preview-label">13 / Liquid terrain</span></div>
+              <div class="card-body"><div class="card-top"><span class="category">Three.js hero</span><span class="status">Implemented</span></div><h3>Liquid topography field</h3><p>A custom GLSL shader deforms a continuous surface into flowing terrain that suggests change and discovery.</p><div class="tags"><span class="tag">GLSL shader</span><span class="tag">Displacement</span><span class="tag">Procedural</span></div><div class="card-links"><a href="design-intelligence/patterns/heroes/liquid-topography-field.md">Pattern details <span>↗</span></a><a href="design-intelligence/examples/liquid-topography-field/index.html">Live demo <span>↗</span></a></div></div>
+            </article>
+
+            <article class="card" data-category="heroes" data-name="Product prism stage" data-search="three.js webgl 3d product stage prism physical material instanced panels orbit product launch">
+              <div class="preview three-preview prism-preview" aria-hidden="true"><div class="prism-object"></div><div class="prism-orbit"></div><span class="preview-label">14 / Product prism</span></div>
+              <div class="card-body"><div class="card-top"><span class="category">Three.js hero</span><span class="status">Implemented</span></div><h3>Product prism stage</h3><p>A central dimensional product object is supported by a small orbiting ecosystem of capability panels and light cues.</p><div class="tags"><span class="tag">Product stage</span><span class="tag">Physical materials</span><span class="tag">Instancing</span></div><div class="card-links"><a href="design-intelligence/patterns/heroes/product-prism-stage.md">Pattern details <span>↗</span></a><a href="design-intelligence/examples/product-prism-stage/index.html">Live demo <span>↗</span></a></div></div>
+            </article>
+
+            <article class="card" data-category="heroes" data-name="Spatial portal gateway" data-search="three.js webgl 3d portal gateway spatial tunnel camera dolly particles depth experience">
+              <div class="preview three-preview portal-preview" aria-hidden="true"><div class="portal-rings"></div><span class="preview-label">15 / Spatial portal</span></div>
+              <div class="card-body"><div class="card-top"><span class="category">Three.js hero</span><span class="status">Implemented</span></div><h3>Spatial portal gateway</h3><p>Nested dimensional frames and a controlled camera dolly create an invitation into a new product or brand world.</p><div class="tags"><span class="tag">Camera motion</span><span class="tag">Depth</span><span class="tag">Spatial</span></div><div class="card-links"><a href="design-intelligence/patterns/heroes/spatial-portal-gateway.md">Pattern details <span>↗</span></a><a href="design-intelligence/examples/spatial-portal-gateway/index.html">Live demo <span>↗</span></a></div></div>
             </article>
             <div class="empty" id="empty"><strong>No matching patterns</strong>Try another search term or category.</div>
           </div>
