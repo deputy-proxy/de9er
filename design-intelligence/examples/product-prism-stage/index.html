@@ -1,62 +1,37 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="[scroll-behavior:smooth] motion-reduce:[scroll-behavior:auto] [color-scheme:dark] [--bg:#08090d] [--panel:#101218] [--line:#272b35] [--text:#f4f5f7] [--muted:#a1a7b3] [--dim:#6e7480] [font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe_UI",sans-serif] [font-synthesis:none] [text-rendering:optimizeLegibility] [-webkit-font-smoothing:antialiased]">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#08090d">
   <meta name="description" content="A central prism represents the core product while smaller panels describe the tools and workflows around it. The scene communicates one integrated system without turning the hero into a feature grid.">
   <title>Product Prism Stage · DE9ER</title>
-  <style>
-    :root{color-scheme:dark;--bg:#08090d;--panel:#101218;--line:#272b35;--text:#f4f5f7;--muted:#a1a7b3;--dim:#6e7480;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-width:320px;min-height:100vh;background:var(--bg);color:var(--text)}
-    a{color:inherit;text-decoration:none}.shell{max-width:1440px;margin:auto;padding:0 5vw}
-    header{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff12}
-    .brand{font-size:13px;font-weight:650;letter-spacing:-.02em;display:flex;gap:10px;align-items:center}.mark{width:23px;height:23px;border:1px solid #555d6b;border-radius:7px;display:grid;place-items:center;font-size:11px}
-    nav{display:flex;gap:24px;color:#9ba1ad;font-size:11px}nav a:hover{color:white}
-    .hero{min-height:calc(100vh - 77px);display:grid;grid-template-columns:minmax(300px,.86fr) minmax(0,1.14fr);align-items:center;gap:clamp(35px,6vw,100px);padding:70px 0 90px}
-    .copy{position:relative;z-index:2;max-width:520px}.eyebrow{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#aeb6c5;display:flex;align-items:center;gap:10px;margin-bottom:24px}.eyebrow:before{content:"";width:19px;height:1px;background:#8e9aac}
-    h1{font-size:clamp(42px,6vw,78px);line-height:.98;letter-spacing:-.065em;font-weight:560;margin:0 0 23px;max-width:640px}
-    .copy p{font-size:15px;line-height:1.8;color:#a5aab5;max-width:440px;margin:0 0 30px}
-    .actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.primary{padding:12px 17px;background:#f4f5f7;color:#090a0d;border-radius:6px;font-size:11px;font-weight:650}.secondary{font-size:11px;color:#b0b5c0;padding:10px 3px}
-    .meta{margin-top:38px;padding-top:17px;border-top:1px solid #ffffff18;color:#717887;font-size:10px;display:flex;gap:16px;align-items:center}.pulse{width:6px;height:6px;border-radius:50%;background:#b9c6d8;box-shadow:0 0 12px #a6badb}
-    .stage{height:min(68vh,620px);min-height:390px;position:relative;border:1px solid #ffffff16;border-radius:15px;overflow:hidden;background:radial-gradient(ellipse at 50% 48%,#202633 0,#10141d 43%,#090b10 80%);isolation:isolate}
-    .stage:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(135deg,#ffffff08,transparent 30%,transparent 70%,#ffffff05);z-index:1}
-    canvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
-    .stage-label{position:absolute;z-index:2;left:20px;bottom:17px;color:#858d9b;font-size:9px;letter-spacing:.13em;text-transform:uppercase}
-    .stage-index{position:absolute;z-index:2;right:20px;top:17px;color:#707987;font:10px ui-monospace,monospace}
-    .fallback-art{position:absolute;inset:0;display:grid;place-items:center;opacity:.8;pointer-events:none}
-    .fallback-art:before{content:"";width:42%;aspect-ratio:1;border:1px solid #aab6c733;border-radius:50%;box-shadow:0 0 80px #9bb1d322,inset 0 0 70px #a4b8d41a;transform:rotateX(62deg) rotateZ(-25deg)}
-    .status{position:absolute;z-index:3;right:18px;bottom:15px;color:#77808f;font-size:9px}
-    .note{border-top:1px solid #ffffff14;padding:18px 0 28px;color:#727987;font-size:10px;display:flex;justify-content:space-between;gap:18px}
-    .note a{color:#b8bec9}.note a:hover{color:#fff}
-    @media(max-width:850px){.hero{grid-template-columns:1fr;gap:38px;padding:55px 0 70px}.copy{max-width:650px}.stage{height:55vw;min-height:340px;max-height:520px}.copy p{max-width:560px}}
-    @media(max-width:520px){.shell{padding:0 19px}header{height:64px}nav{gap:13px}nav a:first-child{display:none}.hero{padding:43px 0 55px;gap:29px}h1{font-size:clamp(42px,13vw,62px)}.copy p{font-size:13px}.stage{min-height:300px;height:82vw}.meta{margin-top:27px}.note{flex-direction:column}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
-  </style>
+<link rel="stylesheet" href="../../../assets/css/tailwind.css">
+
   <script type="importmap">
     {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.187.0/build/three.module.js"}}
   </script>
 </head>
-<body>
-  <div class="shell">
-    <header><a class="brand" href="../../../index.html"><span class="mark">D</span> DESIGN INTELLIGENCE</a><nav aria-label="Demo navigation"><a href="../../../index.html">Library</a><a href="../../patterns/heroes/product-prism-stage.md">Pattern notes</a></nav></header>
-    <main class="hero">
-      <section class="copy" aria-labelledby="hero-title">
-        <div class="eyebrow">The product, in its own orbit</div>
-        <h1 id="hero-title">One platform.<br>More possibilities.</h1>
+<body class="[margin:0] [min-width:320px] [min-height:100vh] [background:var(--bg)] [color:var(--text)] min-h-screen antialiased [color-scheme:dark] [--bg:#08090d] [--panel:#101218] [--line:#272b35] [--text:#f4f5f7] [--muted:#a1a7b3] [--dim:#6e7480] [font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe_UI",sans-serif] [font-synthesis:none] [text-rendering:optimizeLegibility] [-webkit-font-smoothing:antialiased]">
+  <div class="shell [max-width:1440px] [margin:auto] [padding:0_5vw] max-[520px]:[padding:0_19px]">
+    <header class="[height:76px] [display:flex] [align-items:center] [justify-content:space-between] [border-bottom:1px_solid_#ffffff12] max-[520px]:[height:64px]"><a class="brand [color:inherit] [text-decoration:none] [font-size:13px] [font-weight:650] [letter-spacing:-.02em] [display:flex] [gap:10px] [align-items:center]" href="../../../index.html"><span class="mark [width:23px] [height:23px] [border:1px_solid_#555d6b] [border-radius:7px] [display:grid] [place-items:center] [font-size:11px]">D</span> DESIGN INTELLIGENCE</a><nav aria-label="Demo navigation" class="[display:flex] [gap:24px] [color:#9ba1ad] [font-size:11px] [&_a:hover]:[color:white] max-[520px]:[gap:13px] max-[520px]:[&_a:first-child]:[display:none]"><a href="../../../index.html" class="[color:inherit] [text-decoration:none]">Library</a><a href="../../patterns/heroes/product-prism-stage.md" class="[color:inherit] [text-decoration:none]">Pattern notes</a></nav></header>
+    <main class="hero [min-height:calc(100vh_-_77px)] [display:grid] [grid-template-columns:minmax(300px,.86fr)_minmax(0,1.14fr)] [align-items:center] [gap:clamp(35px,6vw,100px)] [padding:70px_0_90px] max-[850px]:[grid-template-columns:1fr] max-[850px]:[gap:38px] max-[850px]:[padding:55px_0_70px] max-[520px]:[padding:43px_0_55px] max-[520px]:[gap:29px]">
+      <section class="copy [position:relative] [z-index:2] [max-width:520px] [&_p]:[font-size:15px] [&_p]:[line-height:1.8] [&_p]:[color:#a5aab5] [&_p]:[max-width:440px] [&_p]:[margin:0_0_30px] max-[850px]:[max-width:650px] max-[850px]:[&_p]:[max-width:560px] max-[520px]:[&_p]:[font-size:13px]" aria-labelledby="hero-title">
+        <div class="eyebrow [font-size:10px] [letter-spacing:.16em] [text-transform:uppercase] [color:#aeb6c5] [display:flex] [align-items:center] [gap:10px] [margin-bottom:24px] [&:before]:[content:""] [&:before]:[width:19px] [&:before]:[height:1px] [&:before]:[background:#8e9aac]">The product, in its own orbit</div>
+        <h1 id="hero-title" class="[font-size:clamp(42px,6vw,78px)] [line-height:.98] [letter-spacing:-.065em] [font-weight:560] [margin:0_0_23px] [max-width:640px] max-[520px]:[font-size:clamp(42px,13vw,62px)]">One platform.<br>More possibilities.</h1>
         <p>A central prism represents the core product while smaller panels describe the tools and workflows around it. The scene communicates one integrated system without turning the hero into a feature grid.</p>
-        <div class="actions"><a class="primary" href="#details">Discover the platform</a><a class="secondary" href="../../../index.html">Explore the library ↗</a></div>
-        <div class="meta"><span class="pulse" aria-hidden="true"></span> THREE.JS / 0.187.0 <span>·</span> REAL-TIME WEBGL SCENE</div>
+        <div class="actions [display:flex] [gap:12px] [align-items:center] [flex-wrap:wrap]"><a class="primary [color:inherit] [text-decoration:none] [padding:12px_17px] [background:#f4f5f7] [color:#090a0d] [border-radius:6px] [font-size:11px] [font-weight:650]" href="#details">Discover the platform</a><a class="secondary [color:inherit] [text-decoration:none] [font-size:11px] [color:#b0b5c0] [padding:10px_3px]" href="../../../index.html">Explore the library ↗</a></div>
+        <div class="meta [margin-top:38px] [padding-top:17px] [border-top:1px_solid_#ffffff18] [color:#717887] [font-size:10px] [display:flex] [gap:16px] [align-items:center] max-[520px]:[margin-top:27px]"><span class="pulse [width:6px] [height:6px] [border-radius:50%] [background:#b9c6d8] [box-shadow:0_0_12px_#a6badb]" aria-hidden="true"></span> THREE.JS / 0.187.0 <span>·</span> REAL-TIME WEBGL SCENE</div>
       </section>
-      <section class="stage" id="scene-stage" aria-label="Dimensional product prism">
-        <div class="fallback-art" aria-hidden="true"></div>
-        <canvas id="scene-canvas" aria-hidden="true"></canvas>
-        <span class="stage-index">04 / 05</span>
-        <span class="stage-label">Dimensional product prism</span>
-        <span class="status" id="scene-status" role="status">Preparing 3D scene…</span>
+      <section class="stage [height:min(68vh,620px)] [min-height:390px] [position:relative] [border:1px_solid_#ffffff16] [border-radius:15px] [overflow:hidden] [background:radial-gradient(ellipse_at_50%_48%,#202633_0,#10141d_43%,#090b10_80%)] [isolation:isolate] [&:after]:[content:""] [&:after]:[position:absolute] [&:after]:[inset:0] [&:after]:[pointer-events:none] [&:after]:[background:linear-gradient(135deg,#ffffff08,transparent_30%,transparent_70%,#ffffff05)] [&:after]:[z-index:1] max-[850px]:[height:55vw] max-[850px]:[min-height:340px] max-[850px]:[max-height:520px] max-[520px]:[min-height:300px] max-[520px]:[height:82vw]" id="scene-stage" aria-label="Dimensional product prism">
+        <div class="fallback-art [position:absolute] [inset:0] [display:grid] [place-items:center] [opacity:.8] [pointer-events:none] [&:before]:[content:""] [&:before]:[width:42%] [&:before]:[aspect-ratio:1] [&:before]:[border:1px_solid_#aab6c733] [&:before]:[border-radius:50%] [&:before]:[box-shadow:0_0_80px_#9bb1d322,inset_0_0_70px_#a4b8d41a] [&:before]:[transform:rotateX(62deg)_rotateZ(-25deg)]" aria-hidden="true"></div>
+        <canvas id="scene-canvas" aria-hidden="true" class="[position:absolute] [inset:0] [width:100%] [height:100%] [display:block] [z-index:0]"></canvas>
+        <span class="stage-index [position:absolute] [z-index:2] [right:20px] [top:17px] [color:#707987] [font:10px_ui-monospace,monospace]">04 / 05</span>
+        <span class="stage-label [position:absolute] [z-index:2] [left:20px] [bottom:17px] [color:#858d9b] [font-size:9px] [letter-spacing:.13em] [text-transform:uppercase]">Dimensional product prism</span>
+        <span class="status [position:absolute] [z-index:3] [right:18px] [bottom:15px] [color:#77808f] [font-size:9px]" id="scene-status" role="status">Preparing 3D scene…</span>
       </section>
     </main>
-    <section class="note" id="details"><span>The product prism uses physical materials, instanced orbiting panels, and animated light sweeps.</span><span>Original demo · CSS fallback · Reduced-motion support</span></section>
+    <section class="note [border-top:1px_solid_#ffffff14] [padding:18px_0_28px] [color:#727987] [font-size:10px] [display:flex] [justify-content:space-between] [gap:18px] [&_a]:[color:#b8bec9] [&_a:hover]:[color:#fff] max-[520px]:[flex-direction:column]" id="details"><span>The product prism uses physical materials, instanced orbiting panels, and animated light sweeps.</span><span>Original demo · CSS fallback · Reduced-motion support</span></section>
   </div>
   <script type="module">
     import * as THREE from 'three';

@@ -6,7 +6,7 @@
   "scripts": {
     "build:css": "tailwindcss -i ./src/tailwind.css -o ./assets/css/tailwind.css --minify",
     "watch:css": "tailwindcss -i ./src/tailwind.css -o ./assets/css/tailwind.css --watch",
-    "test": "npm run build:css"
+    "test": "npm run build:css && node scripts/check-tailwind-pages.cjs"
   },
   "repository": {
     "type": "git",

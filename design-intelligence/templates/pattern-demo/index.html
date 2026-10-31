@@ -5,26 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Standalone demonstration of a reusable design pattern.">
   <title>Pattern demonstration</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="../../../assets/css/tailwind.css">
   <script type="module" src="assets/js/main.js"></script>
 </head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
+<body class="min-h-screen bg-stone-100 font-sans text-stone-950 antialiased">
+  <a class="absolute left-4 top-4 z-10 -translate-y-[180%] bg-white px-4 py-3 text-sm shadow focus:translate-y-0 focus-visible:outline-2 focus-visible:outline-blue-700" href="#main">Skip to content</a>
   <main id="main">
-    <section class="pattern-demo" aria-labelledby="demo-title">
-      <div class="pattern-demo__content">
-        <p class="eyebrow">Pattern demonstration</p>
-        <h1 id="demo-title">Replace this with the pattern's central message</h1>
-        <p class="pattern-demo__summary">Use original placeholder content that demonstrates the hierarchy and spatial relationships without copying a source website.</p>
-        <a class="pattern-demo__link" href="#details">Explore the details</a>
+    <section class="mx-auto grid min-h-[min(48rem,90svh)] w-[min(100%-2.5rem,76rem)] grid-cols-1 items-center gap-10 py-16 md:grid-cols-[minmax(0,1fr)_minmax(16rem,.9fr)] md:gap-24 md:py-32" aria-labelledby="demo-title">
+      <div class="max-w-2xl">
+        <p class="mb-5 text-xs font-bold uppercase tracking-[.12em] text-stone-600">Pattern demonstration</p>
+        <h1 id="demo-title" class="my-4 max-w-[12ch] text-5xl font-semibold leading-[.92] tracking-[-.065em] sm:text-6xl lg:text-8xl">Replace this with the pattern's central message</h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-stone-600">Use original placeholder content that demonstrates the hierarchy and spatial relationships without copying a source website.</p>
+        <a class="mt-7 inline-flex bg-stone-950 px-5 py-4 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-stone-700 focus-visible:outline-2 focus-visible:outline-blue-700" href="#details">Explore the details</a>
       </div>
-      <div class="pattern-demo__media" role="img" aria-label="Abstract placeholder composition">
-        <span aria-hidden="true">Pattern</span>
+      <div class="grid min-h-72 place-items-center bg-lime-300 sm:min-h-[28rem]" role="img" aria-label="Abstract placeholder composition">
+        <span class="text-5xl font-black tracking-[-.06em] sm:text-7xl" aria-hidden="true">Pattern</span>
       </div>
     </section>
-    <section id="details" class="details">
-      <h2>Pattern notes</h2>
-      <p>Describe the design principle and the conditions where this composition is useful.</p>
+    <section id="details" class="mx-auto w-[min(100%-2.5rem,76rem)] border-t border-stone-300 py-16 sm:py-20">
+      <h2 class="text-3xl font-semibold tracking-tight sm:text-5xl">Pattern notes</h2>
+      <p class="mt-6 max-w-3xl text-base leading-8 text-stone-600">Describe the design principle and the conditions where this composition is useful.</p>
     </section>
   </main>
 </body>

@@ -1,5 +1,8 @@
 @import "tailwindcss";
 @source "../index.html";
+@source "../components/**/*.html";
+@source "../design-intelligence/**/*.html";
+@source "../templates/**/*.html";
 
 @import "./preview-art.css";
 
@@ -7,6 +10,7 @@
   :root { color-scheme: dark; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-synthesis: none; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
   html { scroll-behavior: smooth; }
   body { min-width: 320px; margin: 0; }
+  :focus-visible { outline: 3px solid #315ccf; outline-offset: 4px; }
   a { color: inherit; text-decoration: none; }
   button, input, select { font: inherit; }
   button { color: inherit; }
