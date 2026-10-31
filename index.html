@@ -181,7 +181,15 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior:auto !important; transition:none !important; }
     }
-  </style>
+  
+    .hero-library-callout{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 20px;margin:0 0 34px;border:1px solid #454052;border-radius:10px;background:linear-gradient(110deg,#17151f,#101014);transition:border-color .18s,transform .18s}
+    .hero-library-callout:hover{border-color:#9284c8;transform:translateY(-1px)}
+    .hero-library-callout strong,.hero-library-callout small{display:block}
+    .hero-library-callout strong{font-size:10px;letter-spacing:.13em;color:#c4b5fd}
+    .hero-library-callout small{font-size:12px;color:#a1a1aa;margin-top:6px}
+    .hero-library-arrow{font-size:11px;color:#f4f4f5;white-space:nowrap}
+    @media(max-width:600px){.hero-library-callout{align-items:flex-start;flex-direction:column;gap:12px}}
+</style>
 </head>
 <body>
   <div class="shell">
@@ -224,6 +232,10 @@
       </aside>
 
       <main>
+        <a class="hero-library-callout" href="design-intelligence/examples/hero-section-library/">
+          <span><strong>NEW · HERO SECTION LIBRARY</strong><small>Explore 34 original hero compositions with interactive previews.</small></span>
+          <span class="hero-library-arrow">Explore library ↗</span>
+        </a>
         <div class="eyebrow"><span class="eyebrow-dot"></span> DESIGN SYSTEMS / PATTERN GLOSSARY</div>
         <h1>Design patterns,<br>with a point of view.</h1>
         <p class="intro">A practical index of reusable web compositions. Explore the underlying principle, understand when a pattern earns its place, and open a working example before bringing it into a project. Now with five advanced Three.js hero compositions.</p>
