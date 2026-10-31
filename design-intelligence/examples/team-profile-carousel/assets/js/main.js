@@ -65,31 +65,31 @@
       gsap.to(tabs[index].querySelector('.tab-index'), { color: '#d3c6a1', duration: 0.3, ease: 'power2.out', overwrite: true });
       gsap.to(tabs.map((tab) => tab.querySelector('.tab-arrow')), { opacity: 0, x: -3, y: 3, duration: 0.2, overwrite: true });
       gsap.to(tabs[index].querySelector('.tab-arrow'), { opacity: 1, x: 0, y: 0, duration: 0.3, ease: 'power2.out', overwrite: true });
-      gsap.to(markers.map((marker) => marker.querySelector('span')), {
-        scaleX: 0, opacity: 0.55, duration: 0.2, ease: 'power2.out', overwrite: true
-      });
-      gsap.set(markers[index].querySelector('span'), { scaleX: 0, opacity: 1 });
     }
   }
 
-  function render(index, announce = true) {
+  function render(index, announce = true, initial = false) {
     activeIndex = (index + members.length) % members.length;
     const member = members[activeIndex];
     const token = ++transitionToken;
     if (transition) transition.kill();
     stopTimer();
+    stopProgress();
 
     card.setAttribute('aria-live', announce ? 'polite' : 'off');
     if (announce) card.setAttribute('aria-label', 'Team member ' + (activeIndex + 1) + ' of 5: ' + member.name);
 
-    if (!animationsEnabled()) {
+    if (!animationsEnabled() || initial) {
       updateMember(member, activeIndex);
       restartTimer();
       return;
     }
 
     const outgoing = [...copyItems, ...portraitItems, ...metadataItems];
-    transition = gsap.timeline({ defaults: { overwrite: 'auto' }, onComplete: () => { transition = null; } })
+    transition = gsap.timeline({
+      defaults: { overwrite: 'auto' },
+      onComplete: () => { transition = null; }
+    })
       .to(outgoing, { y: -10, opacity: 0, duration: 0.18, stagger: 0.012, ease: 'power2.in' })
       .to(portrait, { opacity: 0.35, scale: 1.035, duration: 0.22, ease: 'power2.inOut' }, '<')
       .add(() => {
@@ -99,13 +99,13 @@
         gsap.set(portraitItems, { y: 10, opacity: 0 });
         gsap.set(metadataItems, { y: 7, opacity: 0 });
         gsap.set(portrait, { opacity: 0.35, scale: 1.035 });
+        restartTimer();
       })
       .to(portrait, { opacity: 1, scale: 1, duration: 0.75, ease: 'power3.out' })
       .to(copyItems, { y: 0, opacity: 1, duration: 0.55, stagger: 0.055, ease: 'power3.out' }, '-=0.55')
       .to(portraitItems, { y: 0, opacity: 1, duration: 0.5, stagger: 0.045, ease: 'power3.out' }, '<0.08')
       .to(metadataItems, { y: 0, opacity: 1, duration: 0.45, stagger: 0.04, ease: 'power3.out' }, '<0.04');
 
-    restartTimer();
   }
 
   function stopTimer() {
@@ -124,10 +124,12 @@
     const markerFills = markers.map((marker) => marker.querySelector('span'));
     if (animationsEnabled()) {
       gsap.set(markerFills, { scaleX: 0, transformOrigin: 'left center', opacity: 0.55 });
-      gsap.set(markerFills[activeIndex], { opacity: 1 });
+      gsap.set(markerFills[activeIndex], { scaleX: 0, opacity: 1 });
     } else {
-      gsap?.set(markerFills, { scaleX: 0 });
-      if (gsap) gsap.set(markerFills[activeIndex], { scaleX: 1, opacity: 1 });
+      if (gsap) {
+        gsap.set(markerFills, { scaleX: 0 });
+        gsap.set(markerFills[activeIndex], { scaleX: 1, opacity: 1 });
+      }
     }
     if (paused || reducedMotion.matches || document.hidden) {
       card.classList.add('is-paused');
@@ -172,5 +174,5 @@
   });
 
   card.classList.add('is-enhanced');
-  render(0, false);
+  render(0, false, true);
 })();
