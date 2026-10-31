@@ -8,7 +8,7 @@ Document variants and accessibility behavior. Avoid a giant catalog that makes e
 
 ## Hero components
 
-- [Traffic light painting hero](./traffic-light-painting-hero.html) — full-bleed Three.js night city with interactive shutter-speed controls. Requires [component CSS](./traffic-light-painting-hero.css), [component JavaScript](./traffic-light-painting-hero.js), and the pinned Three.js import map documented in the [pattern record](../design-intelligence/patterns/heroes/traffic-light-painting-hero.md).
+- [Traffic light painting hero](./traffic-light-painting-hero.html) — abstract animated long-exposure light trails with interactive shutter-speed controls. Requires [component CSS](./traffic-light-painting-hero.css) and [component JavaScript](./traffic-light-painting-hero.js).
 
 ## Implemented interaction reference
 
