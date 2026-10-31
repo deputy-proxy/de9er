@@ -22,9 +22,9 @@ Patterns describe reusable design decisions at the level of composition, hierarc
 - Keep variants under the parent pattern unless they express a genuinely different principle.
 - A pattern is not `validated` until its runnable demo has passed the validation checklist.
 
-## Initial hero collection
+## Hero collection
 
-Ten implemented patterns form the first usable slice of the library. They are a starting collection, not a quota or a claim of universal best practice.
+Fifteen implemented patterns form the current hero collection. The first ten establish common composition approaches; the additional five explore advanced Three.js/WebGL motion. They are a curated starting set, not a quota or a claim of universal best practice.
 
 | Pattern | Best suited to | Demo |
 |---|---|---|
@@ -38,5 +38,10 @@ Ten implemented patterns form the first usable slice of the library. They are a 
 | [Conversion form-first](./heroes/conversion-form-first.md) | A high-intent visitor and a genuinely short conversion | [Open](../examples/conversion-form-first/index.html) |
 | [Typographic brand statement](./heroes/typographic-brand-statement.md) | A concise, distinctive brand statement | [Open](../examples/typographic-brand-statement/index.html) |
 | [Interactive product preview](./heroes/interactive-product-preview.md) | One meaningful product behavior that can be demonstrated | [Open](../examples/interactive-product-preview/index.html) |
+| [Orbital particle field](./heroes/orbital-particle-field.md) | Connected systems, networks, or data relationships | [Open](../examples/orbital-particle-field/index.html) |
+| [Kinetic type sculpture](./heroes/kinetic-type-sculpture.md) | A concise brand statement with a sculptural counterpoint | [Open](../examples/kinetic-type-sculpture/index.html) |
+| [Liquid topography field](./heroes/liquid-topography-field.md) | Change, discovery, and complex systems represented as terrain | [Open](../examples/liquid-topography-field/index.html) |
+| [Product prism stage](./heroes/product-prism-stage.md) | A central product with a small supporting capability ecosystem | [Open](../examples/product-prism-stage/index.html) |
+| [Spatial portal gateway](./heroes/spatial-portal-gateway.md) | An invitation into a new product or brand environment | [Open](../examples/spatial-portal-gateway/index.html) |
 
 See [example instructions](../examples/README.md) and [validation status](../validation/hero-patterns-review.md).
