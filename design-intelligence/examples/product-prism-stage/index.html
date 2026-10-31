@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08090d">
+  <meta name="description" content="A central prism represents the core product while smaller panels describe the tools and workflows around it. The scene communicates one integrated system without turning the hero into a feature grid.">
+  <title>undefined — Three.js Hero Demo</title>
+  <style>
+    :root{color-scheme:dark;--bg:#08090d;--panel:#101218;--line:#272b35;--text:#f4f5f7;--muted:#a1a7b3;--dim:#6e7480;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-width:320px;min-height:100vh;background:var(--bg);color:var(--text)}
+    a{color:inherit;text-decoration:none}.shell{max-width:1440px;margin:auto;padding:0 5vw}
+    header{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff12}
+    .brand{font-size:13px;font-weight:650;letter-spacing:-.02em;display:flex;gap:10px;align-items:center}.mark{width:23px;height:23px;border:1px solid #555d6b;border-radius:7px;display:grid;place-items:center;font-size:11px}
+    nav{display:flex;gap:24px;color:#9ba1ad;font-size:11px}nav a:hover{color:white}
+    .hero{min-height:calc(100vh - 77px);display:grid;grid-template-columns:minmax(300px,.86fr) minmax(0,1.14fr);align-items:center;gap:clamp(35px,6vw,100px);padding:70px 0 90px}
+    .copy{position:relative;z-index:2;max-width:520px}.eyebrow{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#aeb6c5;display:flex;align-items:center;gap:10px;margin-bottom:24px}.eyebrow:before{content:"";width:19px;height:1px;background:#8e9aac}
+    h1{font-size:clamp(42px,6vw,78px);line-height:.98;letter-spacing:-.065em;font-weight:560;margin:0 0 23px;max-width:640px}
+    .copy p{font-size:15px;line-height:1.8;color:#a5aab5;max-width:440px;margin:0 0 30px}
+    .actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.primary{padding:12px 17px;background:#f4f5f7;color:#090a0d;border-radius:6px;font-size:11px;font-weight:650}.secondary{font-size:11px;color:#b0b5c0;padding:10px 3px}
+    .meta{margin-top:38px;padding-top:17px;border-top:1px solid #ffffff18;color:#717887;font-size:10px;display:flex;gap:16px;align-items:center}.pulse{width:6px;height:6px;border-radius:50%;background:#b9c6d8;box-shadow:0 0 12px #a6badb}
+    .stage{height:min(68vh,620px);min-height:390px;position:relative;border:1px solid #ffffff16;border-radius:15px;overflow:hidden;background:radial-gradient(ellipse at 50% 48%,#202633 0,#10141d 43%,#090b10 80%);isolation:isolate}
+    .stage:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(135deg,#ffffff08,transparent 30%,transparent 70%,#ffffff05);z-index:1}
+    canvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
+    .stage-label{position:absolute;z-index:2;left:20px;bottom:17px;color:#858d9b;font-size:9px;letter-spacing:.13em;text-transform:uppercase}
+    .stage-index{position:absolute;z-index:2;right:20px;top:17px;color:#707987;font:10px ui-monospace,monospace}
+    .fallback-art{position:absolute;inset:0;display:grid;place-items:center;opacity:.8;pointer-events:none}
+    .fallback-art:before{content:"";width:42%;aspect-ratio:1;border:1px solid #aab6c733;border-radius:50%;box-shadow:0 0 80px #9bb1d322,inset 0 0 70px #a4b8d41a;transform:rotateX(62deg) rotateZ(-25deg)}
+    .status{position:absolute;z-index:3;right:18px;bottom:15px;color:#77808f;font-size:9px}
+    .note{border-top:1px solid #ffffff14;padding:18px 0 28px;color:#727987;font-size:10px;display:flex;justify-content:space-between;gap:18px}
+    .note a{color:#b8bec9}.note a:hover{color:#fff}
+    @media(max-width:850px){.hero{grid-template-columns:1fr;gap:38px;padding:55px 0 70px}.copy{max-width:650px}.stage{height:55vw;min-height:340px;max-height:520px}.copy p{max-width:560px}}
+    @media(max-width:520px){.shell{padding:0 19px}header{height:64px}nav{gap:13px}nav a:first-child{display:none}.hero{padding:43px 0 55px;gap:29px}h1{font-size:clamp(42px,13vw,62px)}.copy p{font-size:13px}.stage{min-height:300px;height:82vw}.meta{margin-top:27px}.note{flex-direction:column}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+  </style>
+  <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.187.0/build/three.module.js"}}
+  </script>
+</head>
+<body>
+  <div class="shell">
+    <header><a class="brand" href="../../../index.html"><span class="mark">D</span> DESIGN INTELLIGENCE</a><nav aria-label="Demo navigation"><a href="../../../index.html">Library</a><a href="../../patterns/heroes/product-prism-stage.md">Pattern notes</a></nav></header>
+    <main class="hero">
+      <section class="copy" aria-labelledby="hero-title">
+        <div class="eyebrow">The product, in its own orbit</div>
+        <h1 id="hero-title">One platform.<br>More possibilities.</h1>
+        <p>A central prism represents the core product while smaller panels describe the tools and workflows around it. The scene communicates one integrated system without turning the hero into a feature grid.</p>
+        <div class="actions"><a class="primary" href="#details">Discover the platform</a><a class="secondary" href="../../../index.html">Explore the library ↗</a></div>
+        <div class="meta"><span class="pulse" aria-hidden="true"></span> THREE.JS / 0.187.0 <span>·</span> REAL-TIME WEBGL SCENE</div>
+      </section>
+      <section class="stage" id="scene-stage" aria-label="Dimensional product prism">
+        <div class="fallback-art" aria-hidden="true"></div>
+        <canvas id="scene-canvas" aria-hidden="true"></canvas>
+        <span class="stage-index">04 / 05</span>
+        <span class="stage-label">Dimensional product prism</span>
+        <span class="status" id="scene-status" role="status">Preparing 3D scene…</span>
+      </section>
+    </main>
+    <section class="note" id="details"><span>The product prism uses physical materials, instanced orbiting panels, and animated light sweeps.</span><span>Original demo · CSS fallback · Reduced-motion support</span></section>
+  </div>
+  <script type="module">
+    import * as THREE from 'three';
+
+    const stage = document.querySelector('#scene-stage');
+    const canvas = document.querySelector('#scene-canvas');
+    const status = document.querySelector('#scene-status');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+    camera.position.set(0, 0, 9);
+    let renderer, active = true, visible = true, disposed = false;
+    const clock = new THREE.Timer(); clock.connect(document);
+    const pointer = new THREE.Vector2();
+    const targetPointer = new THREE.Vector2();
+
+    try {
+      renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true, powerPreference:'high-performance'});
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.6));
+      renderer.setClearColor(0x000000, 0);
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.15;
+      scene.fog = new THREE.FogExp2(0x0a0d14, 0.035);
+      const orbitGroup=new THREE.Group();scene.add(orbitGroup);const product=new THREE.Group();orbitGroup.add(product);const body=new THREE.Mesh(new THREE.CylinderGeometry(1.18,1.18,2.55,6,1),new THREE.MeshPhysicalMaterial({color:0x8294ad,metalness:.72,roughness:.2,clearcoat:1,clearcoatRoughness:.12,transmission:.12,thickness:.6}));body.rotation.y=Math.PI/6;product.add(body);const face=new THREE.Mesh(new THREE.PlaneGeometry(1.3,1.8),new THREE.MeshBasicMaterial({color:0x111824}));face.position.set(0,0,.98);product.add(face);const screenLines=new THREE.Group();for(let i=0;i<6;i++){const line=new THREE.Mesh(new THREE.BoxGeometry(.9-i%3*.13,.045,.012),new THREE.MeshBasicMaterial({color:i===0?0xc8d8ed:0x64758d}));line.position.set(-.08,.58-i*.2,.995);screenLines.add(line);}product.add(screenLines);const orbitGeo=new THREE.BoxGeometry(.56,.56,.12),orbitMat=new THREE.MeshPhysicalMaterial({color:0xa8bad1,metalness:.7,roughness:.22,clearcoat:1}),orbitMeshes=new THREE.InstancedMesh(orbitGeo,orbitMat,3),dummy=new THREE.Object3D(),positions=[[-3,1,.2],[3,.15,-.4],[-2.3,-1.7,.6]];positions.forEach((p,i)=>{dummy.position.set(...p);dummy.rotation.set(.3*i,.5*i,.2*i);dummy.updateMatrix();orbitMeshes.setMatrixAt(i,dummy.matrix);});orbitGroup.add(orbitMeshes);const rings=[];[3.6,4.15].forEach((r,i)=>{const ring=new THREE.Mesh(new THREE.TorusGeometry(r,.009,8,180),new THREE.MeshBasicMaterial({color:i?0x566b89:0x93aacb,transparent:true,opacity:.36}));ring.rotation.x=.9+i*.42;ring.rotation.y=.2+i*.4;orbitGroup.add(ring);rings.push(ring);});const lightSweep=new THREE.PointLight(0xa8c8f0,80,15);lightSweep.position.set(4,2,4);scene.add(lightSweep);scene.add(new THREE.AmbientLight(0x8999b2,1.7));
+      undefined
+      function resize(){
+        const width = Math.max(1, stage.clientWidth), height = Math.max(1, stage.clientHeight);
+        renderer.setSize(width,height,false);
+        camera.aspect = width/height;
+        camera.position.z = width < 520 ? 12 : 9;
+        camera.updateProjectionMatrix();
+        render(0);
+      }
+      function render(time){
+        pointer.lerp(targetPointer, .035);
+        product.rotation.y=time*.12+pointer.x*.12;product.rotation.x=Math.sin(time*.24)*.08+pointer.y*.08;product.position.y=Math.sin(time*.6)*.12;orbitGroup.rotation.y=-time*.18;orbitGroup.rotation.z=Math.sin(time*.21)*.08;lightSweep.position.x=Math.sin(time*.45)*4;
+        renderer.render(scene,camera);
+      }
+      function loop(){
+        if(!active || !visible || disposed || reducedMotion.matches) return;
+        clock.update();
+        render(clock.getElapsed());
+      }
+      function syncLoop(){
+        if(!renderer || disposed) return;
+        if(active && visible && !reducedMotion.matches) renderer.setAnimationLoop(loop);
+        else { renderer.setAnimationLoop(null); render(clock.getElapsed()); }
+      }
+      const observer = new IntersectionObserver(entries => { visible = entries[0].isIntersecting; syncLoop(); }, {threshold:.02});
+      observer.observe(stage);
+      document.addEventListener('visibilitychange',()=>{active=!document.hidden;syncLoop();});
+      reducedMotion.addEventListener?.('change',syncLoop);
+      stage.addEventListener('pointermove',event=>{
+        const rect=stage.getBoundingClientRect();
+        targetPointer.set(((event.clientX-rect.left)/rect.width-.5)*2, -((event.clientY-rect.top)/rect.height-.5)*2);
+      });
+      stage.addEventListener('pointerleave',()=>targetPointer.set(0,0));
+      const resizeObserver = new ResizeObserver(resize);
+      resizeObserver.observe(stage);
+      canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();active=false;status.textContent='WebGL paused · restore the tab to retry';syncLoop();});
+      canvas.addEventListener('webglcontextrestored',()=>{active=true;status.textContent='Live 3D scene';syncLoop();});
+      resize();
+      syncLoop();
+      status.textContent = reducedMotion.matches ? 'Static frame · reduced motion' : 'Live 3D scene';
+      window.addEventListener('pagehide',()=>{disposed=true;observer.disconnect();resizeObserver.disconnect();renderer.setAnimationLoop(null);renderer.dispose();},{once:true});
+    } catch(error) {
+      console.warn('Three.js scene unavailable; showing CSS fallback.',error);
+      status.textContent='3D unavailable · CSS fallback active';
+      canvas.hidden=true;
+    }
+  </script>
+</body>
+</html>

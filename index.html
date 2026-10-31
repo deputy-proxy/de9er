@@ -122,7 +122,17 @@
     .interactive .mini-toggle { display:flex; gap:4px; margin-top:8px; }
     .interactive .mini-toggle i { width:22px; height:6px; background:#393940; border-radius:3px; }
     .interactive .mini-toggle i:first-child { background:#d4d4d8; }
-    .card-body { padding: 14px 15px 13px; }
+
+    .three-preview { background: radial-gradient(ellipse at center,#202b3c 0,#111720 48%,#090b10 100%); }
+    .orbital-core { width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#e1efff,#6887b2 45%,#263d5c 75%);box-shadow:0 0 34px #9bbbe866;position:absolute; }
+    .orbital-preview i { position:absolute;width:100px;height:43px;border:1px solid #9cb7dc77;border-radius:50%;transform:rotate(-28deg); }
+    .orbital-preview i:nth-child(2){transform:rotate(55deg);width:125px;height:52px}.orbital-preview i:nth-child(3){transform:rotate(88deg);width:155px;height:60px}
+    .sculpture-shape { width:90px;height:90px;border:13px solid #9caec7;border-radius:34% 66% 43% 57%;transform:rotate(35deg) skew(-8deg);box-shadow:inset 0 0 22px #d9e8ff55,0 0 28px #8aa8d255;filter:drop-shadow(0 0 8px #a6c1e455); }
+    .terrain-preview { perspective:220px; }.terrain-lines { width:130%;height:90px;position:absolute;top:35px;transform:rotateX(58deg) rotateZ(-12deg);background:repeating-radial-gradient(ellipse at 50% 50%,transparent 0 8px,#9ab6d977 9px 10px,transparent 11px 17px);filter:drop-shadow(0 0 8px #8aaedb55); }
+    .prism-object { width:62px;height:82px;background:linear-gradient(120deg,#e2eaf4,#61738d 35%,#b9c9df 58%,#303f54);clip-path:polygon(50% 0,100% 24%,85% 100%,15% 100%,0 24%);transform:rotate(24deg);box-shadow:0 0 32px #9db9df66; }
+    .prism-orbit { position:absolute;width:145px;height:48px;border:1px solid #9cb8df77;border-radius:50%;transform:rotate(-22deg); }
+    .portal-rings { width:112px;height:112px;border:2px solid #a8c2e4;border-radius:50%;box-shadow:0 0 0 9px #9ab6d522,0 0 0 20px #9ab6d522,0 0 0 32px #9ab6d511,0 0 45px #90b4e866,inset 0 0 24px #8caedb66;transform:perspective(180px) rotateY(-22deg); }
+\n    .card-body { padding: 14px 15px 13px; }
     .card-top { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px; }
     .category { color:#a1a1aa; font-size:9px; text-transform:uppercase; letter-spacing:.1em; }
     .status { color:#a1a1aa; border:1px solid #303036; border-radius:4px; padding:3px 6px; font-size:8px; text-transform:uppercase; letter-spacing:.06em; white-space:nowrap; }
@@ -181,8 +191,8 @@
         <span>Design Intelligence</span>
       </a>
       <nav class="top-links" aria-label="Primary navigation">
-        <a href="design-intelligence/README.md">Documentation</a>
-        <a href="design-intelligence/patterns/README.md">Pattern index</a>
+        <a href="https://github.com/deputy-proxy/de9er/blob/main/design-intelligence/README.md">Documentation</a>
+        <a href="https://github.com/deputy-proxy/de9er/blob/main/design-intelligence/patterns/README.md">Pattern index</a>
         <a class="github" href="https://github.com/deputy-proxy/de9er" target="_blank" rel="noreferrer">GitHub ↗</a>
       </nav>
     </header>
@@ -191,8 +201,8 @@
       <aside aria-label="Library navigation">
         <p class="side-label">Library</p>
         <nav class="side-nav">
-          <a class="active" href="#patterns">All patterns <span class="count">10</span></a>
-          <a href="#patterns" data-side-filter="heroes">Heroes <span class="count">10</span></a>
+          <a class="active" href="#patterns">All patterns <span class="count">15</span></a>
+          <a href="#patterns" data-side-filter="heroes">Heroes <span class="count">15</span></a>
           <a href="#planned">Navigation <span class="count">—</span></a>
           <a href="#planned">Typography <span class="count">—</span></a>
           <a href="#planned">Section compositions <span class="count">—</span></a>
@@ -203,25 +213,25 @@
         </nav>
         <p class="side-label">Resources</p>
         <nav class="side-nav">
-          <a href="design-intelligence/selection/design-selection.md">Selection guide ↗</a>
-          <a href="design-intelligence/validation/checklist.md">Validation checklist ↗</a>
-          <a href="design-intelligence/examples/README.md">Live examples ↗</a>
+          <a href="https://github.com/deputy-proxy/de9er/blob/main/design-intelligence/selection/design-selection.md">Selection guide ↗</a>
+          <a href="https://github.com/deputy-proxy/de9er/blob/main/design-intelligence/validation/checklist.md">Validation checklist ↗</a>
+          <a href="https://github.com/deputy-proxy/de9er/blob/main/design-intelligence/examples/README.md">Live examples ↗</a>
         </nav>
         <div class="side-note">
           <strong>Library status</strong>
-          <p>10 patterns implemented. Browser and accessibility validation is still in progress.</p>
+          <p>15 patterns implemented. Browser and accessibility validation is still in progress.</p>
         </div>
       </aside>
 
       <main>
         <div class="eyebrow"><span class="eyebrow-dot"></span> DESIGN SYSTEMS / PATTERN GLOSSARY</div>
         <h1>Design patterns,<br>with a point of view.</h1>
-        <p class="intro">A practical index of reusable web compositions. Explore the underlying principle, understand when a pattern earns its place, and open a working example before bringing it into a project.</p>
+        <p class="intro">A practical index of reusable web compositions. Explore the underlying principle, understand when a pattern earns its place, and open a working example before bringing it into a project. Now with five advanced Three.js hero compositions.</p>
 
         <div class="stats" aria-label="Library statistics">
-          <div class="stat"><strong>10</strong><span>Patterns</span></div>
+          <div class="stat"><strong>15</strong><span>Patterns</span></div>
           <div class="stat"><strong>01</strong><span>Category populated</span></div>
-          <div class="stat"><strong>10</strong><span>Working demos</span></div>
+          <div class="stat"><strong>15</strong><span>Working demos</span></div>
         </div>
 
         <section id="patterns" aria-labelledby="patterns-title">
@@ -240,63 +250,88 @@
             </select>
           </div>
           <div class="filters" role="group" aria-label="Filter by category">
-            <button class="filter" type="button" data-filter="all" aria-pressed="true">All patterns <span>10</span></button>
-            <button class="filter" type="button" data-filter="heroes" aria-pressed="false">Heroes <span>10</span></button>
+            <button class="filter" type="button" data-filter="all" aria-pressed="true">All patterns <span>15</span></button>
+            <button class="filter" type="button" data-filter="heroes" aria-pressed="false">Heroes <span>15</span></button>
             <button class="filter" type="button" data-filter="navigation" aria-pressed="false">Navigation <span>0</span></button>
             <button class="filter" type="button" data-filter="sections" aria-pressed="false">Sections <span>0</span></button>
             <button class="filter" type="button" data-filter="typography" aria-pressed="false">Typography <span>0</span></button>
           </div>
-          <div class="results-line"><span id="result-count" aria-live="polite">Showing 10 patterns</span><span>STATUS: IMPLEMENTED</span></div>
+          <div class="results-line"><span id="result-count" aria-live="polite">Showing 15 patterns</span><span>STATUS: IMPLEMENTED</span></div>
 
           <div class="grid" id="pattern-grid">
             <article class="card" data-category="heroes" data-name="Editorial type-led hero" data-search="editorial type led typography text dominant headline proposition publisher consultancy cultural organization portfolio sparse asymmetric">
               <div class="preview editorial" aria-hidden="true"><div class="mini"><div class="mini-nav"><i class="mini-logo"></i><i class="mini-links"></i></div><div class="mini-content"><div class="mini-line bright"></div><div class="mini-line bright"></div><div class="mini-line dim"></div><div class="mini-cta"></div></div></div><span class="preview-label">01 / Type-led</span></div>
-              <div class="card-body"><div class="card-top"><span class="category">Hero composition</span><span class="status">Implemented</span></div><h3>Editorial type-led</h3><p>Lets the proposition lead. Large, deliberate typography carries the opening while supporting copy stays quiet.</p><div class="tags"><span class="tag">Typography-first</span><span class="tag">Sparse</span><span class="tag">Editorial</span></div><div class="card-links"><a href="design-intelligence/patterns/heroes/editorial-type-led.md">Pattern details <span>↗</span></a><a href="design-intelligence/examples/editorial-type-led/index.html">Live demo <span>↗</span></a></div></div>
+              <div class="card-body"><div class="card-top"><span class="category">Hero composition</span><span class="status">Implemented</span></div><h3>Editorial type-led</h3><p>Lets the proposition lead. Large, deliberate typography carries the opening while supporting copy stays quiet.</p><div class="tags"><span class="tag">Typography-first</span><span class="tag">Sparse</span><span class="tag">Editorial</span></div><div class="card-links"><a href="https://github.com/deputy-proxy/de9er/blob/main/design-intelligence/patterns/heroes/editorial-type-led.md">Pattern details <span>↗</span></a><a href="https://deputy-proxy.github.io/de9er/design-intelligence/examples/editorial-type-led/">Live demo <span>↗</span></a></div></div>
             </article>
 
             <article class="card" data-category="heroes" data-name="Split-screen value proposition" data-search="split screen value proposition two column text visual product service education balanced offer demonstration">
               <div class="preview split" aria-hidden="true"><div class="mini"><div class="mini-nav"><i class="mini-logo"></i><i class="mini-links"></i></div><div class="mini-body"><div><div class="mini-line bright" style="width:90%"></div><div class="mini-line bright" style="width:70%"></div><div class="mini-line dim" style="width:85%"></div><div class="mini-cta"></div></div><div class="mini-panel"></div></div></div><span class="preview-label">02 / Split</span></div>
-              <div class="card-body"><div class="card-top"><span class="category">Hero composition</span><span class="status">Implemented</span></div><h3>Split-screen value</h3><p>Pairs a concise value proposition with one focused visual that makes the offer tangible.</p><div class="tags"><span class="tag">Two-region</span><span class="tag">Balanced</span><span class="tag">Demonstration</span></div><div class="card-links"><a href="design-intelligence/patterns/heroes/split-screen-value.md">Pattern details <span>↗</span></a><a href="design-intelligence/examples/split-screen-value/index.html">Live demo <span>↗</span></a></div></div>
+              <div class="card-body"><div class="card-top"><span class="category">Hero composition</span><span class="status">Implemented</span></div><h3>Split-screen value</h3><p>Pairs a concise value proposition with one focused visual that makes the offer tangible.</p><div class="tags"><span class="tag">Two-region</span><span class="tag">Balanced</span><span class="tag">Demonstration</span></div><div class="card-links"><a href="https://github.com/deputy-proxy/de9er/blob/main/design-intelligence/patterns/heroes/split-screen-value.md">Pattern details <span>↗</span></a><a href="https://deputy-proxy.github.io/de9er/design-intelligence/examples/split-screen-value/">Live demo <span>↗</span></a></div></div>
             </article>
 
             <article class="card" data-category="heroes" data-name="Product interface stage" data-search="product interface stage ui software saas dashboard screenshot app interface preview product led">
               <div class="preview product" aria-hidden="true"><div class="mini"><div class="mini-nav"><i class="mini-logo"></i><i class="mini-links"></i></div><div style="width:42%;padding:8px 0"><div class="mini-line bright" style="height:7px"></div><div class="mini-line bright" style="height:7px;width:70%"></div><div class="mini-line dim" style="width:90%"></div><div class="mini-cta"></div></div><div class="mini-panel"></div></div><span class="preview-label">03 / Product UI</span></div>
-              <div class="card-body"><div class="card-top"><span class="category">Hero composition</span><span class="status">Implemented</span></div><h3>Product interface stage</h3><p>Uses a representative product interface as the primary proof point for a software proposition.</p><div class="tags"><span class="tag">SaaS</span><span class="tag">UI preview</span><span class="tag">Product-led</span></div><div class="card-links"><a href="design-intelligence/patterns/heroes/product-ui-stage.md">Pattern details <span>↗</span></a><a href="design-intelligence/examples/product-ui-stage/index.html">Live demo <span>↗</span></a></div></div>
+              <div class="card-body"><div class="card-top"><span class="category">Hero composition</span><span class="status">Implemented</span></div><h3>Product interface stage</h3><p>Uses a representative product interface as the primary proof point for a software proposition.</p><div class="tags"><span class="tag">SaaS</span><span class="tag">UI preview</span><span class="tag">Product-led</span></div><div class="card-links"><a href="https://github.com/deputy-proxy/de9er/blob/main/design-intelligence/patterns/heroes/product-ui-stage.md">Pattern details <span>↗</span></a><a href="https://deputy-proxy.github.io/de9er/design-intelligence/examples/product-ui-stage/">Live demo <span>↗</span></a></div></div>
             </article>
 
             <article class="card" data-category="heroes" data-name="Immersive image overlay" data-search="immersive image overlay photography background full bleed cinematic visual storytelling brand context">
               <div class="preview immersive" aria-hidden="true"><div class="mini"><div class="mini-nav"><i class="mini-logo"></i><i class="mini-links"></i></div><div class="mini-content"><div class="mini-line bright" style="height:8px;width:90%"></div><div class="mini-line bright" style="height:8px;width:68%"></div><div class="mini-line" style="width:80%"></div><div class="mini-cta"></div></div></div><span class="preview-label">04 / Immersive</span></div>
-              <div class="card-body"><div class="card-top"><span class="category">Hero composition</span><span class="status">Implemented</span></div><h3>Immersive image overlay</h3><p>Places a clear message over a strong contextual image, using contrast and composition to keep it readable.</p><div class="tags"><span class="tag">Image-led</span><span class="tag">Immersive</span><span class="tag">Brand</span></div><div class="card-links"><a href="design-intelligence/patterns/heroes/immersive-image-overlay.md">Pattern details <span>↗</span></a><a href="design-intelligence/examples/immersive-image-overlay/index.html">Live demo <span>↗</span></a></div></div>
+              <div class="card-body"><div class="card-top"><span class="category">Hero composition</span><span class="status">Implemented</span></div><h3>Immersive image overlay</h3><p>Places a clear message over a strong contextual image, using contrast and composition to keep it readable.</p><div class="tags"><span class="tag">Image-led</span><span class="tag">Immersive</span><span class="tag">Brand</span></div><div class="card-links"><a href="https://github.com/deputy-proxy/de9er/blob/main/design-intelligence/patterns/heroes/immersive-image-overlay.md">Pattern details <span>↗</span></a><a href="https://deputy-proxy.github.io/de9er/design-intelligence/examples/immersive-image-overlay/">Live demo <span>↗</span></a></div></div>
             </article>
 
             <article class="card" data-category="heroes" data-name="Asymmetric art-directed" data-search="asymmetric art directed composition editorial visual direction distinctive brand layered geometry offset">
               <div class="preview asymmetric" aria-hidden="true"><div class="mini"><div class="mini-nav"><i class="mini-logo"></i><i class="mini-links"></i></div><div class="mini-content"><div class="mini-line bright" style="height:8px;width:95%"></div><div class="mini-line bright" style="height:8px;width:72%"></div><div class="mini-line dim" style="width:85%"></div><div class="mini-cta"></div></div><div class="mini-panel"></div></div><span class="preview-label">05 / Asymmetric</span></div>
-              <div class="card-body"><div class="card-top"><span class="category">Hero composition</span><span class="status">Implemented</span></div><h3>Asymmetric art-directed</h3><p>Uses controlled imbalance, layering, and spatial tension to express a distinctive visual point of view.</p><div class="tags"><span class="tag">Asymmetric</span><span class="tag">Art direction</span><span class="tag">Expressive</span></div><div class="card-links"><a href="design-intelligence/patterns/heroes/asymmetric-art-directed.md">Pattern details <span>↗</span></a><a href="design-intelligence/examples/asymmetric-art-directed/index.html">Live demo <span>↗</span></a></div></div>
+              <div class="card-body"><div class="card-top"><span class="category">Hero composition</span><span class="status">Implemented</span></div><h3>Asymmetric art-directed</h3><p>Uses controlled imbalance, layering, and spatial tension to express a distinctive visual point of view.</p><div class="tags"><span class="tag">Asymmetric</span><span class="tag">Art direction</span><span class="tag">Expressive</span></div><div class="card-links"><a href="https://github.com/deputy-proxy/de9er/blob/main/design-intelligence/patterns/heroes/asymmetric-art-directed.md">Pattern details <span>↗</span></a><a href="https://deputy-proxy.github.io/de9er/design-intelligence/examples/asymmetric-art-directed/">Live demo <span>↗</span></a></div></div>
             </article>
 
             <article class="card" data-category="heroes" data-name="Bento feature mosaic" data-search="bento feature mosaic grid capabilities cards modular product features dashboard">
               <div class="preview bento" aria-hidden="true"><div class="mini"><div class="mini-nav"><i class="mini-logo"></i><i class="mini-links"></i></div><div class="mini-grid"><div class="mini-panel"></div><div class="mini-panel"></div><div class="mini-panel"></div></div></div><span class="preview-label">06 / Bento</span></div>
-              <div class="card-body"><div class="card-top"><span class="category">Hero composition</span><span class="status">Implemented</span></div><h3>Bento feature mosaic</h3><p>Arranges a small set of related capabilities into a modular grid with one clear dominant tile.</p><div class="tags"><span class="tag">Grid</span><span class="tag">Modular</span><span class="tag">Feature-led</span></div><div class="card-links"><a href="design-intelligence/patterns/heroes/bento-feature-mosaic.md">Pattern details <span>↗</span></a><a href="design-intelligence/examples/bento-feature-mosaic/index.html">Live demo <span>↗</span></a></div></div>
+              <div class="card-body"><div class="card-top"><span class="category">Hero composition</span><span class="status">Implemented</span></div><h3>Bento feature mosaic</h3><p>Arranges a small set of related capabilities into a modular grid with one clear dominant tile.</p><div class="tags"><span class="tag">Grid</span><span class="tag">Modular</span><span class="tag">Feature-led</span></div><div class="card-links"><a href="https://github.com/deputy-proxy/de9er/blob/main/design-intelligence/patterns/heroes/bento-feature-mosaic.md">Pattern details <span>↗</span></a><a href="https://deputy-proxy.github.io/de9er/design-intelligence/examples/bento-feature-mosaic/">Live demo <span>↗</span></a></div></div>
             </article>
 
             <article class="card" data-category="heroes" data-name="Proof-first hero" data-search="proof first trust credibility testimonials logos statistics reviews evidence social proof">
               <div class="preview proof" aria-hidden="true"><div class="mini"><div class="mini-nav"><i class="mini-logo"></i><i class="mini-links"></i></div><div class="mini-content"><div class="mini-line bright" style="width:68%;height:8px"></div><div class="mini-line bright" style="width:48%;height:8px"></div><div class="mini-line dim" style="width:52%"></div><div class="mini-cta" style="margin:8px auto"></div><div class="mini-proof"><i></i><i></i><i></i><i></i></div></div></div><span class="preview-label">07 / Proof-first</span></div>
-              <div class="card-body"><div class="card-top"><span class="category">Hero composition</span><span class="status">Implemented</span></div><h3>Proof-first</h3><p>Leads with credible evidence when trust is the main barrier between a visitor and the proposition.</p><div class="tags"><span class="tag">Trust</span><span class="tag">Evidence</span><span class="tag">Credibility</span></div><div class="card-links"><a href="design-intelligence/patterns/heroes/proof-first-hero.md">Pattern details <span>↗</span></a><a href="design-intelligence/examples/proof-first-hero/index.html">Live demo <span>↗</span></a></div></div>
+              <div class="card-body"><div class="card-top"><span class="category">Hero composition</span><span class="status">Implemented</span></div><h3>Proof-first</h3><p>Leads with credible evidence when trust is the main barrier between a visitor and the proposition.</p><div class="tags"><span class="tag">Trust</span><span class="tag">Evidence</span><span class="tag">Credibility</span></div><div class="card-links"><a href="https://github.com/deputy-proxy/de9er/blob/main/design-intelligence/patterns/heroes/proof-first-hero.md">Pattern details <span>↗</span></a><a href="https://deputy-proxy.github.io/de9er/design-intelligence/examples/proof-first-hero/">Live demo <span>↗</span></a></div></div>
             </article>
 
             <article class="card" data-category="heroes" data-name="Conversion form-first" data-search="conversion form first lead capture signup contact booking high intent form">
               <div class="preview form-first" aria-hidden="true"><div class="mini"><div class="mini-nav"><i class="mini-logo"></i><i class="mini-links"></i></div><div class="mini-body"><div><div class="mini-line bright" style="height:8px"></div><div class="mini-line bright" style="height:8px;width:76%"></div><div class="mini-line dim" style="width:88%"></div></div><div class="mini-panel"><div class="mini-input"></div><div class="mini-input"></div><div class="mini-cta" style="margin-top:4px"></div></div></div></div><span class="preview-label">08 / Conversion</span></div>
-              <div class="card-body"><div class="card-top"><span class="category">Hero composition</span><span class="status">Implemented</span></div><h3>Conversion form-first</h3><p>Brings a short, high-intent form into the first screen when the next step is clear and low-friction.</p><div class="tags"><span class="tag">Lead capture</span><span class="tag">Conversion</span><span class="tag">Form</span></div><div class="card-links"><a href="design-intelligence/patterns/heroes/conversion-form-first.md">Pattern details <span>↗</span></a><a href="design-intelligence/examples/conversion-form-first/index.html">Live demo <span>↗</span></a></div></div>
+              <div class="card-body"><div class="card-top"><span class="category">Hero composition</span><span class="status">Implemented</span></div><h3>Conversion form-first</h3><p>Brings a short, high-intent form into the first screen when the next step is clear and low-friction.</p><div class="tags"><span class="tag">Lead capture</span><span class="tag">Conversion</span><span class="tag">Form</span></div><div class="card-links"><a href="https://github.com/deputy-proxy/de9er/blob/main/design-intelligence/patterns/heroes/conversion-form-first.md">Pattern details <span>↗</span></a><a href="https://deputy-proxy.github.io/de9er/design-intelligence/examples/conversion-form-first/">Live demo <span>↗</span></a></div></div>
             </article>
 
             <article class="card" data-category="heroes" data-name="Typographic brand statement" data-search="typographic brand statement oversized type brand identity expressive typography poster">
               <div class="preview type-brand" aria-hidden="true"><div class="mini"><div class="mini-nav"><i class="mini-logo"></i><i class="mini-links"></i></div><div class="mini-content"><div class="mini-line bright"></div><div class="mini-line bright"></div><div class="mini-line bright" style="width:58%"></div></div></div><span class="preview-label">09 / Brand type</span></div>
-              <div class="card-body"><div class="card-top"><span class="category">Hero composition</span><span class="status">Implemented</span></div><h3>Typographic brand statement</h3><p>Turns a concise brand idea into the visual centerpiece through scale, rhythm, and typographic treatment.</p><div class="tags"><span class="tag">Typography</span><span class="tag">Brand-led</span><span class="tag">Expressive</span></div><div class="card-links"><a href="design-intelligence/patterns/heroes/typographic-brand-statement.md">Pattern details <span>↗</span></a><a href="design-intelligence/examples/typographic-brand-statement/index.html">Live demo <span>↗</span></a></div></div>
+              <div class="card-body"><div class="card-top"><span class="category">Hero composition</span><span class="status">Implemented</span></div><h3>Typographic brand statement</h3><p>Turns a concise brand idea into the visual centerpiece through scale, rhythm, and typographic treatment.</p><div class="tags"><span class="tag">Typography</span><span class="tag">Brand-led</span><span class="tag">Expressive</span></div><div class="card-links"><a href="https://github.com/deputy-proxy/de9er/blob/main/design-intelligence/patterns/heroes/typographic-brand-statement.md">Pattern details <span>↗</span></a><a href="https://deputy-proxy.github.io/de9er/design-intelligence/examples/typographic-brand-statement/">Live demo <span>↗</span></a></div></div>
             </article>
 
             <article class="card" data-category="heroes" data-name="Interactive product preview" data-search="interactive product preview demo toggle state change product interaction software live">
               <div class="preview interactive" aria-hidden="true"><div class="mini"><div class="mini-nav"><i class="mini-logo"></i><i class="mini-links"></i></div><div class="mini-body"><div><div class="mini-line bright" style="height:8px"></div><div class="mini-line dim" style="width:88%"></div><div class="mini-toggle"><i></i><i></i><i></i></div></div><div class="mini-panel"></div></div></div><span class="preview-label">10 / Interactive</span></div>
-              <div class="card-body"><div class="card-top"><span class="category">Hero composition</span><span class="status">Implemented</span></div><h3>Interactive product preview</h3><p>Demonstrates one meaningful product behavior directly in the hero instead of relying on a static screenshot.</p><div class="tags"><span class="tag">Interactive</span><span class="tag">Product demo</span><span class="tag">Engagement</span></div><div class="card-links"><a href="design-intelligence/patterns/heroes/interactive-product-preview.md">Pattern details <span>↗</span></a><a href="design-intelligence/examples/interactive-product-preview/index.html">Live demo <span>↗</span></a></div></div>
+              <div class="card-body"><div class="card-top"><span class="category">Hero composition</span><span class="status">Implemented</span></div><h3>Interactive product preview</h3><p>Demonstrates one meaningful product behavior directly in the hero instead of relying on a static screenshot.</p><div class="tags"><span class="tag">Interactive</span><span class="tag">Product demo</span><span class="tag">Engagement</span></div><div class="card-links"><a href="https://github.com/deputy-proxy/de9er/blob/main/design-intelligence/patterns/heroes/interactive-product-preview.md">Pattern details <span>↗</span></a><a href="https://deputy-proxy.github.io/de9er/design-intelligence/examples/interactive-product-preview/">Live demo <span>↗</span></a></div></div>
+            </article>
+
+            <article class="card" data-category="heroes" data-name="Orbital particle field" data-search="three.js webgl 3d particles instanced mesh orbit network system technology connected data">
+              <div class="preview three-preview orbital-preview" aria-hidden="true"><div class="orbital-core"></div><i></i><i></i><i></i><span class="preview-label">11 / Orbital field</span></div>
+              <div class="card-body"><div class="card-top"><span class="category">Three.js hero</span><span class="status">Implemented</span></div><h3>Orbital particle field</h3><p>Instanced particles travel along layered orbital paths, turning abstract networks and connected systems into a spatial metaphor.</p><div class="tags"><span class="tag">Particles</span><span class="tag">Instancing</span><span class="tag">Spatial systems</span></div><div class="card-links"><a href="https://github.com/deputy-proxy/de9er/blob/main/design-intelligence/patterns/heroes/orbital-particle-field.md">Pattern details <span>↗</span></a><a href="https://deputy-proxy.github.io/de9er/design-intelligence/examples/orbital-particle-field/">Live demo <span>↗</span></a></div></div>
+            </article>
+
+            <article class="card" data-category="heroes" data-name="Kinetic type sculpture" data-search="three.js webgl 3d parametric torus knot reflective geometry kinetic typography brand sculpture">
+              <div class="preview three-preview sculpture-preview" aria-hidden="true"><div class="sculpture-shape"></div><span class="preview-label">12 / Kinetic sculpture</span></div>
+              <div class="card-body"><div class="card-top"><span class="category">Three.js hero</span><span class="status">Implemented</span></div><h3>Kinetic type sculpture</h3><p>A reflective parametric sculpture gives a concise brand statement a tactile, dimensional counterweight.</p><div class="tags"><span class="tag">Parametric geometry</span><span class="tag">Reflective</span><span class="tag">Brand-led</span></div><div class="card-links"><a href="https://github.com/deputy-proxy/de9er/blob/main/design-intelligence/patterns/heroes/kinetic-type-sculpture.md">Pattern details <span>↗</span></a><a href="https://deputy-proxy.github.io/de9er/design-intelligence/examples/kinetic-type-sculpture/">Live demo <span>↗</span></a></div></div>
+            </article>
+
+            <article class="card" data-category="heroes" data-name="Liquid topography field" data-search="three.js webgl glsl shader vertex displacement liquid terrain topography procedural wave landscape">
+              <div class="preview three-preview terrain-preview" aria-hidden="true"><div class="terrain-lines"></div><span class="preview-label">13 / Liquid terrain</span></div>
+              <div class="card-body"><div class="card-top"><span class="category">Three.js hero</span><span class="status">Implemented</span></div><h3>Liquid topography field</h3><p>A custom GLSL shader deforms a continuous surface into flowing terrain that suggests change and discovery.</p><div class="tags"><span class="tag">GLSL shader</span><span class="tag">Displacement</span><span class="tag">Procedural</span></div><div class="card-links"><a href="https://github.com/deputy-proxy/de9er/blob/main/design-intelligence/patterns/heroes/liquid-topography-field.md">Pattern details <span>↗</span></a><a href="https://deputy-proxy.github.io/de9er/design-intelligence/examples/liquid-topography-field/">Live demo <span>↗</span></a></div></div>
+            </article>
+
+            <article class="card" data-category="heroes" data-name="Product prism stage" data-search="three.js webgl 3d product stage prism physical material instanced panels orbit product launch">
+              <div class="preview three-preview prism-preview" aria-hidden="true"><div class="prism-object"></div><div class="prism-orbit"></div><span class="preview-label">14 / Product prism</span></div>
+              <div class="card-body"><div class="card-top"><span class="category">Three.js hero</span><span class="status">Implemented</span></div><h3>Product prism stage</h3><p>A central dimensional product object is supported by a small orbiting ecosystem of capability panels and light cues.</p><div class="tags"><span class="tag">Product stage</span><span class="tag">Physical materials</span><span class="tag">Instancing</span></div><div class="card-links"><a href="https://github.com/deputy-proxy/de9er/blob/main/design-intelligence/patterns/heroes/product-prism-stage.md">Pattern details <span>↗</span></a><a href="https://deputy-proxy.github.io/de9er/design-intelligence/examples/product-prism-stage/">Live demo <span>↗</span></a></div></div>
+            </article>
+
+            <article class="card" data-category="heroes" data-name="Spatial portal gateway" data-search="three.js webgl 3d portal gateway spatial tunnel camera dolly particles depth experience">
+              <div class="preview three-preview portal-preview" aria-hidden="true"><div class="portal-rings"></div><span class="preview-label">15 / Spatial portal</span></div>
+              <div class="card-body"><div class="card-top"><span class="category">Three.js hero</span><span class="status">Implemented</span></div><h3>Spatial portal gateway</h3><p>Nested dimensional frames and a controlled camera dolly create an invitation into a new product or brand world.</p><div class="tags"><span class="tag">Camera motion</span><span class="tag">Depth</span><span class="tag">Spatial</span></div><div class="card-links"><a href="https://github.com/deputy-proxy/de9er/blob/main/design-intelligence/patterns/heroes/spatial-portal-gateway.md">Pattern details <span>↗</span></a><a href="https://deputy-proxy.github.io/de9er/design-intelligence/examples/spatial-portal-gateway/">Live demo <span>↗</span></a></div></div>
             </article>
             <div class="empty" id="empty"><strong>No matching patterns</strong>Try another search term or category.</div>
           </div>
@@ -317,7 +352,7 @@
         </section>
       </main>
     </div>
-    <footer>Design Intelligence Library · <a href="design-intelligence/README.md">Documentation</a> · Built for the Website Factory</footer>
+    <footer>Design Intelligence Library · <a href="https://github.com/deputy-proxy/de9er/blob/main/design-intelligence/README.md">Documentation</a> · Built for the Website Factory</footer>
   </div>
   <script>
     (() => {

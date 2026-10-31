@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08090d">
+  <meta name="description" content="A spatial system of luminous particles traces invisible relationships. Use this composition when the product connects people, data, infrastructure, or ideas into one coherent network.">
+  <title>undefined — Three.js Hero Demo</title>
+  <style>
+    :root{color-scheme:dark;--bg:#08090d;--panel:#101218;--line:#272b35;--text:#f4f5f7;--muted:#a1a7b3;--dim:#6e7480;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-width:320px;min-height:100vh;background:var(--bg);color:var(--text)}
+    a{color:inherit;text-decoration:none}.shell{max-width:1440px;margin:auto;padding:0 5vw}
+    header{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff12}
+    .brand{font-size:13px;font-weight:650;letter-spacing:-.02em;display:flex;gap:10px;align-items:center}.mark{width:23px;height:23px;border:1px solid #555d6b;border-radius:7px;display:grid;place-items:center;font-size:11px}
+    nav{display:flex;gap:24px;color:#9ba1ad;font-size:11px}nav a:hover{color:white}
+    .hero{min-height:calc(100vh - 77px);display:grid;grid-template-columns:minmax(300px,.86fr) minmax(0,1.14fr);align-items:center;gap:clamp(35px,6vw,100px);padding:70px 0 90px}
+    .copy{position:relative;z-index:2;max-width:520px}.eyebrow{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#aeb6c5;display:flex;align-items:center;gap:10px;margin-bottom:24px}.eyebrow:before{content:"";width:19px;height:1px;background:#8e9aac}
+    h1{font-size:clamp(42px,6vw,78px);line-height:.98;letter-spacing:-.065em;font-weight:560;margin:0 0 23px;max-width:640px}
+    .copy p{font-size:15px;line-height:1.8;color:#a5aab5;max-width:440px;margin:0 0 30px}
+    .actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.primary{padding:12px 17px;background:#f4f5f7;color:#090a0d;border-radius:6px;font-size:11px;font-weight:650}.secondary{font-size:11px;color:#b0b5c0;padding:10px 3px}
+    .meta{margin-top:38px;padding-top:17px;border-top:1px solid #ffffff18;color:#717887;font-size:10px;display:flex;gap:16px;align-items:center}.pulse{width:6px;height:6px;border-radius:50%;background:#b9c6d8;box-shadow:0 0 12px #a6badb}
+    .stage{height:min(68vh,620px);min-height:390px;position:relative;border:1px solid #ffffff16;border-radius:15px;overflow:hidden;background:radial-gradient(ellipse at 50% 48%,#202633 0,#10141d 43%,#090b10 80%);isolation:isolate}
+    .stage:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(135deg,#ffffff08,transparent 30%,transparent 70%,#ffffff05);z-index:1}
+    canvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
+    .stage-label{position:absolute;z-index:2;left:20px;bottom:17px;color:#858d9b;font-size:9px;letter-spacing:.13em;text-transform:uppercase}
+    .stage-index{position:absolute;z-index:2;right:20px;top:17px;color:#707987;font:10px ui-monospace,monospace}
+    .fallback-art{position:absolute;inset:0;display:grid;place-items:center;opacity:.8;pointer-events:none}
+    .fallback-art:before{content:"";width:42%;aspect-ratio:1;border:1px solid #aab6c733;border-radius:50%;box-shadow:0 0 80px #9bb1d322,inset 0 0 70px #a4b8d41a;transform:rotateX(62deg) rotateZ(-25deg)}
+    .status{position:absolute;z-index:3;right:18px;bottom:15px;color:#77808f;font-size:9px}
+    .note{border-top:1px solid #ffffff14;padding:18px 0 28px;color:#727987;font-size:10px;display:flex;justify-content:space-between;gap:18px}
+    .note a{color:#b8bec9}.note a:hover{color:#fff}
+    @media(max-width:850px){.hero{grid-template-columns:1fr;gap:38px;padding:55px 0 70px}.copy{max-width:650px}.stage{height:55vw;min-height:340px;max-height:520px}.copy p{max-width:560px}}
+    @media(max-width:520px){.shell{padding:0 19px}header{height:64px}nav{gap:13px}nav a:first-child{display:none}.hero{padding:43px 0 55px;gap:29px}h1{font-size:clamp(42px,13vw,62px)}.copy p{font-size:13px}.stage{min-height:300px;height:82vw}.meta{margin-top:27px}.note{flex-direction:column}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+  </style>
+  <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.187.0/build/three.module.js"}}
+  </script>
+</head>
+<body>
+  <div class="shell">
+    <header><a class="brand" href="../../../index.html"><span class="mark">D</span> DESIGN INTELLIGENCE</a><nav aria-label="Demo navigation"><a href="../../../index.html">Library</a><a href="../../patterns/heroes/orbital-particle-field.md">Pattern notes</a></nav></header>
+    <main class="hero">
+      <section class="copy" aria-labelledby="hero-title">
+        <div class="eyebrow">A connected world, made visible</div>
+        <h1 id="hero-title">Ideas in motion.<br>Systems in sync.</h1>
+        <p>A spatial system of luminous particles traces invisible relationships. Use this composition when the product connects people, data, infrastructure, or ideas into one coherent network.</p>
+        <div class="actions"><a class="primary" href="#details">Explore the system</a><a class="secondary" href="../../../index.html">Explore the library ↗</a></div>
+        <div class="meta"><span class="pulse" aria-hidden="true"></span> THREE.JS / 0.187.0 <span>·</span> REAL-TIME WEBGL SCENE</div>
+      </section>
+      <section class="stage" id="scene-stage" aria-label="Orbital particle architecture">
+        <div class="fallback-art" aria-hidden="true"></div>
+        <canvas id="scene-canvas" aria-hidden="true"></canvas>
+        <span class="stage-index">01 / 05</span>
+        <span class="stage-label">Orbital particle architecture</span>
+        <span class="status" id="scene-status" role="status">Preparing 3D scene…</span>
+      </section>
+    </main>
+    <section class="note" id="details"><span>The particle field uses instanced geometry and animated orbital paths to express connected systems.</span><span>Original demo · CSS fallback · Reduced-motion support</span></section>
+  </div>
+  <script type="module">
+    import * as THREE from 'three';
+
+    const stage = document.querySelector('#scene-stage');
+    const canvas = document.querySelector('#scene-canvas');
+    const status = document.querySelector('#scene-status');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+    camera.position.set(0, 0, 10);
+    let renderer, active = true, visible = true, disposed = false;
+    const clock = new THREE.Timer(); clock.connect(document); clock.connect(document);
+    const pointer = new THREE.Vector2();
+    const targetPointer = new THREE.Vector2();
+
+    try {
+      renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true, powerPreference:'high-performance'});
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.6));
+      renderer.setClearColor(0x000000, 0);
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.15;
+      scene.fog = new THREE.FogExp2(0x0a0d14, 0.035);
+      const root=new THREE.Group();scene.add(root);const core=new THREE.Mesh(new THREE.IcosahedronGeometry(.72,4),new THREE.MeshPhysicalMaterial({color:0x9bb5d8,metalness:.65,roughness:.2,clearcoat:1,emissive:0x1d3555,emissiveIntensity:.5}));root.add(core);const coreWire=new THREE.Mesh(new THREE.IcosahedronGeometry(.9,2),new THREE.MeshBasicMaterial({color:0xc6d8f1,wireframe:true,transparent:true,opacity:.14}));root.add(coreWire);const orbitLines=[];[2.05,2.65,3.25].forEach((r,i)=>{const curve=new THREE.EllipseCurve(0,0,r,r*.52,0,Math.PI*2,false,0);const pts=curve.getPoints(180).map(p=>new THREE.Vector3(p.x,p.y,0));const line=new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(pts),new THREE.LineBasicMaterial({color:[0x6f91bf,0x8aa6cb,0x536f9c][i],transparent:true,opacity:.45}));line.rotation.x=[.25,1.02,1.55][i];line.rotation.y=[.2,.8,-.45][i];root.add(line);orbitLines.push(line);});const count=720,geo=new THREE.SphereGeometry(.026,7,7),mat=new THREE.MeshBasicMaterial({color:0xc4d7f3}),particles=new THREE.InstancedMesh(geo,mat,count),dummy=new THREE.Object3D(),data=[];for(let i=0;i<count;i++){const orbit=i%3,angle=Math.random()*Math.PI*2,radius=[2.05,2.65,3.25][orbit]*(.82+Math.random()*.18);data.push({orbit,angle,radius,speed:(.12+Math.random()*.2)*(Math.random()>.5?1:-1),phase:Math.random()*6.28});}const colors=[new THREE.Color(0x8caedc),new THREE.Color(0xd2e4ff),new THREE.Color(0x6c83ad)];data.forEach((d,i)=>particles.setColorAt(i,colors[d.orbit].clone().multiplyScalar(.55+Math.random()*.65)));root.add(particles);const ambient=new THREE.PointLight(0x8eafd8,32,12);ambient.position.set(2,2,3);scene.add(ambient);const orbitLight=new THREE.PointLight(0x456b9f,18,10);orbitLight.position.set(-3,-1,-2);scene.add(orbitLight);
+      undefined
+      function resize(){
+        const width = Math.max(1, stage.clientWidth), height = Math.max(1, stage.clientHeight);
+        renderer.setSize(width,height,false);
+        camera.aspect = width/height;
+        camera.position.z = width < 520 ? 13 : 10;
+        camera.updateProjectionMatrix();
+        render(0);
+      }
+      function render(time){
+        pointer.lerp(targetPointer, .035);
+        data.forEach((d,i)=>{const a=d.angle+time*d.speed,r=d.radius;dummy.position.set(Math.cos(a)*r,Math.sin(a)*r*.52,Math.sin(a*.5+d.phase)*.34);dummy.scale.setScalar(.72+.28*(Math.sin(a*2+d.phase)*.5+.5));dummy.updateMatrix();particles.setMatrixAt(i,dummy.matrix);});particles.instanceMatrix.needsUpdate=true;root.rotation.y=time*.11+pointer.x*.12;root.rotation.x=Math.sin(time*.18)*.12+pointer.y*.08;core.rotation.y=-time*.22;core.rotation.x=time*.13;orbitLines.forEach((line,i)=>{line.rotation.y=time*(.06+i*.012);line.rotation.x=Math.sin(time*.13+i)*.12;});particles.rotation.y=-time*.035;
+        renderer.render(scene,camera);
+      }
+      function loop(){
+        if(!active || !visible || disposed || reducedMotion.matches) return;
+        clock.update();
+        render(clock.getElapsed());
+      }
+      function syncLoop(){
+        if(!renderer || disposed) return;
+        if(active && visible && !reducedMotion.matches) renderer.setAnimationLoop(loop);
+        else { renderer.setAnimationLoop(null); render(clock.getElapsed()); }
+      }
+      const observer = new IntersectionObserver(entries => { visible = entries[0].isIntersecting; syncLoop(); }, {threshold:.02});
+      observer.observe(stage);
+      document.addEventListener('visibilitychange',()=>{active=!document.hidden;syncLoop();});
+      reducedMotion.addEventListener?.('change',syncLoop);
+      stage.addEventListener('pointermove',event=>{
+        const rect=stage.getBoundingClientRect();
+        targetPointer.set(((event.clientX-rect.left)/rect.width-.5)*2, -((event.clientY-rect.top)/rect.height-.5)*2);
+      });
+      stage.addEventListener('pointerleave',()=>targetPointer.set(0,0));
+      const resizeObserver = new ResizeObserver(resize);
+      resizeObserver.observe(stage);
+      canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();active=false;status.textContent='WebGL paused · restore the tab to retry';syncLoop();});
+      canvas.addEventListener('webglcontextrestored',()=>{active=true;status.textContent='Live 3D scene';syncLoop();});
+      resize();
+      syncLoop();
+      status.textContent = reducedMotion.matches ? 'Static frame · reduced motion' : 'Live 3D scene';
+      window.addEventListener('pagehide',()=>{disposed=true;observer.disconnect();resizeObserver.disconnect();renderer.setAnimationLoop(null);renderer.dispose();},{once:true});
+    } catch(error) {
+      console.warn('Three.js scene unavailable; showing CSS fallback.',error);
+      status.textContent='3D unavailable · CSS fallback active';
+      canvas.hidden=true;
+    }
+  </script>
+</body>
+</html>

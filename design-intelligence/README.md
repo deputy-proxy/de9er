@@ -30,7 +30,7 @@ A curated, implementation-aware knowledge base for selecting and adapting design
 `candidate → analyzed → authored → implemented → validated → published`
 
 ## Initial collection
-The first ten hero patterns are indexed in [patterns/README.md](patterns/README.md), with runnable examples under [examples/](examples/README.md). Each record documents suitability, avoid-when conditions, implementation, responsive behavior, accessibility, and provenance.
+The current fifteen hero patterns are indexed in [patterns/README.md](patterns/README.md), with runnable examples under [examples/](examples/README.md). The five advanced Three.js examples use a pinned CDN module, custom geometry/shaders, responsive renderer sizing, reduced-motion handling, and CSS fallbacks. Each record documents suitability, avoid-when conditions, implementation, responsive behavior, accessibility, and provenance.
 
 The collection is deliberately marked `implemented`, not `validated`, until browser and accessibility checks are completed. See [hero collection review](validation/hero-patterns-review.md).
 
