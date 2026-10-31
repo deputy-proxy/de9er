@@ -23,7 +23,7 @@ fields:
   name:
     type: string
   category:
-    enum: [heroes, navigation, typography, section-compositions, image-treatments, grids, footers, interactions]
+    enum: [heroes, about, navigation, typography, section-compositions, image-treatments, grids, footers, interactions]
   summary:
     type: string
     rule: "One or two sentences describing the pattern, not praising it"

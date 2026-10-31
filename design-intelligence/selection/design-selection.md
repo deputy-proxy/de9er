@@ -46,7 +46,7 @@ If these cannot be answered, do not select Three.js yet.
 | typographic-brand-statement | The brand has a concise point of view. | Do not disguise a vague offer. |
 | interactive-product-preview | One interaction demonstrates meaningful behavior. | It must work with keyboard and touch. |
 
-## Initial interaction pattern index
+## About pattern index
 
 | Pattern ID | Best-fit signal | Main caution |
 |---|---|---|

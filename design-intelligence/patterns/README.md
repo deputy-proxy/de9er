@@ -11,6 +11,7 @@ Patterns describe reusable design decisions at the level of composition, hierarc
 | image-treatments | Image placement, crop, masking, and layering |
 | grids | Page and content grid logic |
 | footers | Closing structures and utility navigation |
+| about | Patterns for presenting an organization, its people, story, and identity |
 | interactions | Reusable interaction principles and state changes |
 
 ## Authoring rules
@@ -46,8 +47,8 @@ Fifteen implemented patterns form the current hero collection. The first ten est
 
 See [example instructions](../examples/README.md) and [validation status](../validation/hero-patterns-review.md).
 
-## Interaction collection
+## About collection
 
 | Pattern | Best suited to | Demo |
 |---|---|---|
-| [Team profile carousel](./interactions/team-profile-carousel.md) | A small team that benefits from one focused profile at a time | [Open](../examples/team-profile-carousel/index.html) |
+| [Team profile carousel](./about/team-profile-carousel.md) | Introducing a small team through focused individual profiles | [Open](../examples/team-profile-carousel/index.html) |
