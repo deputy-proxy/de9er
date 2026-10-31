@@ -62,7 +62,8 @@ implementation:
   semantic_html: "Use a section with a heading, native buttons for profile selection, an article for the active profile, and real anchor elements for contact links."
   css_approach: "Use a two-column desktop layout, a single-column mobile layout, layered image gradients for legible text, and a clear active state in both selector and progress controls."
   javascript: "Use a small data array and browser-native event listeners to update the active profile. Optional timed progression must pause on focus, hover and hidden documents, and must be disabled for reduced-motion preferences."
-  optional_dependencies: []
+  optional_dependencies:
+    - "GSAP 3.13 for coordinated profile, portrait, metadata and selector transitions; the component falls back to immediate updates when GSAP is unavailable."
   performance_notes:
     - "No framework, build step, remote font, or external image dependency is required."
     - "Use optimized owned portraits when available; provide a stable visual fallback."
@@ -114,7 +115,7 @@ The interaction should support discovery rather than hide information. The selec
 
 ## Implementation notes
 
-The standalone example uses semantic HTML, local CSS and browser-native JavaScript. It has no framework, package manager, remote font or external image dependency. The sample uses CSS-built portrait abstractions so it works offline; replace them with optimized, owned portraits when adapting the component.
+The standalone example uses semantic HTML and browser-native JavaScript, with GSAP 3.13 loaded from cdnjs for coordinated transitions. If GSAP is unavailable, profile changes still work without animation. The sample uses CSS-built portrait abstractions so it works offline; replace them with optimized, owned portraits when adapting the component.
 
 The demo advances automatically every 6.5 seconds as an optional enhancement. It pauses while the visitor hovers or focuses the component, resumes after interaction, stops while the document is hidden, and does not autoplay when reduced motion is requested. Remove timed progression when the content is important to read at the visitor's own pace.
 
@@ -129,4 +130,4 @@ The demo advances automatically every 6.5 seconds as an optional enhancement. It
 
 Runnable demo: [`examples/team-profile-carousel/index.html`](../../examples/team-profile-carousel/index.html).
 
-Lifecycle remains `implemented` until real-browser, responsive, keyboard and assistive-technology checks are recorded.
+Lifecycle remains `implemented` until real-browser, responsive, keyboard and assistive-technology checks are recorded. GSAP animates the portrait, profile copy, metadata, monogram/caption, selected member and progress indicators; `prefers-reduced-motion` disables animation and autoplay.
