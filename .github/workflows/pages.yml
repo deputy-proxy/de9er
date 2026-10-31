@@ -7,6 +7,7 @@ on:
     paths:
       - "index.html"
       - "src/**"
+      - "components/**"
       - "package.json"
       - "package-lock.json"
       - "design-intelligence/examples/**"
@@ -48,6 +49,8 @@ jobs:
           cp index.html _site/index.html
           mkdir -p _site/assets/css
           cp assets/css/tailwind.css _site/assets/css/tailwind.css
+          mkdir -p _site/components
+          cp components/traffic-light-painting-hero.css components/traffic-light-painting-hero.js _site/components/
 
           for demo in design-intelligence/examples/*/index.html; do
             destination="_site/${demo%/index.html}"
