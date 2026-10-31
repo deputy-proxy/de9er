@@ -3,7 +3,7 @@
 Date: 2026-10-31
 
 ## Scope
-Ten hero records and ten standalone HTML/CSS examples are included. The interactive product preview also includes a small browser-native JavaScript interaction.
+Ten hero records and ten standalone HTML/CSS examples are included. The interactive product preview includes a small browser-native interaction; the form example prevents submission and displays an inline status.
 
 ## Source-level review
 - [x] Each record describes one reusable principle.
