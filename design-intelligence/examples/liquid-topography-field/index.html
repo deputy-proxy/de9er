@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#08090d">
   <meta name="description" content="A shifting topographic surface turns complexity into something navigable. The animated terrain suggests movement, depth, and a system that responds to changing conditions.">
-  <title>undefined — Three.js Hero Demo</title>
+  <title>Liquid Topography Field · DE9ER</title>
   <style>
     :root{color-scheme:dark;--bg:#08090d;--panel:#101218;--line:#272b35;--text:#f4f5f7;--muted:#a1a7b3;--dim:#6e7480;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-width:320px;min-height:100vh;background:var(--bg);color:var(--text)}
@@ -82,7 +82,6 @@
       renderer.toneMappingExposure = 1.15;
       scene.fog = new THREE.FogExp2(0x0a0d14, 0.035);
       const geometry=new THREE.PlaneGeometry(15,10,220,150);const material=new THREE.ShaderMaterial({uniforms:{uTime:{value:0},uPointer:{value:new THREE.Vector2()}},vertexShader:`uniform float uTime;uniform vec2 uPointer;varying vec2 vUv;varying float vHeight;void main(){vUv=uv;vec3 p=position;float a=sin(p.x*1.15+uTime*.55)*.34;float b=cos(p.y*1.45-uTime*.38)*.24;float c=sin((p.x+p.y)*.72+uTime*.3)*.19;float d=exp(-length((uv-.5-uPointer*.13)*vec2(1.0,1.4))*5.0)*.18*sin(uTime*1.8);p.z+=a+b+c+d;vHeight=p.z;gl_Position=projectionMatrix*modelViewMatrix*vec4(p,1.0);}`,fragmentShader:`varying vec2 vUv;varying float vHeight;uniform float uTime;void main(){float bands=sin(vHeight*13.0+uTime*.35)*.5+.5;vec3 deep=vec3(.055,.085,.13);vec3 light=vec3(.42,.58,.76);vec3 col=mix(deep,light,smoothstep(-.48,.72,vHeight)*.72);float contour=smoothstep(.94,.985,bands);col=mix(col,vec3(.72,.82,.95),contour*.42);float vignette=1.0-smoothstep(.15,.9,length(vUv-.5));gl_FragColor=vec4(col*(.65+.35*vignette),.94);}`,transparent:true,side:THREE.DoubleSide});const terrain=new THREE.Mesh(geometry,material);terrain.rotation.x=-.82;terrain.position.y=-.2;scene.add(terrain);const grid=new THREE.GridHelper(18,44,0x4b607a,0x29384d);grid.position.y=-2.05;grid.material.transparent=true;grid.material.opacity=.13;scene.add(grid);scene.add(new THREE.AmbientLight(0x9eb8d8,1.1));const light=new THREE.DirectionalLight(0xb8d2f4,2.4);light.position.set(-3,5,5);scene.add(light);
-      undefined
       function resize(){
         const width = Math.max(1, stage.clientWidth), height = Math.max(1, stage.clientHeight);
         renderer.setSize(width,height,false);

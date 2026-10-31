@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#08090d">
   <meta name="description" content="Nested spatial frames create a sense of depth and forward movement. Use this pattern when the experience itself is the proposition: a new platform, destination, or creative world.">
-  <title>undefined — Three.js Hero Demo</title>
+  <title>Spatial Portal Gateway · DE9ER</title>
   <style>
     :root{color-scheme:dark;--bg:#08090d;--panel:#101218;--line:#272b35;--text:#f4f5f7;--muted:#a1a7b3;--dim:#6e7480;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-width:320px;min-height:100vh;background:var(--bg);color:var(--text)}
@@ -81,19 +81,29 @@
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1.15;
       scene.fog = new THREE.FogExp2(0x0a0d14, 0.035);
-      const portal=new THREE.Group();scene.add(portal);const rings=[];for(let i=0;i<13;i++){const radius=1.15+i*.19;const ring=new THREE.Mesh(new THREE.TorusGeometry(radius,.018+(i%3)*.006,8,180),new THREE.MeshStandardMaterial({color:i%2?0x7c94b7:0xc3d3ea,metalness:.72,roughness:.24,emissive:0x263d60,emissiveIntensity:.5,transparent:true,opacity:.35+i*.035}));ring.position.z=-i*.48;ring.scale.set(1,1.18,1);portal.add(ring);rings.push(ring);}const portalLight=new THREE.PointLight(0x9cbce8,95,24);portalLight.position.set(0,0,2);scene.add(portalLight);const backLight=new THREE.PointLight(0x5d7ba8,65,18);backLight.position.set(0,0,-7);scene.add(backLight);const particleCount=1600,positions=new Float32Array(particleCount*3),speeds=new Float32Array(particleCount);for(let i=0;i<particleCount;i++){const a=Math.random()*Math.PI*2,r=1.1+Math.random()*2.9;positions[i*3]=Math.cos(a)*r;positions[i*3+1]=Math.sin(a)*r;positions[i*3+2]=-Math.random()*9;speeds[i]=.3+Math.random()*1.2;}const pGeo=new THREE.BufferGeometry();pGeo.setAttribute('position',new THREE.BufferAttribute(positions,3));const dust=new THREE.Points(pGeo,new THREE.PointsMaterial({color:0xb7c9e4,size:.025,transparent:true,opacity:.65,depthWrite:false}));scene.add(dust);const core=new THREE.Mesh(new THREE.CircleGeometry(.42,64),new THREE.MeshBasicMaterial({color:0xdce9fa,transparent:true,opacity:.1}));core.position.z=-6.5;scene.add(core);scene.add(new THREE.AmbientLight(0x8396b3,1.2));
-      undefined
+      // Art direction: a monumental architectural passage, not decorative concentric rings.
+      const corridor=new THREE.Group();scene.add(corridor);
+      const frameMat=new THREE.MeshStandardMaterial({color:0x9aabbc,metalness:.72,roughness:.28,emissive:0x18283a,emissiveIntensity:.45});
+      const darkMat=new THREE.MeshStandardMaterial({color:0x121923,metalness:.42,roughness:.46});
+      const frames=[];
+      for(let i=0;i<9;i++){const w=4.7-i*.34,h=5.7-i*.4,z=-i*1.12;const g=new THREE.Group();g.position.z=z;const t=.075;const bars=[[w,t,0, -h/2,0],[w,t,0,h/2,0],[t,h, -w/2,0,0],[t,h,w/2,0,0]];bars.forEach(([bw,bh,x,y,zz],j)=>{const bar=new THREE.Mesh(new THREE.BoxGeometry(bw,bh,.12),frameMat);bar.position.set(x,y,zz);g.add(bar);});const inset=new THREE.Mesh(new THREE.PlaneGeometry(w-.16,h-.16),new THREE.MeshBasicMaterial({color:0x0b1018,transparent:true,opacity:.18,side:THREE.DoubleSide}));inset.position.z=-.08;g.add(inset);corridor.add(g);frames.push(g);}
+      const floor=new THREE.Mesh(new THREE.PlaneGeometry(9,24),new THREE.MeshStandardMaterial({color:0x111821,metalness:.38,roughness:.42}));floor.rotation.x=-Math.PI/2;floor.position.set(0,-2.85,-4.2);corridor.add(floor);
+      const floorLines=new THREE.Group();for(let i=0;i<13;i++){const line=new THREE.Mesh(new THREE.BoxGeometry(8,.008,.012),new THREE.MeshBasicMaterial({color:0x7189a4,transparent:true,opacity:.2}));line.position.set(0,-2.835,-i*1.8+1);floorLines.add(line);}corridor.add(floorLines);
+      const ceiling=new THREE.Mesh(new THREE.PlaneGeometry(8,22),new THREE.MeshStandardMaterial({color:0x0d131c,metalness:.2,roughness:.6}));ceiling.rotation.x=Math.PI/2;ceiling.position.set(0,2.85,-4.2);corridor.add(ceiling);
+      const endGlow=new THREE.Mesh(new THREE.PlaneGeometry(2.4,3.6),new THREE.MeshBasicMaterial({color:0xc3d4e4,transparent:true,opacity:.18}));endGlow.position.set(0,0,-10.1);corridor.add(endGlow);
+      const count=520,positions=new Float32Array(count*3),velocity=new Float32Array(count);for(let i=0;i<count;i++){positions[i*3]=(Math.random()-.5)*5;positions[i*3+1]=(Math.random()-.5)*6;positions[i*3+2]=-Math.random()*11;velocity[i]=.25+Math.random()*.55;}const dustGeo=new THREE.BufferGeometry();dustGeo.setAttribute('position',new THREE.BufferAttribute(positions,3));const dust=new THREE.Points(dustGeo,new THREE.PointsMaterial({color:0xc4d3e3,size:.018,transparent:true,opacity:.42,depthWrite:false}));corridor.add(dust);
+      const key=new THREE.PointLight(0xc6d9ec,70,20);key.position.set(0,0,-9);scene.add(key);const side=new THREE.DirectionalLight(0x7895b8,1.8);side.position.set(-4,3,4);scene.add(side);scene.add(new THREE.AmbientLight(0x8797aa,.75));
       function resize(){
         const width = Math.max(1, stage.clientWidth), height = Math.max(1, stage.clientHeight);
         renderer.setSize(width,height,false);
         camera.aspect = width/height;
-        camera.position.z = width < 520 ? 13 : 10;
+        camera.position.z = width < 520 ? 12.5 : 10.5;
         camera.updateProjectionMatrix();
         render(0);
       }
       function render(time){
         pointer.lerp(targetPointer, .035);
-        const attr=dust.geometry.attributes.position;for(let i=0;i<particleCount;i++){const zi=i*3+2;attr.array[zi]+=speeds[i]*.018;if(attr.array[zi]>1)attr.array[zi]=-9;}attr.needsUpdate=true;portal.rotation.z=Math.sin(time*.2)*.035;rings.forEach((ring,i)=>{ring.rotation.z=time*(i%2===0?.025:-.025);ring.rotation.x=Math.sin(time*.14+i*.5)*.035;});camera.position.x=pointer.x*.22;camera.position.y=pointer.y*.16;camera.position.z=(window.innerWidth<520?13:10)-Math.sin(time*.25)*.38;
+        const attr=dust.geometry.attributes.position;for(let i=0;i<count;i++){const zi=i*3+2;attr.array[zi]+=velocity[i]*.012;if(attr.array[zi]>1)attr.array[zi]=-11;}attr.needsUpdate=true;frames.forEach((frame,i)=>{frame.rotation.y=pointer.x*.025+Math.sin(time*.16+i*.24)*.006;frame.rotation.x=pointer.y*.018;});corridor.position.z=-Math.sin(time*.2)*.16;camera.position.x=pointer.x*.18;camera.position.y=pointer.y*.12;camera.position.z=(window.innerWidth<520?12.5:10.5)-Math.sin(time*.22)*.18;
         renderer.render(scene,camera);
       }
       function loop(){

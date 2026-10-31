@@ -36,7 +36,7 @@ jobs:
           for demo in design-intelligence/examples/*/index.html; do
             destination="_site/${demo%/index.html}"
             mkdir -p "$destination"
-            cp "$demo" "$destination/index.html"
+            cp -R "$(dirname "$demo")/." "$destination/"
           done
 
           touch _site/.nojekyll

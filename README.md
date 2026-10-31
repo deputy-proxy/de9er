@@ -33,7 +33,7 @@ A reusable skill library for designing, generating, reviewing, and deploying dis
 No build step, package manager, or bundler for a simple static site unless a concrete requirement justifies it. Generated client websites belong in separate repositories, not here.
 
 ## Design preview gallery
-The searchable glossary and all standalone pattern demos are published through [GitHub Pages](https://deputy-proxy.github.io/de9er/). The Pages workflow publishes only `index.html` and runnable example HTML files; internal prompts, skills, pattern research, and other repository files are not included in the published artifact. Pattern documentation links return to this repository.
+The searchable glossary and all standalone pattern demos are published through [GitHub Pages](https://deputy-proxy.github.io/de9er/). The Pages workflow publishes the glossary, standalone example pages, and each example’s local CSS/JS assets. The hero examples gallery embeds the actual standalone pages for live previews; it does not synthesize generic mockups. Internal prompts, skills, pattern research, and other repository files are not included in the published artifact. Pattern documentation links return to this repository.
 
 ## Start
 1. Read [Website Factory core skill](skills/core/website-factory/SKILL.md).
