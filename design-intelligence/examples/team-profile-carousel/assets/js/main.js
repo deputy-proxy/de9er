@@ -122,14 +122,23 @@
     stopTimer();
     stopProgress();
     const markerFills = markers.map((marker) => marker.querySelector('span'));
-    if (animationsEnabled()) {
-      gsap.set(markerFills, { scaleX: 0, transformOrigin: 'left center', opacity: 0.55 });
-      gsap.set(markerFills[activeIndex], { scaleX: 0, opacity: 1 });
+    const markerStates = markerFills.map((fill, index) => ({
+      fill,
+      scaleX: index < activeIndex ? 1 : 0,
+      opacity: index <= activeIndex ? 1 : 0.55
+    }));
+    if (gsap) {
+      gsap.set(markerStates.map(({ fill }) => fill), {
+        transformOrigin: 'left center'
+      });
+      markerStates.forEach(({ fill, scaleX, opacity }) => {
+        gsap.set(fill, { scaleX, opacity });
+      });
     } else {
-      if (gsap) {
-        gsap.set(markerFills, { scaleX: 0 });
-        gsap.set(markerFills[activeIndex], { scaleX: 1, opacity: 1 });
-      }
+      markerStates.forEach(({ fill, scaleX, opacity }) => {
+        fill.style.transform = `scaleX(${scaleX})`;
+        fill.style.opacity = String(opacity);
+      });
     }
     if (paused || reducedMotion.matches || document.hidden) {
       card.classList.add('is-paused');
