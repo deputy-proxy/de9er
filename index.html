@@ -122,6 +122,14 @@
     .interactive .mini-toggle { display:flex; gap:4px; margin-top:8px; }
     .interactive .mini-toggle i { width:22px; height:6px; background:#393940; border-radius:3px; }
     .interactive .mini-toggle i:first-child { background:#d4d4d8; }
+    .team-preview { background:radial-gradient(ellipse at 75% 45%,#4b4b4c 0,#24252b 38%,#101115 76%); }
+    .team-preview .mini { display:grid; grid-template-columns:.42fr 1fr; gap:10px; padding:9px; }
+    .team-preview .mini-list { display:grid; align-content:center; gap:7px; }
+    .team-preview .mini-list i { display:block; height:4px; width:75%; border-radius:3px; background:#444650; }
+    .team-preview .mini-list i:first-child { width:92%; background:#d4d4d8; }
+    .team-preview .mini-person { position:relative; border-radius:3px; overflow:hidden; background:linear-gradient(120deg,#6b6c70,#24252b 70%); }
+    .team-preview .mini-person:before { content:""; position:absolute; width:42%; height:90%; left:34%; bottom:-24%; border-radius:48% 48% 0 0; background:linear-gradient(150deg,#c0aa91,#514943); }
+    .team-preview .mini-person:after { content:""; position:absolute; width:21%; aspect-ratio:.8; left:45%; top:15%; border-radius:50%; background:#c8a48a; }
 
     .three-preview { background: radial-gradient(ellipse at center,#202b3c 0,#111720 48%,#090b10 100%); }
     .orbital-core { width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#e1efff,#6887b2 45%,#263d5c 75%);box-shadow:0 0 34px #9bbbe866;position:absolute; }
@@ -208,7 +216,7 @@
       <aside aria-label="Library navigation">
         <p class="side-label">Glossary</p>
         <nav class="side-nav">
-          <a class="active" href="#patterns">All patterns <span class="count">15</span></a>
+          <a class="active" href="#patterns">All patterns <span class="count">16</span></a>
           <a href="#patterns" data-side-filter="heroes">Heroes <span class="count">15</span></a>
           <a href="#planned">Navigation <span class="count">—</span></a>
           <a href="#planned">Typography <span class="count">—</span></a>
@@ -216,7 +224,7 @@
           <a href="#planned">Image treatments <span class="count">—</span></a>
           <a href="#planned">Grids <span class="count">—</span></a>
           <a href="#planned">Footers <span class="count">—</span></a>
-          <a href="#planned">Interactions <span class="count">—</span></a>
+          <a href="#patterns" data-side-filter="interactions">Interactions <span class="count">1</span></a>
         </nav>
         <p class="side-label">Resources</p>
         <nav class="side-nav">
@@ -226,7 +234,7 @@
         </nav>
         <div class="side-note">
           <strong>Glossary status</strong>
-          <p>15 patterns implemented. Browser and accessibility validation is still in progress.</p>
+          <p>16 patterns implemented across hero compositions and interactions. Browser and accessibility validation is still in progress.</p>
         </div>
       </aside>
 
@@ -237,12 +245,12 @@
         </a>
         <div class="eyebrow"><span class="eyebrow-dot"></span> DESIGN SYSTEMS / GLOSSARY</div>
         <h1>Design patterns,<br>with a point of view.</h1>
-        <p class="intro">A practical index of reusable web compositions. Explore the underlying principle, understand when a pattern earns its place, and open a working example before bringing it into a project. Now with five advanced Three.js hero compositions.</p>
+        <p class="intro">A practical index of reusable web compositions and interactions. Explore the underlying principle, understand when a pattern earns its place, and open a working example before bringing it into a project. Includes fifteen hero compositions and a team profile carousel.</p>
 
         <div class="stats" aria-label="Library statistics">
-          <div class="stat"><strong>15</strong><span>Patterns</span></div>
-          <div class="stat"><strong>01</strong><span>Category populated</span></div>
-          <div class="stat"><strong>15</strong><span>Working demos</span></div>
+          <div class="stat"><strong>16</strong><span>Patterns</span></div>
+          <div class="stat"><strong>02</strong><span>Categories populated</span></div>
+          <div class="stat"><strong>16</strong><span>Working demos</span></div>
         </div>
 
         <section id="patterns" aria-labelledby="patterns-title">
@@ -261,13 +269,14 @@
             </select>
           </div>
           <div class="filters" role="group" aria-label="Filter by category">
-            <button class="filter" type="button" data-filter="all" aria-pressed="true">All patterns <span>15</span></button>
+            <button class="filter" type="button" data-filter="all" aria-pressed="true">All patterns <span>16</span></button>
             <button class="filter" type="button" data-filter="heroes" aria-pressed="false">Heroes <span>15</span></button>
             <button class="filter" type="button" data-filter="navigation" aria-pressed="false">Navigation <span>0</span></button>
             <button class="filter" type="button" data-filter="sections" aria-pressed="false">Sections <span>0</span></button>
             <button class="filter" type="button" data-filter="typography" aria-pressed="false">Typography <span>0</span></button>
+            <button class="filter" type="button" data-filter="interactions" aria-pressed="false">Interactions <span>1</span></button>
           </div>
-          <div class="results-line"><span id="result-count" aria-live="polite">Showing 15 patterns</span><span>STATUS: IMPLEMENTED</span></div>
+          <div class="results-line"><span id="result-count" aria-live="polite">Showing 16 patterns</span><span>STATUS: IMPLEMENTED</span></div>
 
           <div class="grid" id="pattern-grid">
             <article class="card" data-category="heroes" data-name="Editorial type-led hero" data-search="editorial type led typography text dominant headline proposition publisher consultancy cultural organization portfolio sparse asymmetric">
@@ -344,6 +353,11 @@
               <div class="preview three-preview portal-preview" aria-hidden="true"><div class="portal-rings"></div><span class="preview-label">15 / Spatial portal</span></div>
               <div class="card-body"><div class="card-top"><span class="category">Three.js hero</span><span class="status">Implemented</span></div><h3>Spatial portal gateway</h3><p>Nested dimensional frames and a controlled camera dolly create an invitation into a new product or brand world.</p><div class="tags"><span class="tag">Camera motion</span><span class="tag">Depth</span><span class="tag">Spatial</span></div><div class="card-links"><a href="https://github.com/deputy-proxy/de9er/blob/main/design-intelligence/patterns/heroes/spatial-portal-gateway.md">Pattern details <span>↗</span></a><a href="https://deputy-proxy.github.io/de9er/design-intelligence/examples/spatial-portal-gateway/">Live demo <span>↗</span></a></div></div>
             </article>
+            <article class="card" data-category="interactions" data-name="Team profile carousel" data-search="team profile carousel people experts staff about page leadership members directory biography portrait tabs selector navigation contact">
+              <div class="preview team-preview" aria-hidden="true"><div class="mini"><div class="mini-list"><i></i><i></i><i></i><i></i><i></i></div><div class="mini-person"></div></div><span class="preview-label">16 / Team profiles</span></div>
+              <div class="card-body"><div class="card-top"><span class="category">Interactive component</span><span class="status">Implemented</span></div><h3>Team profile carousel</h3><p>Pairs a selectable team list with one prominent profile, giving each person room for a portrait, role, biography and contact links.</p><div class="tags"><span class="tag">People</span><span class="tag">Carousel</span><span class="tag">Profile</span></div><div class="card-links"><a href="https://github.com/deputy-proxy/de9er/blob/main/design-intelligence/patterns/interactions/team-profile-carousel.md">Pattern details <span>↗</span></a><a href="https://deputy-proxy.github.io/de9er/design-intelligence/examples/team-profile-carousel/">Live demo <span>↗</span></a></div></div>
+            </article>
+
             <div class="empty" id="empty"><strong>No matching patterns</strong>Try another search term or category.</div>
           </div>
         </section>
@@ -358,7 +372,6 @@
             <div class="planned-item"><span>Image treatments</span><span>Planned</span></div>
             <div class="planned-item"><span>Grids</span><span>Planned</span></div>
             <div class="planned-item"><span>Footers</span><span>Planned</span></div>
-            <div class="planned-item"><span>Interactions</span><span>Planned</span></div>
           </div>
         </section>
       </main>

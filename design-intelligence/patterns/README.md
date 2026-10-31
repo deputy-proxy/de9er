@@ -45,3 +45,9 @@ Fifteen implemented patterns form the current hero collection. The first ten est
 | [Spatial portal gateway](./heroes/spatial-portal-gateway.md) | An invitation into a new product or brand environment | [Open](../examples/spatial-portal-gateway/index.html) |
 
 See [example instructions](../examples/README.md) and [validation status](../validation/hero-patterns-review.md).
+
+## Interaction collection
+
+| Pattern | Best suited to | Demo |
+|---|---|---|
+| [Team profile carousel](./interactions/team-profile-carousel.md) | A small team that benefits from one focused profile at a time | [Open](../examples/team-profile-carousel/index.html) |
