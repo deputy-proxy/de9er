@@ -1,0 +1,31 @@
+{
+  "name": "de9er",
+  "version": "1.0.0",
+  "description": "Design Intelligence pattern glossary and examples",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/tailwind.css -o ./assets/css/tailwind.css --minify",
+    "watch:css": "tailwindcss -i ./src/tailwind.css -o ./assets/css/tailwind.css --watch",
+    "test": "npm run build:css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deputy-proxy/de9er.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/deputy-proxy/de9er/issues"
+  },
+  "homepage": "https://github.com/deputy-proxy/de9er#readme",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  },
+  "private": true,
+  "allowScripts": {
+    "@parcel/watcher@2.5.1": true
+  }
+}
