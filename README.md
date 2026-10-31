@@ -12,6 +12,7 @@ A reusable skill library for designing, generating, reviewing, and deploying dis
 
 ## Repository map
 - `.chatgpt/`: existing Reference DNA, Distinctive Patterns, and inspiration-ingestion prompts. These remain the design research layer.
+- `design-intelligence/`: curated pattern knowledge, metadata schema, ingestion skills, working examples, and selection rules.
 - `skills/`: core orchestration, page types, visual directions, and implementation capabilities.
 - `components/`: framework-free reusable component patterns.
 - `templates/vanilla-static/`: zero-build HTML/CSS/JS starter.
@@ -34,6 +35,7 @@ No build step, package manager, or bundler for a simple static site unless a con
 ## Start
 1. Read [Website Factory core skill](skills/core/website-factory/SKILL.md).
 2. Choose a page type from [skills/page-types](skills/page-types/README.md).
-3. Choose a visual direction from [design systems](skills/design-systems/README.md).
-4. Start from [Vanilla Static](templates/vanilla-static/README.md).
-5. Follow [generate](workflows/generate.md), [review](workflows/review.md), and [deploy](workflows/deploy.md).
+3. Read [Design Intelligence](design-intelligence/README.md) and its [pattern selection rules](design-intelligence/selection/design-selection.md).
+4. Choose a visual direction from [design systems](skills/design-systems/README.md).
+5. Start from [Vanilla Static](templates/vanilla-static/README.md).
+6. Follow [generate](workflows/generate.md), [review](workflows/review.md), and [deploy](workflows/deploy.md).
