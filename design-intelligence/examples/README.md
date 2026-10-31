@@ -20,6 +20,11 @@
 - [product-prism-stage](./product-prism-stage/index.html)
 - [spatial-portal-gateway](./spatial-portal-gateway/index.html)
 - [traffic-light-painting-hero](./traffic-light-painting-hero/index.html)
+- [gsap-curtain-reveal](./gsap-curtain-reveal/index.html)
+- [glass-refraction-orb](./glass-refraction-orb/index.html)
+- [aurora-shader-veil](./aurora-shader-veil/index.html)
+- [particle-morph-sequence](./particle-morph-sequence/index.html)
+- [ribbon-helix-flow](./ribbon-helix-flow/index.html)
 
 ## About collection
 
@@ -28,7 +33,7 @@
 
 ## Running
 
-Open any `index.html` directly in a browser or serve this directory with a static HTTP server. No package manager, bundler, or framework is required. The first ten hero examples work offline; the six advanced hero Three.js examples load the pinned Three.js module from jsDelivr. The team profile carousel also works offline and uses CSS-built sample portraits. The vinyl record carousel uses a pinned Three.js module from jsDelivr and includes a static CSS fallback if WebGL or the CDN is unavailable.
+Open any `index.html` directly in a browser or serve this directory with a static HTTP server. No package manager, bundler, or framework is required. The first ten hero examples work offline; the six advanced hero Three.js examples load the pinned Three.js module from jsDelivr. The five motion-led heroes (`gsap-curtain-reveal`, `glass-refraction-orb`, `aurora-shader-veil`, `particle-morph-sequence`, `ribbon-helix-flow`) load GSAP 3.13.0 and, for the four WebGL ones, Three.js 0.187.0 from jsDelivr; each keeps a readable static layout if the CDN is unavailable. Their styles live in a `styles.css` beside each demo, scoped under a `demo-*` class, on top of the shared Tailwind build. The team profile carousel also works offline and uses CSS-built sample portraits. The vinyl record carousel uses a pinned Three.js module from jsDelivr and includes a static CSS fallback if WebGL or the CDN is unavailable.
 
 ## Lifecycle
 

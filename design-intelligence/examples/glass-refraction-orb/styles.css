@@ -1,0 +1,60 @@
+/* Styles for the glass-refraction-orb demo. Scoped under .demo-glass-refraction-orb so they cannot affect other pages in the shared build. */
+html.demo-glass-refraction-orb{color-scheme:dark;--bg:#090b10;--text:#f4f5f7;--muted:#a1a7b3;--dim:#6e7480;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+.demo-glass-refraction-orb *{box-sizing:border-box}
+html.demo-glass-refraction-orb{scroll-behavior:smooth}
+.demo-glass-refraction-orb body{margin:0;min-width:320px;min-height:100vh;background:var(--bg);color:var(--text)}
+.demo-glass-refraction-orb a{color:inherit;text-decoration:none}
+.demo-glass-refraction-orb a:focus-visible,.demo-glass-refraction-orb button:focus-visible{outline:2px solid #fff;outline-offset:3px;border-radius:6px}
+.demo-glass-refraction-orb .shell{max-width:1440px;margin:auto;padding:0 5vw}
+.demo-glass-refraction-orb header{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff12}
+.demo-glass-refraction-orb .brand{font-size:13px;font-weight:650;letter-spacing:-.02em;display:flex;gap:10px;align-items:center}
+.demo-glass-refraction-orb .mark{width:23px;height:23px;border:1px solid #555d6b;border-radius:7px;display:grid;place-items:center;font-size:11px}
+.demo-glass-refraction-orb nav{display:flex;gap:24px;color:#9ba1ad;font-size:11px}
+.demo-glass-refraction-orb nav a:hover{color:#fff}
+.demo-glass-refraction-orb .hero{min-height:calc(100vh - 77px);display:grid;grid-template-columns:minmax(300px,.86fr) minmax(0,1.14fr);align-items:center;gap:clamp(35px,6vw,100px);padding:70px 0 90px}
+.demo-glass-refraction-orb .copy{position:relative;z-index:2;max-width:540px}
+.demo-glass-refraction-orb .eyebrow{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#aeb6c5;display:flex;align-items:center;gap:10px;margin-bottom:24px}
+.demo-glass-refraction-orb .eyebrow:before{content:"";width:19px;height:1px;background:#8e9aac}
+.demo-glass-refraction-orb h1{font-size:clamp(42px,5.6vw,78px);line-height:.98;letter-spacing:-.06em;font-weight:560;margin:0 0 23px}
+.demo-glass-refraction-orb .copy p{font-size:15px;line-height:1.8;color:#a5aab5;max-width:440px;margin:0 0 30px}
+.demo-glass-refraction-orb .actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.demo-glass-refraction-orb .primary{padding:12px 17px;background:#f4f5f7;color:#090a0d;border-radius:6px;font-size:11px;font-weight:650}
+.demo-glass-refraction-orb .secondary{font-size:11px;color:#b0b5c0;padding:10px 3px}
+.demo-glass-refraction-orb .finish{margin-top:38px;padding-top:17px;border-top:1px solid #ffffff18}
+.demo-glass-refraction-orb .finish legend{padding:0;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#717887;margin-bottom:12px}
+.demo-glass-refraction-orb .finish fieldset{border:0;margin:0;padding:0;display:flex;gap:8px;flex-wrap:wrap}
+.demo-glass-refraction-orb .chip{position:relative}
+.demo-glass-refraction-orb .chip input{position:absolute;opacity:0;inset:0;cursor:pointer;margin:0}
+.demo-glass-refraction-orb .chip span{display:flex;align-items:center;gap:8px;padding:8px 13px;border:1px solid #ffffff24;border-radius:999px;font-size:11px;color:#b6bcc8;transition:border-color .2s,color .2s,background .2s}
+.demo-glass-refraction-orb .chip i{width:9px;height:9px;border-radius:50%;border:1px solid #ffffff55}
+.demo-glass-refraction-orb .chip input:checked+span{border-color:#e9edf5;color:#fff;background:#ffffff10}
+.demo-glass-refraction-orb .chip input:focus-visible+span{outline:2px solid #fff;outline-offset:3px}
+.demo-glass-refraction-orb .stage{height:min(70vh,640px);min-height:390px;position:relative;border:1px solid #ffffff16;border-radius:15px;overflow:hidden;background:radial-gradient(ellipse at 50% 48%,#232b3b 0,#10141d 46%,#090b10 82%);isolation:isolate}
+.demo-glass-refraction-orb canvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
+.demo-glass-refraction-orb .fallback-art{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.demo-glass-refraction-orb .fallback-art:before{content:"";width:46%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 34% 30%,#ffffff55,#9fb4d822 40%,#ffffff08 70%);border:1px solid #ffffff2e;box-shadow:0 0 90px #8fa8d422,inset 0 0 60px #ffffff12}
+.demo-glass-refraction-orb .stage-label{position:absolute;z-index:2;left:20px;bottom:17px;text-shadow:0 0 10px #090b10,0 0 4px #090b10;color:#9aa2b0;font-size:9px;letter-spacing:.13em;text-transform:uppercase}
+.demo-glass-refraction-orb .stage-index{position:absolute;z-index:2;right:20px;top:17px;color:#707987;font:10px ui-monospace,monospace}
+.demo-glass-refraction-orb .status{position:absolute;z-index:3;right:18px;bottom:15px;color:#77808f;font-size:9px}
+.demo-glass-refraction-orb .note{border-top:1px solid #ffffff14;padding:18px 0 28px;color:#727987;font-size:10px;display:flex;justify-content:space-between;gap:18px}
+.demo-glass-refraction-orb .note a{color:#b8bec9}
+@media(max-width:850px){
+.demo-glass-refraction-orb .hero{grid-template-columns:1fr;gap:38px;padding:55px 0 70px}
+.demo-glass-refraction-orb .stage{height:62vw;min-height:340px;max-height:540px}
+.demo-glass-refraction-orb .copy p{max-width:560px}
+}
+@media(max-width:520px){
+.demo-glass-refraction-orb .shell{padding:0 19px}
+.demo-glass-refraction-orb header{height:64px}
+.demo-glass-refraction-orb nav{gap:13px}
+.demo-glass-refraction-orb nav a:first-child{display:none}
+.demo-glass-refraction-orb .hero{padding:43px 0 55px;gap:29px}
+.demo-glass-refraction-orb h1{font-size:clamp(40px,12.5vw,60px)}
+.demo-glass-refraction-orb .copy p{font-size:13px}
+.demo-glass-refraction-orb .stage{min-height:300px;height:84vw}
+.demo-glass-refraction-orb .finish{margin-top:27px}
+.demo-glass-refraction-orb .note{flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){
+html.demo-glass-refraction-orb{scroll-behavior:auto}
+}

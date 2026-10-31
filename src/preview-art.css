@@ -69,3 +69,22 @@
 .traffic-preview{background:linear-gradient(180deg,#101824 0%,#11151d 52%,#080a0e 100%)}
 .traffic-preview-road{position:absolute;left:31%;right:27%;top:22%;bottom:-35%;transform:perspective(90px) rotateX(20deg);background:linear-gradient(90deg,#10141b,#242b35 48%,#11151b);clip-path:polygon(34% 0,66% 0,100% 100%,0 100%)}
 .traffic-preview-trails{position:absolute;left:30%;right:20%;top:53%;height:3px;transform:rotate(-8deg);background:linear-gradient(90deg,transparent,#ff514c 25%,#ffc66e 43%,#7cbcff 63%,transparent);filter:drop-shadow(0 0 5px #ff6a54);box-shadow:0 8px 0 -1px #ffb56a,0 15px 0 -1px #6baaff}
+
+/* Motion-led hero card previews */
+.curtain-preview { background:#0b0a0a; }
+.curtain-frame { position:absolute; right:22px; top:24px; bottom:24px; width:52%; border-radius:9px; background:radial-gradient(circle at 70% 25%,#ff6b3d,#ff6b3d00 60%),radial-gradient(circle at 25% 85%,#5662ff,#5662ff00 62%),#16110f; box-shadow:0 0 0 1px #ffffff1a; }
+.curtain-preview i { position:absolute; left:22px; height:6px; border-radius:3px; background:#f5f1ea; }
+.curtain-preview i:nth-of-type(1) { top:62px; width:34%; height:9px; }
+.curtain-preview i:nth-of-type(2) { top:80px; width:26%; height:9px; background:#76716a; }
+.glass-preview { background:repeating-linear-gradient(90deg,#0d1220 0 9px,#ff7a59 9px 10px,#0d1220 10px 19px,#7bdff2 19px 20px,#0d1220 20px 31px,#b28dff 31px 32px),#0d1220; }
+.glass-orb { width:82px; height:82px; border-radius:50%; background:radial-gradient(circle at 32% 28%,#ffffffcc,#ffffff22 38%,#9fb4d833 70%); border:1px solid #ffffff55; box-shadow:0 0 30px #8fa8d455,inset 0 0 22px #ffffff33; backdrop-filter:blur(3px) saturate(1.5); }
+.aurora-preview { background:linear-gradient(180deg,#05070c,#0b1222); }
+.aurora-glow { position:absolute; inset:18% -10% 8%; background:radial-gradient(60% 45% at 30% 60%,#33ffb0aa,transparent 70%),radial-gradient(55% 40% at 70% 45%,#2f7bffaa,transparent 70%),radial-gradient(40% 35% at 50% 30%,#b46bff77,transparent 70%); filter:blur(8px); }
+.morph-preview { background:radial-gradient(ellipse at 50% 50%,#1e2332,#07080c 75%); }
+.morph-ring { width:96px; height:44px; border-radius:50%; border:6px dotted #b28dffcc; transform:rotate(-12deg); }
+.morph-dots { position:absolute; width:96px; height:96px; border-radius:50%; border:1px dotted #7bdff2aa; transform:scaleY(.4) rotate(20deg); }
+.ribbon-preview { background:radial-gradient(ellipse at 50% 46%,#f7f5ef,#e1ddd4); }
+.ribbon-preview div { position:absolute; left:14%; right:14%; height:14px; border-radius:50%; opacity:.9; }
+.ribbon-a { top:44%; background:linear-gradient(90deg,#d9c3ff,#bfe6ff); transform:rotate(-12deg); }
+.ribbon-b { top:52%; background:linear-gradient(90deg,#ffd9c2,#d3ffe8); transform:rotate(8deg); }
+.ribbon-c { top:48%; height:10px!important; background:linear-gradient(90deg,#ffd0ea,#d9d6ff); transform:rotate(-2deg); }

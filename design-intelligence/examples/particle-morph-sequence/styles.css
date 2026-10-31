@@ -1,0 +1,64 @@
+/* Styles for the particle-morph-sequence demo. Scoped under .demo-particle-morph-sequence so they cannot affect other pages in the shared build. */
+html.demo-particle-morph-sequence{color-scheme:dark;--bg:#07080c;--text:#f4f5f7;--muted:#a1a7b3;--dim:#6e7480;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+.demo-particle-morph-sequence *{box-sizing:border-box}
+html.demo-particle-morph-sequence{scroll-behavior:smooth}
+.demo-particle-morph-sequence body{margin:0;min-width:320px;min-height:100vh;background:var(--bg);color:var(--text)}
+.demo-particle-morph-sequence a{color:inherit;text-decoration:none}
+.demo-particle-morph-sequence a:focus-visible,.demo-particle-morph-sequence button:focus-visible{outline:2px solid #fff;outline-offset:3px;border-radius:6px}
+.demo-particle-morph-sequence .shell{max-width:1440px;margin:auto;padding:0 5vw}
+.demo-particle-morph-sequence header{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff12}
+.demo-particle-morph-sequence .brand{font-size:13px;font-weight:650;letter-spacing:-.02em;display:flex;gap:10px;align-items:center}
+.demo-particle-morph-sequence .mark{width:23px;height:23px;border:1px solid #555d6b;border-radius:7px;display:grid;place-items:center;font-size:11px}
+.demo-particle-morph-sequence nav{display:flex;gap:24px;color:#9ba1ad;font-size:11px}
+.demo-particle-morph-sequence nav a:hover{color:#fff}
+.demo-particle-morph-sequence .hero{min-height:calc(100vh - 77px);display:grid;grid-template-columns:minmax(300px,.86fr) minmax(0,1.14fr);align-items:center;gap:clamp(35px,6vw,100px);padding:70px 0 90px}
+.demo-particle-morph-sequence .copy{position:relative;z-index:2;max-width:540px}
+.demo-particle-morph-sequence .eyebrow{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#aeb6c5;display:flex;align-items:center;gap:10px;margin-bottom:24px}
+.demo-particle-morph-sequence .eyebrow:before{content:"";width:19px;height:1px;background:#8e9aac}
+.demo-particle-morph-sequence h1{font-size:clamp(42px,5.6vw,78px);line-height:.98;letter-spacing:-.06em;font-weight:560;margin:0 0 23px}
+.demo-particle-morph-sequence .copy p{font-size:15px;line-height:1.8;color:#a5aab5;max-width:440px;margin:0 0 30px}
+.demo-particle-morph-sequence .actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.demo-particle-morph-sequence .primary{padding:12px 17px;background:#f4f5f7;color:#090a0d;border-radius:6px;font-size:11px;font-weight:650}
+.demo-particle-morph-sequence .secondary{font-size:11px;color:#b0b5c0;padding:10px 3px}
+.demo-particle-morph-sequence .states{margin-top:38px;padding-top:17px;border-top:1px solid #ffffff18}
+.demo-particle-morph-sequence .states legend{padding:0;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#717887;margin-bottom:12px}
+.demo-particle-morph-sequence .states fieldset{border:0;margin:0;padding:0;display:flex;gap:8px;flex-wrap:wrap}
+.demo-particle-morph-sequence .chip{position:relative}
+.demo-particle-morph-sequence .chip input{position:absolute;opacity:0;inset:0;cursor:pointer;margin:0}
+.demo-particle-morph-sequence .chip span{display:block;padding:8px 14px;border:1px solid #ffffff24;border-radius:999px;font-size:11px;color:#b6bcc8;transition:border-color .2s,color .2s,background .2s}
+.demo-particle-morph-sequence .chip input:checked+span{border-color:#e9edf5;color:#fff;background:#ffffff10}
+.demo-particle-morph-sequence .chip input:focus-visible+span{outline:2px solid #fff;outline-offset:3px}
+.demo-particle-morph-sequence .copy .caption{margin:16px 0 0;min-height:22px;max-width:none;font-size:12px;line-height:1.5;color:#8f97a6}
+.demo-particle-morph-sequence .stage{height:min(70vh,640px);min-height:390px;position:relative;border:1px solid #ffffff16;border-radius:15px;overflow:hidden;background:radial-gradient(ellipse at 50% 48%,#1e2332 0,#0e1119 46%,#07080c 84%);isolation:isolate}
+.demo-particle-morph-sequence canvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
+.demo-particle-morph-sequence .fallback-art{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.demo-particle-morph-sequence .stage.is-live .fallback-art{display:none}
+.demo-particle-morph-sequence .fallback-art:before{content:"";width:46%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#9fb4d833 0,#9fb4d80f 55%,transparent 72%);box-shadow:0 0 90px #8fa8d41c}
+.demo-particle-morph-sequence .stage-label{position:absolute;z-index:2;left:20px;bottom:17px;color:#9aa2b0;font-size:9px;letter-spacing:.13em;text-transform:uppercase}
+.demo-particle-morph-sequence .stage-index{position:absolute;z-index:2;right:20px;top:17px;color:#707987;font:10px ui-monospace,monospace}
+.demo-particle-morph-sequence .pause{position:absolute;z-index:3;left:20px;top:14px;padding:6px 11px;border:1px solid #ffffff26;border-radius:999px;background:#07080c99;color:#b6bcc8;font:inherit;font-size:10px;cursor:pointer}
+.demo-particle-morph-sequence .pause:hover{color:#fff;border-color:#ffffff55}
+.demo-particle-morph-sequence .status{position:absolute;z-index:3;right:18px;bottom:15px;color:#77808f;font-size:9px}
+.demo-particle-morph-sequence .note{border-top:1px solid #ffffff14;padding:18px 0 28px;color:#727987;font-size:10px;display:flex;justify-content:space-between;gap:18px}
+.demo-particle-morph-sequence .note a{color:#b8bec9}
+@media(max-width:850px){
+.demo-particle-morph-sequence .hero{grid-template-columns:1fr;gap:38px;padding:55px 0 70px}
+.demo-particle-morph-sequence .stage{height:70vw;min-height:340px;max-height:560px}
+.demo-particle-morph-sequence .copy p{max-width:560px}
+}
+@media(max-width:520px){
+.demo-particle-morph-sequence .shell{padding:0 19px}
+.demo-particle-morph-sequence header{height:64px}
+.demo-particle-morph-sequence nav{gap:13px}
+.demo-particle-morph-sequence nav a:first-child{display:none}
+.demo-particle-morph-sequence .hero{padding:43px 0 55px;gap:29px}
+.demo-particle-morph-sequence h1{font-size:clamp(40px,12.5vw,60px)}
+.demo-particle-morph-sequence .copy p{font-size:13px}
+.demo-particle-morph-sequence .stage{min-height:300px;height:92vw}
+.demo-particle-morph-sequence .states{margin-top:27px}
+.demo-particle-morph-sequence .note{flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){
+html.demo-particle-morph-sequence{scroll-behavior:auto}
+.demo-particle-morph-sequence .pause{display:none}
+}

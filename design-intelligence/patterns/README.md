@@ -25,7 +25,7 @@ Patterns describe reusable design decisions at the level of composition, hierarc
 
 ## Hero collection
 
-Sixteen implemented patterns form the current hero collection. The first ten establish common composition approaches; the additional five explore advanced Three.js/WebGL motion. They are a curated starting set, not a quota or a claim of universal best practice.
+Twenty-one implemented patterns form the current hero collection. The first ten establish common composition approaches; the next five explore advanced Three.js/WebGL motion; the traffic-light painting hero is a canvas-based light-trail study; and the latest five (curtain reveal, glass refraction orb, aurora shader veil, particle morph sequence, ribbon helix flow) pair GSAP motion with art-directed Three.js or scroll-driven scenes. They are a curated starting set, not a quota or a claim of universal best practice.
 
 | Pattern | Best suited to | Demo |
 |---|---|---|
@@ -45,6 +45,11 @@ Sixteen implemented patterns form the current hero collection. The first ten est
 | [Product prism stage](./heroes/product-prism-stage.md) | A central product with a small supporting capability ecosystem | [Open](../examples/product-prism-stage/index.html) |
 | [Spatial portal gateway](./heroes/spatial-portal-gateway.md) | An invitation into a new product or brand environment | [Open](../examples/spatial-portal-gateway/index.html) |
 | [Traffic light painting](./heroes/traffic-light-painting-hero.md) | Photography products and visual stories about long exposure | [Open](../examples/traffic-light-painting-hero/index.html) |
+| [Curtain reveal masthead](./heroes/gsap-curtain-reveal.md) | A narrative with a clear before and after | [Open](../examples/gsap-curtain-reveal/index.html) |
+| [Glass refraction orb](./heroes/glass-refraction-orb.md) | Clarity, precision, or optics as the idea | [Open](../examples/glass-refraction-orb/index.html) |
+| [Aurora shader veil](./heroes/aurora-shader-veil.md) | Mood and brand feeling over a literal product | [Open](../examples/aurora-shader-veil/index.html) |
+| [Particle morph sequence](./heroes/particle-morph-sequence.md) | One subject with a few named states | [Open](../examples/particle-morph-sequence/index.html) |
+| [Ribbon helix flow](./heroes/ribbon-helix-flow.md) | Craft, softness, and a premium finish | [Open](../examples/ribbon-helix-flow/index.html) |
 
 See [example instructions](../examples/README.md) and [validation status](../validation/hero-patterns-review.md).
 

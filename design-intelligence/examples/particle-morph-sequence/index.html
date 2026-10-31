@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en" class="demo-particle-morph-sequence">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07080c">
+  <meta name="description" content="A single particle system reshapes itself between four forms. Use this composition when one product or idea has several meaningful states to show.">
+  <title>Particle Morph Sequence · DE9ER</title>
+  <link rel="stylesheet" href="../../../assets/css/tailwind.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.187.0/build/three.module.js"}}
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <header><a class="brand" href="../../../index.html"><span class="mark">D</span> DESIGN INTELLIGENCE</a><nav aria-label="Demo navigation"><a href="../../../index.html">Library</a><a href="../../patterns/heroes/particle-morph-sequence.md">Pattern notes</a></nav></header>
+    <main class="hero">
+      <section class="copy" aria-labelledby="hero-title">
+        <div class="eyebrow">One system, many states</div>
+        <h1 id="hero-title">Shape-shift<br>your story.</h1>
+        <p>A single particle system reshapes itself between four forms. Use this composition when one product or idea has several meaningful states worth showing.</p>
+        <div class="actions"><a class="primary" href="#details">Explore the states</a><a class="secondary" href="../../../index.html">Explore the library ↗</a></div>
+        <div class="states"><fieldset><legend>Form</legend>
+          <label class="chip"><input type="radio" name="form" value="0" checked><span>Network</span></label>
+          <label class="chip"><input type="radio" name="form" value="1"><span>Ring</span></label>
+          <label class="chip"><input type="radio" name="form" value="2"><span>Strand</span></label>
+          <label class="chip"><input type="radio" name="form" value="3"><span>Field</span></label>
+        </fieldset>
+        <p class="caption" id="caption" aria-live="polite">Everything connected, on one shared surface.</p></div>
+      </section>
+      <section class="stage" id="scene-stage" aria-label="Particle morph scene">
+        <div class="fallback-art" aria-hidden="true"></div>
+        <canvas id="scene-canvas" aria-hidden="true"></canvas>
+        <button class="pause" id="pause" type="button" aria-pressed="false">Pause sequence</button>
+        <span class="stage-index">04 / 05</span>
+        <span class="stage-label" id="stage-label">Form 01 · Network</span>
+        <span class="status" id="scene-status" role="status">Static preview</span>
+      </section>
+    </main>
+    <section class="note" id="details"><span>Three.js 0.187.0 GPU particles with a GSAP-timed morph between four target shapes.</span><span>Original demo · CSS fallback · Reduced-motion support</span></section>
+  </div>
+  <script type="module">
+    import * as THREE from 'three';
+
+    const gsap = window.gsap;
+    const stage = document.querySelector('#scene-stage');
+    const canvas = document.querySelector('#scene-canvas');
+    const status = document.querySelector('#scene-status');
+    const caption = document.querySelector('#caption');
+    const label = document.querySelector('#stage-label');
+    const pauseBtn = document.querySelector('#pause');
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const pointer = { x: 0, y: 0, tx: 0, ty: 0 };
+    const FORMS = [
+      { name: 'Network', text: 'Everything connected, on one shared surface.' },
+      { name: 'Ring', text: 'A closed loop: signals that return to where they started.' },
+      { name: 'Strand', text: 'Two threads twisting into a single structure.' },
+      { name: 'Field', text: 'A calm plane where small changes ripple outward.' }
+    ];
+    let renderer, visible = true, tabActive = true, disposed = false, looping = false, lastT = 3;
+
+    try {
+      renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: true, powerPreference: 'high-performance' });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
+      renderer.setClearColor(0x000000, 0);
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 60);
+      camera.position.set(0, 0, 9.2);
+
+      // Deterministic random so every visit shows the same composition.
+      let seed = 42; const rand = () => { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
+      const gauss = () => (rand() + rand() + rand() + rand() - 2) * 0.5;
+      const COUNT = window.innerWidth < 700 ? 7000 : 14000;
+      const shapes = [0, 1, 2, 3].map(() => new Float32Array(COUNT * 3));
+      const seeds = new Float32Array(COUNT);
+      for (let i = 0; i < COUNT; i++) {
+        seeds[i] = rand();
+        // 0 · Network: a shell of points on a sphere with a few denser hubs.
+        { const y = 1 - (i / (COUNT - 1)) * 2, r = Math.sqrt(1 - y * y), th = i * 2.399963229728653, R = 2.0 + gauss() * 0.06;
+          shapes[0].set([Math.cos(th) * r * R, y * R, Math.sin(th) * r * R], i * 3); }
+        // 1 · Ring: a torus.
+        { const u = rand() * Math.PI * 2, v = rand() * Math.PI * 2, R = 1.85, r = 0.62 + gauss() * 0.04;
+          shapes[1].set([(R + r * Math.cos(v)) * Math.cos(u), r * Math.sin(v), (R + r * Math.cos(v)) * Math.sin(u)], i * 3); }
+        // 2 · Strand: a double helix with rungs.
+        { const s = rand() * 2 - 1, y = s * 2.7, a = s * Math.PI * 4, rad = 1.0;
+          if (rand() < 0.16) { const t = rand(); const x1 = Math.cos(a) * rad, z1 = Math.sin(a) * rad;
+            shapes[2].set([x1 * (1 - 2 * t), y, z1 * (1 - 2 * t)], i * 3); }
+          else { const strand = i % 2 ? Math.PI : 0;
+            shapes[2].set([Math.cos(a + strand) * rad + gauss() * 0.07, y + gauss() * 0.05, Math.sin(a + strand) * rad + gauss() * 0.07], i * 3); } }
+        // 3 · Field: a rippling plane.
+        { const x = (rand() * 2 - 1) * 3.1, z = (rand() * 2 - 1) * 3.1;
+          shapes[3].set([x, 0.5 * Math.sin(x * 1.5) * Math.cos(z * 1.5) + gauss() * 0.03, z], i * 3); }
+      }
+      const geometry = new THREE.BufferGeometry();
+      geometry.setAttribute('position', new THREE.BufferAttribute(shapes[0], 3));
+      geometry.setAttribute('aS1', new THREE.BufferAttribute(shapes[1], 3));
+      geometry.setAttribute('aS2', new THREE.BufferAttribute(shapes[2], 3));
+      geometry.setAttribute('aS3', new THREE.BufferAttribute(shapes[3], 3));
+      geometry.setAttribute('aSeed', new THREE.BufferAttribute(seeds, 1));
+      geometry.boundingSphere = new THREE.Sphere(new THREE.Vector3(), 6);
+
+      const uniforms = {
+        uFrom: { value: 0 }, uTo: { value: 0 }, uMix: { value: 0 }, uTime: { value: 0 }, uPixel: { value: renderer.getPixelRatio() }, uSize: { value: 34 },
+        uC1: { value: new THREE.Color('#7bdff2') }, uC2: { value: new THREE.Color('#b28dff') }, uC3: { value: new THREE.Color('#ff9a7a') }
+      };
+      const material = new THREE.ShaderMaterial({
+        uniforms, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+        vertexShader: `
+          attribute vec3 aS1; attribute vec3 aS2; attribute vec3 aS3; attribute float aSeed;
+          uniform float uFrom, uTo, uMix, uTime, uPixel, uSize; uniform vec3 uC1, uC2, uC3;
+          varying vec3 vColor; varying float vAlpha;
+          float wt(float k){ return (1.0 - uMix) * step(abs(uFrom - k), 0.5) + uMix * step(abs(uTo - k), 0.5); }
+          void main(){
+            vec3 p = position * wt(0.0) + aS1 * wt(1.0) + aS2 * wt(2.0) + aS3 * wt(3.0);
+            float trans = sin(3.14159265 * uMix);
+            float ang = trans * (aSeed - 0.5) * 3.2;
+            float cs = cos(ang), sn = sin(ang);
+            p.xz = mat2(cs, -sn, sn, cs) * p.xz;
+            p += normalize(p + vec3(0.001)) * trans * (0.3 + aSeed * 0.9);
+            p += vec3(sin(uTime * 0.6 + aSeed * 20.0), cos(uTime * 0.5 + aSeed * 30.0), sin(uTime * 0.4 + aSeed * 10.0)) * 0.03;
+            vec4 mv = modelViewMatrix * vec4(p, 1.0);
+            gl_Position = projectionMatrix * mv;
+            gl_PointSize = uSize * uPixel * (0.45 + aSeed * 0.9) / -mv.z;
+            vAlpha = 0.35 + 0.65 * aSeed;
+            vColor = mix(mix(uC1, uC2, aSeed), uC3, smoothstep(0.1, 1.0, p.y * 0.22 + 0.45) * 0.7);
+          }`,
+        fragmentShader: `
+          varying vec3 vColor; varying float vAlpha;
+          void main(){
+            float d = length(gl_PointCoord - 0.5);
+            float a = smoothstep(0.5, 0.0, d); a *= a;
+            gl_FragColor = vec4(vColor, a * vAlpha);
+            #include <colorspace_fragment>
+          }`
+      });
+      const points = new THREE.Points(geometry, material); points.frustumCulled = false;
+      const group = new THREE.Group(); group.add(points); scene.add(group);
+
+      function resize() {
+        const w = Math.max(1, stage.clientWidth), h = Math.max(1, stage.clientHeight);
+        renderer.setSize(w, h, false);
+        camera.aspect = w / h; camera.position.z = w / h < 1 ? 12.5 : 9.2; camera.updateProjectionMatrix();
+        requestRender();
+      }
+      function render(t) {
+        lastT = t; uniforms.uTime.value = t;
+        pointer.x += (pointer.tx - pointer.x) * 0.05; pointer.y += (pointer.ty - pointer.y) * 0.05;
+        group.rotation.y = t * 0.12 + pointer.x * 0.35;
+        group.rotation.x = 0.28 + pointer.y * 0.18;
+        renderer.render(scene, camera);
+      }
+      function requestRender() { if (!looping && !disposed) render(lastT); }
+      function syncLoop() {
+        const want = visible && tabActive && !reduced.matches && !disposed;
+        if (want && !looping) { renderer.setAnimationLoop(ms => render(3 + ms / 1000)); looping = true; }
+        else if (!want && looping) { renderer.setAnimationLoop(null); looping = false; render(lastT); }
+        status.textContent = reduced.matches ? 'Static frame · reduced motion' : 'Live 3D scene';
+      }
+
+      // ---- Morph choreography (GSAP) ----
+      let current = 0, pending = null, morphing = false, autoplay = !reduced.matches, autoCall = null;
+      const radios = [...document.querySelectorAll('input[name="form"]')];
+      function announce(i) { radios[i].checked = true; caption.textContent = FORMS[i].text; label.textContent = 'Form 0' + (i + 1) + ' · ' + FORMS[i].name; }
+      function morphTo(i) {
+        if (i === current && !morphing) return;
+        if (morphing) { pending = i; return; }
+        announce(i);
+        if (!gsap || reduced.matches) { uniforms.uFrom.value = uniforms.uTo.value = i; uniforms.uMix.value = 0; current = i; requestRender(); return; }
+        morphing = true; uniforms.uFrom.value = current; uniforms.uTo.value = i; uniforms.uMix.value = 0;
+        gsap.to(uniforms.uMix, { value: 1, duration: 2.1, ease: 'power3.inOut', onUpdate: requestRender, onComplete: () => {
+          uniforms.uFrom.value = i; uniforms.uTo.value = i; uniforms.uMix.value = 0; current = i; morphing = false; requestRender();
+          if (pending !== null) { const n = pending; pending = null; morphTo(n); } else scheduleNext();
+        } });
+      }
+      function scheduleNext() { if (autoCall) autoCall.kill(); if (!autoplay || !gsap) return; autoCall = gsap.delayedCall(2.6, () => { if (autoplay && visible && tabActive) morphTo((current + 1) % FORMS.length); else scheduleNext(); }); }
+      radios.forEach(r => r.addEventListener('change', () => { autoplay = false; pauseBtn.setAttribute('aria-pressed', 'true'); pauseBtn.textContent = 'Resume sequence'; if (autoCall) autoCall.kill(); morphTo(Number(r.value)); }));
+      pauseBtn.addEventListener('click', () => {
+        autoplay = !autoplay; pauseBtn.setAttribute('aria-pressed', String(!autoplay)); pauseBtn.textContent = autoplay ? 'Pause sequence' : 'Resume sequence';
+        if (autoplay && !morphing) scheduleNext(); else if (!autoplay && autoCall) autoCall.kill();
+      });
+
+      if (gsap && !reduced.matches) {
+        gsap.from(uniforms.uSize, { value: 0, duration: 2.2, ease: 'power3.out' });
+        gsap.from(group.scale, { x: 0.4, y: 0.4, z: 0.4, duration: 2.4, ease: 'expo.out' });
+        gsap.from('.eyebrow, h1, .copy > p, .actions, .states', { y: 24, opacity: 0, duration: 1, stagger: 0.09, ease: 'expo.out' });
+        scheduleNext();
+      }
+
+      new IntersectionObserver(e => { visible = e[0].isIntersecting; syncLoop(); }, { threshold: 0.02 }).observe(stage);
+      document.addEventListener('visibilitychange', () => { tabActive = !document.hidden; syncLoop(); });
+      reduced.addEventListener?.('change', () => { if (reduced.matches) { autoplay = false; if (autoCall) autoCall.kill(); } syncLoop(); });
+      stage.addEventListener('pointermove', e => { const r = stage.getBoundingClientRect(); pointer.tx = ((e.clientX - r.left) / r.width - 0.5) * 2; pointer.ty = ((e.clientY - r.top) / r.height - 0.5) * 2; });
+      stage.addEventListener('pointerleave', () => { pointer.tx = 0; pointer.ty = 0; });
+      new ResizeObserver(resize).observe(stage);
+      canvas.addEventListener('webglcontextlost', e => { e.preventDefault(); tabActive = false; status.textContent = 'WebGL paused · restore the tab to retry'; syncLoop(); });
+      canvas.addEventListener('webglcontextrestored', () => { tabActive = !document.hidden; syncLoop(); });
+      stage.classList.add('is-live');
+      resize(); syncLoop();
+      window.addEventListener('pagehide', () => { disposed = true; if (autoCall) autoCall.kill(); renderer.setAnimationLoop(null); geometry.dispose(); material.dispose(); renderer.dispose(); }, { once: true });
+    } catch (error) {
+      console.warn('Three.js scene unavailable; showing CSS fallback.', error);
+      status.textContent = '3D unavailable · CSS fallback active';
+      canvas.hidden = true;
+      pauseBtn.hidden = true;
+    }
+  </script>
+</body>
+</html>
