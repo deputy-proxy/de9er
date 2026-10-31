@@ -1,5 +1,7 @@
 # Working pattern examples
 
+[Open the searchable live gallery](https://deputy-proxy.github.io/de9er/) to preview all fifteen designs. Each card links to its standalone GitHub Pages demo.
+
 Each implemented pattern has an independent, runnable demonstration.
 
 ## Hero collection
