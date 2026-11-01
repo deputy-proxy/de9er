@@ -1,0 +1,56 @@
+/* Styles for the aurora-shader-veil demo. Scoped under .demo-aurora-shader-veil so they cannot affect other pages in the shared build. */
+html.demo-aurora-shader-veil{color-scheme:dark;--bg:#05070c;--text:#f4f6fa;--muted:#aab2c2;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+.demo-aurora-shader-veil *{box-sizing:border-box}
+html.demo-aurora-shader-veil{scroll-behavior:smooth}
+.demo-aurora-shader-veil body{margin:0;min-width:320px;background:var(--bg);color:var(--text)}
+.demo-aurora-shader-veil a{color:inherit;text-decoration:none}
+.demo-aurora-shader-veil a:focus-visible,.demo-aurora-shader-veil button:focus-visible{outline:2px solid #fff;outline-offset:3px;border-radius:6px}
+.demo-aurora-shader-veil .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;overflow:hidden;isolation:isolate;background:linear-gradient(180deg,#06080f,#0a1120 70%,#05070c)}
+.demo-aurora-shader-veil .fallback{position:absolute;inset:0;z-index:0;background:radial-gradient(60% 40% at 30% 62%,#2fe6a455,transparent 70%),radial-gradient(50% 36% at 72% 52%,#3a67ff55,transparent 70%),radial-gradient(40% 30% at 50% 40%,#b46bff33,transparent 70%)}
+.demo-aurora-shader-veil canvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:1}
+.demo-aurora-shader-veil .scrim{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(90deg,#05070ccc 0,#05070c66 38%,transparent 66%),linear-gradient(0deg,#05070cdd 0,transparent 32%)}
+.demo-aurora-shader-veil header{position:relative;z-index:4;height:76px;padding:0 5vw;display:flex;align-items:center;justify-content:space-between}
+.demo-aurora-shader-veil .brand{font-size:13px;font-weight:650;letter-spacing:-.02em;display:flex;gap:10px;align-items:center}
+.demo-aurora-shader-veil .mark{width:23px;height:23px;border:1px solid #ffffff55;border-radius:7px;display:grid;place-items:center;font-size:11px}
+.demo-aurora-shader-veil nav{display:flex;gap:24px;color:#b6bdcb;font-size:11px}
+.demo-aurora-shader-veil nav a:hover{color:#fff}
+.demo-aurora-shader-veil .copy{position:relative;z-index:4;flex:1;display:flex;flex-direction:column;justify-content:center;padding:30px 5vw 140px;max-width:min(760px,100%)}
+.demo-aurora-shader-veil .eyebrow{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#c3cad8;display:flex;align-items:center;gap:10px;margin-bottom:24px}
+.demo-aurora-shader-veil .eyebrow:before{content:"";width:19px;height:1px;background:#c3cad8}
+.demo-aurora-shader-veil h1{font-size:clamp(46px,7.4vw,112px);line-height:.95;letter-spacing:-.065em;font-weight:560;margin:0 0 26px}
+.demo-aurora-shader-veil .word{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .04em .12em 0}
+.demo-aurora-shader-veil .word>span{display:inline-block}
+.demo-aurora-shader-veil .copy p{font-size:16px;line-height:1.75;color:var(--muted);max-width:460px;margin:0 0 32px}
+.demo-aurora-shader-veil .actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.demo-aurora-shader-veil .primary{padding:13px 19px;background:#f4f6fa;color:#05070c;border-radius:999px;font-size:11px;font-weight:650}
+.demo-aurora-shader-veil .secondary{font-size:11px;color:#c3cad8;padding:10px 3px}
+.demo-aurora-shader-veil .controls{position:absolute;z-index:4;left:5vw;right:5vw;bottom:34px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding-top:16px;border-top:1px solid #ffffff1c}
+.demo-aurora-shader-veil .controls legend{padding:0;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#8e97a8;margin-bottom:10px}
+.demo-aurora-shader-veil fieldset{border:0;margin:0;padding:0;display:flex;gap:8px;flex-wrap:wrap}
+.demo-aurora-shader-veil .chip{position:relative}
+.demo-aurora-shader-veil .chip input{position:absolute;opacity:0;inset:0;cursor:pointer;margin:0}
+.demo-aurora-shader-veil .chip span{display:flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid #ffffff2a;border-radius:999px;font-size:11px;color:#c0c7d4;background:#05070c66;backdrop-filter:blur(6px);transition:border-color .2s,color .2s,background .2s}
+.demo-aurora-shader-veil .chip i{width:9px;height:9px;border-radius:50%}
+.demo-aurora-shader-veil .chip input:checked+span{border-color:#f2f5fb;color:#fff;background:#ffffff1c}
+.demo-aurora-shader-veil .chip input:focus-visible+span{outline:2px solid #fff;outline-offset:3px}
+.demo-aurora-shader-veil .meta{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#8e97a8;display:flex;gap:14px;align-items:center}
+.demo-aurora-shader-veil .status{letter-spacing:.04em;text-transform:none;font-size:10px}
+.demo-aurora-shader-veil .note{position:relative;z-index:4;padding:18px 5vw 26px;border-top:1px solid #ffffff14;background:var(--bg);color:#727987;font-size:10px;display:flex;justify-content:space-between;gap:18px}
+.demo-aurora-shader-veil .note a{color:#b8bec9}
+@media(max-width:850px){
+.demo-aurora-shader-veil .scrim{background:linear-gradient(0deg,#05070cee 0,#05070c88 45%,#05070c33 100%)}
+.demo-aurora-shader-veil .copy{justify-content:flex-end;padding-bottom:170px}
+.demo-aurora-shader-veil .controls{bottom:24px}
+}
+@media(max-width:520px){
+.demo-aurora-shader-veil header{height:64px}
+.demo-aurora-shader-veil nav{gap:13px}
+.demo-aurora-shader-veil nav a:first-child{display:none}
+.demo-aurora-shader-veil h1{font-size:clamp(44px,14vw,64px)}
+.demo-aurora-shader-veil .copy p{font-size:14px}
+.demo-aurora-shader-veil .note{flex-direction:column}
+.demo-aurora-shader-veil .meta{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+html.demo-aurora-shader-veil{scroll-behavior:auto}
+}

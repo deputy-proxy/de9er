@@ -48,3 +48,11 @@ These demos should remain examples of implementation scaffolding only, not exemp
 
 ## Lifecycle status
 All fifteen patterns remain implemented, not validated. The five Three.js demos specifically fail the current visual-quality gate and require redesign before publication as high-quality examples. A source-level review is not a browser or visual validation.
+
+## Motion-led hero additions (2026-10-31)
+
+Five further heroes were added with GSAP 3.13.0 and, for four of them, Three.js 0.187.0: `gsap-curtain-reveal`, `glass-refraction-orb`, `aurora-shader-veil`, `particle-morph-sequence`, `ribbon-helix-flow`. Each has a specific art direction (scroll-driven frame expansion; refractive material over a light-line field; fragment-shader atmosphere; GPU shape morphing; iridescent silk on a paper canvas) rather than a generic primitive.
+
+Checks performed, all in headless Chromium with software WebGL against pinned local copies of the libraries: visual inspection of desktop, tablet, and phone widths; no console errors or uncaught exceptions; no horizontal overflow; reduced-motion rendering; headline visibility with the CDN blocked; and exercise of each interactive control. Two defects found and fixed during this pass are recorded in the pattern notes (computed clip-path shorthand misaligning a GSAP tween; a removed Three.js iridescence property).
+
+Not performed: real-device testing, frame-rate and thermal measurement, screen-reader testing, and measured contrast over every animation frame. These patterns remain `implemented`, not `validated`, and software rendering is not evidence of real-GPU performance.

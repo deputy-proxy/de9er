@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en" class="demo-ribbon-helix-flow">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ebe9e3">
+  <meta name="description" content="Iridescent silk ribbons braid and drift through space on a light canvas. Use this composition when craft, softness, and a premium finish are the message.">
+  <title>Ribbon Helix Flow · DE9ER</title>
+  <link rel="stylesheet" href="../../../assets/css/tailwind.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.187.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.187.0/examples/jsm/"}}
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <header><a class="brand" href="../../../index.html"><span class="mark">D</span> DESIGN INTELLIGENCE</a><nav aria-label="Demo navigation"><a href="../../../index.html">Library</a><a href="../../patterns/heroes/ribbon-helix-flow.md">Pattern notes</a></nav></header>
+    <main class="hero">
+      <section class="copy" aria-labelledby="hero-title">
+        <div class="eyebrow">Craft in continuous motion</div>
+        <h1 id="hero-title">Threads of<br>one idea.</h1>
+        <p>Iridescent silk ribbons braid and drift through space on a light canvas. Use this composition when craft, softness, and a premium finish are the message.</p>
+        <div class="actions"><a class="primary" href="#details">Follow the thread</a><a class="secondary" href="../../../index.html">Explore the library ↗</a></div>
+        <ul class="specs" aria-label="Composition notes"><li><b>Procedural</b>Live geometry</li><li><b>Iridescent</b>Physical finish</li><li><b>Light</b>Paper canvas</li></ul>
+      </section>
+      <section class="stage" id="scene-stage" aria-label="Iridescent ribbon scene">
+        <div class="fallback-art" aria-hidden="true"></div>
+        <canvas id="scene-canvas" aria-hidden="true"></canvas>
+        <button class="pause" id="pause" type="button" aria-pressed="false">Pause motion</button>
+        <span class="stage-index">05 / 05</span>
+        <span class="stage-label">Procedural silk ribbons</span>
+        <span class="status" id="scene-status" role="status">Static preview</span>
+      </section>
+    </main>
+    <section class="note" id="details"><span>Three.js 0.187.0 procedural ribbons with a GSAP draw-in and live-updating geometry.</span><span>Original demo · CSS fallback · Reduced-motion support</span></section>
+  </div>
+  <script type="module">
+    import * as THREE from 'three';
+    import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+    const gsap = window.gsap;
+    const stage = document.querySelector('#scene-stage');
+    const canvas = document.querySelector('#scene-canvas');
+    const status = document.querySelector('#scene-status');
+    const pauseBtn = document.querySelector('#pause');
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const pointer = { x: 0, y: 0, tx: 0, ty: 0 };
+    let renderer, visible = true, tabActive = true, userPaused = false, disposed = false, looping = false, lastT = 4, clockT = 4, lastMs = 0;
+
+    try {
+      renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+      renderer.setClearColor(0x000000, 0);
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.0;
+
+      const scene = new THREE.Scene();
+      const pmrem = new THREE.PMREMGenerator(renderer);
+      scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+      scene.environmentIntensity = 1.1;
+      pmrem.dispose();
+      const key = new THREE.DirectionalLight(0xffffff, 1.4); key.position.set(3, 4, 5); scene.add(key);
+
+      const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 60);
+      camera.position.set(0, 0.2, 11);
+
+      const RIBBONS = window.innerWidth < 700 ? 6 : 9, SEG = 150;
+      const tints = ['#e3d1ff', '#cbe9ff', '#ffe0cc', '#d3ffe8', '#ffd0ea', '#d9d6ff', '#ffeec2', '#c6f1ff', '#f0d1ff'];
+      const group = new THREE.Group(); scene.add(group);
+      const ribbons = [];
+      const idx = []; for (let j = 0; j < SEG; j++) { const a = j * 2; idx.push(a, a + 1, a + 2, a + 1, a + 3, a + 2); }
+      const c = new THREE.Vector3(), c2 = new THREE.Vector3(), T = new THREE.Vector3(), N1 = new THREE.Vector3(), N2 = new THREE.Vector3(), B = new THREE.Vector3();
+      const ref = new THREE.Vector3(0, 0, 1);
+
+      function center(out, u, t, k) {
+        const ph = k * 0.72, amp = 0.95 + 0.22 * Math.sin(k * 1.7);
+        out.set((u - 0.5) * 4.7,
+          Math.sin(u * 4.6 + t * 0.45 + ph) * amp + Math.sin(u * 11.0 - t * 0.7 + k) * 0.11,
+          Math.cos(u * 4.2 + t * 0.38 + ph) * amp + Math.cos(u * 9.0 + t * 0.55 + k * 2.0) * 0.1);
+        return out;
+      }
+      function update(r, t) {
+        const pos = r.geometry.attributes.position.array, k = r.k;
+        for (let j = 0; j <= SEG; j++) {
+          const u = j / SEG;
+          center(c, u, t, k); center(c2, Math.min(1, u + 0.004), t, k);
+          T.subVectors(c2, c); if (T.lengthSq() < 1e-10) { center(c2, u, t, k); T.subVectors(c, c2.set(c.x - 0.01, c.y, c.z)); } T.normalize();
+          N1.crossVectors(T, ref).normalize(); N2.crossVectors(T, N1).normalize();
+          const th = u * 6.0 + t * 0.32 + k * 1.3;
+          B.copy(N1).multiplyScalar(Math.cos(th)).addScaledVector(N2, Math.sin(th));
+          const w = 0.24 * Math.pow(Math.sin(Math.PI * u), 0.65) * (0.8 + 0.25 * Math.sin(u * 7 + k));
+          const a = j * 6;
+          pos[a] = c.x - B.x * w; pos[a + 1] = c.y - B.y * w; pos[a + 2] = c.z - B.z * w;
+          pos[a + 3] = c.x + B.x * w; pos[a + 4] = c.y + B.y * w; pos[a + 5] = c.z + B.z * w;
+        }
+        r.geometry.attributes.position.needsUpdate = true; r.geometry.computeVertexNormals();
+      }
+      for (let k = 0; k < RIBBONS; k++) {
+        const g = new THREE.BufferGeometry();
+        g.setAttribute('position', new THREE.BufferAttribute(new Float32Array((SEG + 1) * 6), 3));
+        g.setIndex(idx);
+        const m = new THREE.MeshPhysicalMaterial({ color: tints[k % tints.length], metalness: 0.55, roughness: 0.22, iridescence: 1, iridescenceIOR: 1.7, iridescenceThicknessMinimum: 180, iridescenceThicknessMaximum: 620, clearcoat: 1, clearcoatRoughness: 0.12, side: THREE.DoubleSide });
+        const mesh = new THREE.Mesh(g, m); mesh.frustumCulled = false; mesh.userData.k = k;
+        const r = { mesh, geometry: g, k, draw: { p: 1 } }; ribbons.push(r); group.add(mesh); update(r, lastT);
+      }
+      group.rotation.set(0.28, -0.2, -0.16);
+
+      function setDraw(r) { r.geometry.setDrawRange(0, Math.floor(r.draw.p * SEG) * 6); }
+      function resize() {
+        const w = Math.max(1, stage.clientWidth), h = Math.max(1, stage.clientHeight);
+        renderer.setSize(w, h, false);
+        camera.aspect = w / h; camera.position.z = w / h < 1.1 ? 11 : 9.6; camera.updateProjectionMatrix();
+        requestRender();
+      }
+      function render(t) {
+        lastT = t;
+        pointer.x += (pointer.tx - pointer.x) * 0.05; pointer.y += (pointer.ty - pointer.y) * 0.05;
+        ribbons.forEach(r => update(r, t));
+        group.rotation.y = -0.2 + pointer.x * 0.28; group.rotation.x = 0.28 + pointer.y * 0.16;
+        renderer.render(scene, camera);
+      }
+      function requestRender() { if (!looping && !disposed) render(lastT); }
+      function frame(ms) { const dt = Math.min(0.05, Math.max(0, (ms - lastMs) / 1000)); lastMs = ms; clockT += dt; render(clockT); }
+      function syncLoop() {
+        const want = visible && tabActive && !userPaused && !reduced.matches && !disposed;
+        if (want && !looping) { lastMs = performance.now(); renderer.setAnimationLoop(frame); looping = true; }
+        else if (!want && looping) { renderer.setAnimationLoop(null); looping = false; render(lastT); }
+        status.textContent = reduced.matches ? 'Static frame · reduced motion' : (userPaused ? 'Paused' : 'Live 3D scene');
+      }
+      pauseBtn.addEventListener('click', () => { userPaused = !userPaused; pauseBtn.setAttribute('aria-pressed', String(userPaused)); pauseBtn.textContent = userPaused ? 'Resume motion' : 'Pause motion'; syncLoop(); });
+
+      if (gsap && !reduced.matches) {
+        ribbons.forEach((r, i) => { r.draw.p = 0; setDraw(r); gsap.to(r.draw, { p: 1, duration: 2.6, delay: 0.15 + i * 0.12, ease: 'power3.out', onUpdate: () => { setDraw(r); requestRender(); } }); });
+        gsap.from(camera.position, { y: 2.2, duration: 2.8, ease: 'expo.out', onUpdate: () => camera.lookAt(0, 0, 0) });
+        gsap.from(group.rotation, { z: 0.5, duration: 3, ease: 'expo.out' });
+        gsap.from('.eyebrow, h1, .copy p, .actions, .specs', { y: 24, opacity: 0, duration: 1, stagger: 0.09, ease: 'expo.out' });
+      }
+
+      new IntersectionObserver(e => { visible = e[0].isIntersecting; syncLoop(); }, { threshold: 0.02 }).observe(stage);
+      document.addEventListener('visibilitychange', () => { tabActive = !document.hidden; syncLoop(); });
+      reduced.addEventListener?.('change', syncLoop);
+      stage.addEventListener('pointermove', e => { const r = stage.getBoundingClientRect(); pointer.tx = ((e.clientX - r.left) / r.width - 0.5) * 2; pointer.ty = ((e.clientY - r.top) / r.height - 0.5) * 2; });
+      stage.addEventListener('pointerleave', () => { pointer.tx = 0; pointer.ty = 0; });
+      new ResizeObserver(resize).observe(stage);
+      canvas.addEventListener('webglcontextlost', e => { e.preventDefault(); tabActive = false; status.textContent = 'WebGL paused · restore the tab to retry'; syncLoop(); });
+      canvas.addEventListener('webglcontextrestored', () => { tabActive = !document.hidden; syncLoop(); });
+      stage.classList.add('is-live');
+      resize(); syncLoop();
+      window.addEventListener('pagehide', () => { disposed = true; renderer.setAnimationLoop(null); ribbons.forEach(r => { r.geometry.dispose(); r.mesh.material.dispose(); }); renderer.dispose(); }, { once: true });
+    } catch (error) {
+      console.warn('Three.js scene unavailable; showing CSS fallback.', error);
+      status.textContent = '3D unavailable · CSS fallback active';
+      canvas.hidden = true;
+      pauseBtn.hidden = true;
+    }
+  </script>
+</body>
+</html>

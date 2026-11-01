@@ -1,0 +1,65 @@
+/* Styles for the gsap-curtain-reveal demo. Scoped under .demo-gsap-curtain-reveal so they cannot affect other pages in the shared build. */
+html.demo-gsap-curtain-reveal{color-scheme:dark;--bg:#0b0a0a;--text:#f5f1ea;--muted:#aaa49a;--dim:#76716a;--line:#ffffff18;--accent:#ff6b3d;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+.demo-gsap-curtain-reveal *{box-sizing:border-box}
+.demo-gsap-curtain-reveal body{margin:0;min-width:320px;background:var(--bg);color:var(--text)}
+.demo-gsap-curtain-reveal a{color:inherit;text-decoration:none}
+.demo-gsap-curtain-reveal a:focus-visible,.demo-gsap-curtain-reveal button:focus-visible{outline:2px solid #fff;outline-offset:3px;border-radius:4px}
+.demo-gsap-curtain-reveal header{position:absolute;top:0;left:0;right:0;z-index:5;height:76px;padding:0 5vw;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.demo-gsap-curtain-reveal .brand{font-size:13px;font-weight:650;letter-spacing:-.02em;display:flex;gap:10px;align-items:center}
+.demo-gsap-curtain-reveal .mark{width:23px;height:23px;border:1px solid #5d5750;border-radius:7px;display:grid;place-items:center;font-size:11px}
+.demo-gsap-curtain-reveal nav{display:flex;gap:24px;color:#a49e94;font-size:11px}
+.demo-gsap-curtain-reveal nav a:hover{color:#fff}
+.demo-gsap-curtain-reveal .pin{position:relative;height:100svh;min-height:600px;overflow:hidden;isolation:isolate}
+.demo-gsap-curtain-reveal .stage{position:absolute;inset:0;z-index:0;overflow:hidden;clip-path:inset(17% 5% 14% 55% round 22px);background:#15110f}
+.demo-gsap-curtain-reveal .art{position:absolute;inset:-6%;background:
+      radial-gradient(46% 42% at 72% 28%,#ff6b3d 0,#ff6b3d00 70%),
+      radial-gradient(44% 52% at 22% 82%,#5662ff 0,#5662ff00 72%),
+      radial-gradient(34% 34% at 55% 55%,#ffc29a55 0,#ffc29a00 70%),
+      conic-gradient(from 210deg at 55% 55%,#14110f,#2c1a12,#14110f,#10152a,#14110f)}
+.demo-gsap-curtain-reveal .art:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,#ffffff0b 0 1px,transparent 1px 72px),repeating-linear-gradient(0deg,#ffffff08 0 1px,transparent 1px 72px)}
+.demo-gsap-curtain-reveal .orb{position:absolute;border-radius:50%;filter:blur(2px);mix-blend-mode:screen}
+.demo-gsap-curtain-reveal .orb.a{width:30%;aspect-ratio:1;left:12%;top:18%;background:radial-gradient(circle at 35% 30%,#ffd9bf,#ff6b3d 55%,#ff6b3d00 72%)}
+.demo-gsap-curtain-reveal .orb.b{width:22%;aspect-ratio:1;right:14%;bottom:16%;background:radial-gradient(circle at 40% 35%,#d7dcff,#5662ff 55%,#5662ff00 72%)}
+.demo-gsap-curtain-reveal .caption{position:absolute;z-index:2;left:5vw;bottom:13%;max-width:420px;padding:18px 20px;border:1px solid #ffffff2b;border-radius:14px;background:#0b0a0acc;backdrop-filter:blur(10px);opacity:0}
+.demo-gsap-curtain-reveal .caption b{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#d9cfc2;margin-bottom:8px}
+.demo-gsap-curtain-reveal .caption span{font-size:13px;line-height:1.7;color:#c4bdb2}
+.demo-gsap-curtain-reveal .copy{position:relative;z-index:2;height:100%;width:min(48%,700px);margin-left:5vw;display:flex;flex-direction:column;justify-content:center;padding:110px 0 120px}
+.demo-gsap-curtain-reveal .eyebrow{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#bdb4a7;display:flex;align-items:center;gap:10px;margin-bottom:24px}
+.demo-gsap-curtain-reveal .eyebrow:before{content:"";width:19px;height:1px;background:var(--accent)}
+.demo-gsap-curtain-reveal h1{font-size:clamp(36px,4.9vw,72px);line-height:1;letter-spacing:-.055em;font-weight:560;margin:0 0 24px}
+.demo-gsap-curtain-reveal .line{display:block;overflow:hidden;padding-bottom:.1em;white-space:nowrap}
+.demo-gsap-curtain-reveal .line>span{display:block}
+.demo-gsap-curtain-reveal .copy p{font-size:15px;line-height:1.8;color:var(--muted);max-width:440px;margin:0 0 30px}
+.demo-gsap-curtain-reveal .actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.demo-gsap-curtain-reveal .primary{display:inline-block;padding:13px 19px;background:var(--text);color:#0b0a0a;border-radius:999px;font-size:11px;font-weight:650;will-change:transform}
+.demo-gsap-curtain-reveal .secondary{font-size:11px;color:#bdb6aa;padding:10px 3px}
+.demo-gsap-curtain-reveal .stats{display:flex;gap:34px;margin-top:40px;padding-top:18px;border-top:1px solid var(--line)}
+.demo-gsap-curtain-reveal .stats div{min-width:0}
+.demo-gsap-curtain-reveal .stats strong{display:block;font-size:26px;font-weight:540;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.demo-gsap-curtain-reveal .stats span{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.demo-gsap-curtain-reveal .copy .stats-note{margin:10px 0 0;font-size:9px;line-height:1.4;color:var(--dim)}
+.demo-gsap-curtain-reveal .marquee{position:absolute;z-index:3;left:0;right:0;bottom:0;height:56px;display:flex;align-items:center;overflow:hidden;border-top:1px solid var(--line);background:#0b0a0acc;backdrop-filter:blur(8px)}
+.demo-gsap-curtain-reveal .track{display:flex;flex:none;white-space:nowrap;will-change:transform}
+.demo-gsap-curtain-reveal .track span{padding:0 22px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#a59f95}
+.demo-gsap-curtain-reveal .track span:nth-child(even){color:var(--accent);padding:0}
+.demo-gsap-curtain-reveal .note{padding:20px 5vw 30px;border-top:1px solid var(--line);color:#767068;font-size:10px;display:flex;justify-content:space-between;gap:18px}
+.demo-gsap-curtain-reveal .note a{color:#bdb6aa}
+.demo-gsap-curtain-reveal .note a:hover{color:#fff}
+@media(max-width:850px){
+.demo-gsap-curtain-reveal .copy{width:auto;margin:0 5vw;height:60%;padding:96px 0 0;justify-content:flex-start}
+.demo-gsap-curtain-reveal .stage{clip-path:inset(62% 5% 14% 5% round 18px)}
+.demo-gsap-curtain-reveal h1{font-size:clamp(32px,10vw,58px);margin-bottom:16px}
+.demo-gsap-curtain-reveal .copy p{font-size:13px;margin-bottom:20px}
+.demo-gsap-curtain-reveal .stats,.demo-gsap-curtain-reveal .stats-note{display:none}
+.demo-gsap-curtain-reveal .caption{left:5%;right:5%;max-width:none;bottom:18%}
+}
+@media(max-width:520px){
+.demo-gsap-curtain-reveal header{height:64px}
+.demo-gsap-curtain-reveal nav a:first-child{display:none}
+.demo-gsap-curtain-reveal nav{gap:13px}
+.demo-gsap-curtain-reveal .note{flex-direction:column}
+.demo-gsap-curtain-reveal .eyebrow{margin-bottom:16px}
+}
+
+/* ScrollTrigger pinning conflicts with smooth scrolling; the shared base enables it, so opt out here. */
+html.demo-gsap-curtain-reveal{scroll-behavior:auto}

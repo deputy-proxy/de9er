@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" class="demo-gsap-curtain-reveal">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0a0a">
+  <meta name="description" content="A masked headline rises into place, then a framed stage widens to full bleed as the visitor scrolls. Use this composition when the story has a clear before and after.">
+  <title>Curtain Reveal · DE9ER</title>
+  <link rel="stylesheet" href="../../../assets/css/tailwind.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+</head>
+<body>
+  <header><a class="brand" href="../../../index.html"><span class="mark">D</span> DESIGN INTELLIGENCE</a><nav aria-label="Demo navigation"><a href="../../../index.html">Library</a><a href="../../patterns/heroes/gsap-curtain-reveal.md">Pattern notes</a></nav></header>
+  <main>
+    <section class="pin" id="pin" aria-labelledby="hero-title">
+      <div class="stage" id="stage" aria-hidden="true"><div class="art" id="art"><i class="orb a"></i><i class="orb b"></i></div><div class="caption" id="caption"><b>Frame 03 · Resolved</b><span>The frame now holds the whole canvas. Supporting detail can enter here once the visitor has committed to the story.</span></div></div>
+      <div class="copy" id="copy">
+        <div class="eyebrow">A story that widens as you read</div>
+        <h1 id="hero-title"><span class="line"><span>Open the frame.</span></span><span class="line"><span>Let the story</span></span><span class="line"><span>widen.</span></span></h1>
+        <p>A masked headline rises into place, then the framed stage opens to full bleed as the visitor scrolls. Use it when the narrative has a clear before and after.</p>
+        <div class="actions"><a class="primary" id="cta" href="#details">Begin the reveal</a><a class="secondary" href="../../../index.html">Explore the library ↗</a></div>
+        <div class="stats" aria-label="Sample figures"><div><strong data-count="12">12</strong><span>Chapters</span></div><div><strong data-count="48">48</strong><span>Frames</span></div><div><strong data-count="3">3</strong><span>Minutes</span></div></div>
+        <p class="stats-note">Sample figures for layout only.</p>
+      </div>
+      <div class="marquee" aria-hidden="true"><div class="track" id="track"><span>Reveal</span><span>✦</span><span>Expand</span><span>✦</span><span>Resolve</span><span>✦</span><span>Continue</span><span>✦</span><span>Reveal</span><span>✦</span><span>Expand</span><span>✦</span><span>Resolve</span><span>✦</span><span>Continue</span><span>✦</span></div></div>
+    </section>
+    <section class="note" id="details"><span>GSAP 3.13.0 with ScrollTrigger · masked line reveal, scrubbed clip-path, pinned scene, magnetic action.</span><span>Original demo · CSS-built art · Reduced-motion support</span></section>
+  </main>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      var g = window.gsap, ST = window.ScrollTrigger;
+      if (!g || !ST) { return; }
+      g.registerPlugin(ST);
+      var track = document.getElementById('track');
+      var half = track.innerHTML; track.insertAdjacentHTML('beforeend', half);
+      var mm = g.matchMedia();
+      mm.add({ ok: '(prefers-reduced-motion: no-preference)', small: '(max-width: 850px)' }, function (ctx) {
+        var c = ctx.conditions;
+        if (!c.ok) { return; }
+        var start = c.small ? 'inset(62% 5% 14% 5% round 18px)' : 'inset(17% 5% 14% 55% round 22px)';
+        var end = 'inset(0% 0% 0% 0% round 0px)';
+
+        var intro = g.timeline({ defaults: { ease: 'expo.out' } });
+        intro.from('.line > span', { yPercent: 115, duration: 1.15, stagger: 0.12 }, 0.1)
+             .from('.eyebrow, .copy p, .actions, .stats', { y: 22, opacity: 0, duration: 0.9, stagger: 0.08 }, 0.45)
+             .from('#art', { scale: 1.22, opacity: 0, duration: 1.6 }, 0);
+
+        g.utils.toArray('[data-count]').forEach(function (el) {
+          var target = Number(el.dataset.count), o = { v: 0 };
+          g.to(o, { v: target, duration: 1.8, delay: 0.7, ease: 'power2.out', onUpdate: function () { el.textContent = Math.round(o.v); } });
+        });
+
+        g.to('.orb.a', { x: 24, y: -18, duration: 5, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+        g.to('.orb.b', { x: -20, y: 22, duration: 6.5, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+
+        var scroll = g.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: '#pin', start: 'top top', end: '+=90%', scrub: 0.6, pin: true, anticipatePin: 1 } });
+        scroll.fromTo('#stage', { clipPath: start }, { clipPath: end, duration: 1 }, 0)
+              .to('#art', { scale: 1.12, duration: 1 }, 0)
+              .to('#copy', { opacity: 0, yPercent: -10, duration: 0.45 }, 0)
+              .fromTo('#caption', { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.35 }, 0.62);
+
+        var loop = g.to(track, { xPercent: -50, duration: 30, ease: 'none', repeat: -1 });
+        ST.create({ trigger: '#pin', start: 'top bottom', end: 'bottom top', onUpdate: function (self) {
+          var boost = 1 + Math.min(Math.abs(self.getVelocity()) / 260, 5);
+          g.to(loop, { timeScale: boost, duration: 0.2, overwrite: true, onComplete: function () { g.to(loop, { timeScale: 1, duration: 0.8 }); } });
+        } });
+
+        var cta = document.getElementById('cta');
+        var qx = g.quickTo(cta, 'x', { duration: 0.5, ease: 'power3.out' }), qy = g.quickTo(cta, 'y', { duration: 0.5, ease: 'power3.out' });
+        function move(e) { var r = cta.getBoundingClientRect(); qx((e.clientX - (r.left + r.width / 2)) * 0.28); qy((e.clientY - (r.top + r.height / 2)) * 0.4); }
+        function leave() { qx(0); qy(0); }
+        cta.addEventListener('pointermove', move); cta.addEventListener('pointerleave', leave);
+        return function () { cta.removeEventListener('pointermove', move); cta.removeEventListener('pointerleave', leave); };
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en" class="demo-glass-refraction-orb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090b10">
+  <meta name="description" content="A transmissive glass form bends a moving colour field behind it. Use this composition when clarity, precision, or optics are the idea being sold.">
+  <title>Glass Refraction Orb · DE9ER</title>
+  <link rel="stylesheet" href="../../../assets/css/tailwind.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.187.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.187.0/examples/jsm/"}}
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <header><a class="brand" href="../../../index.html"><span class="mark">D</span> DESIGN INTELLIGENCE</a><nav aria-label="Demo navigation"><a href="../../../index.html">Library</a><a href="../../patterns/heroes/glass-refraction-orb.md">Pattern notes</a></nav></header>
+    <main class="hero">
+      <section class="copy" aria-labelledby="hero-title">
+        <div class="eyebrow">Clarity, refracted</div>
+        <h1 id="hero-title">See through<br>the noise.</h1>
+        <p>A transmissive glass form bends a moving colour field behind it. Use this composition when clarity, precision, or optics are the idea being communicated.</p>
+        <div class="actions"><a class="primary" href="#details">Explore the lens</a><a class="secondary" href="../../../index.html">Explore the library ↗</a></div>
+        <div class="finish"><fieldset><legend>Glass finish</legend>
+          <label class="chip"><input type="radio" name="finish" value="clear" checked><span><i style="background:#fff"></i>Clear</span></label>
+          <label class="chip"><input type="radio" name="finish" value="smoke"><span><i style="background:#7d8aa8"></i>Smoke</span></label>
+          <label class="chip"><input type="radio" name="finish" value="amber"><span><i style="background:#ff9a3d"></i>Amber</span></label>
+        </fieldset></div>
+      </section>
+      <section class="stage" id="scene-stage" aria-label="Glass refraction scene">
+        <div class="fallback-art" aria-hidden="true"></div>
+        <canvas id="scene-canvas" aria-hidden="true"></canvas>
+        <span class="stage-index">02 / 05</span>
+        <span class="stage-label">Transmissive glass · dispersion</span>
+        <span class="status" id="scene-status" role="status">Static preview</span>
+      </section>
+    </main>
+    <section class="note" id="details"><span>Three.js 0.187.0 transmission material with GSAP intro and finish transitions.</span><span>Original demo · CSS fallback · Reduced-motion support</span></section>
+  </div>
+  <script type="module">
+    import * as THREE from 'three';
+    import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+    const gsap = window.gsap;
+    const stage = document.querySelector('#scene-stage');
+    const canvas = document.querySelector('#scene-canvas');
+    const status = document.querySelector('#scene-status');
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const pointer = { x: 0, y: 0, tx: 0, ty: 0 };
+    let renderer, visible = true, tabActive = true, disposed = false, looping = false, lastT = 2;
+
+    const FINISHES = {
+      clear: { color: '#ffffff', attenuationColor: '#ffffff', attenuationDistance: 8 },
+      smoke: { color: '#b4bdd0', attenuationColor: '#46547a', attenuationDistance: 1.4 },
+      amber: { color: '#ffe2b8', attenuationColor: '#ff8a2f', attenuationDistance: 1.1 }
+    };
+
+    try {
+      renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.05;
+
+      const scene = new THREE.Scene();
+      scene.background = new THREE.Color(0x090b10);
+      const pmrem = new THREE.PMREMGenerator(renderer);
+      scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+      scene.environmentIntensity = 0.85;
+      pmrem.dispose();
+
+      const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 60);
+      camera.position.set(0, 0, 9.5);
+
+      // Colour field behind the glass: a soft wash plus fine light lines that drift and wrap.
+      const field = new THREE.Group(); field.position.z = -2.6; scene.add(field);
+      const washCanvas = document.createElement('canvas'); washCanvas.width = washCanvas.height = 512;
+      const wctx = washCanvas.getContext('2d');
+      const grad = wctx.createRadialGradient(256, 256, 10, 256, 256, 256);
+      grad.addColorStop(0, '#3a4f8f'); grad.addColorStop(0.35, '#1d2747'); grad.addColorStop(0.7, '#10162a'); grad.addColorStop(1, '#090b10');
+      wctx.fillStyle = grad; wctx.fillRect(0, 0, 512, 512);
+      const washTex = new THREE.CanvasTexture(washCanvas); washTex.colorSpace = THREE.SRGBColorSpace;
+      const wash = new THREE.Mesh(new THREE.PlaneGeometry(26, 15), new THREE.MeshBasicMaterial({ map: washTex, toneMapped: false }));
+      wash.position.z = -1.2; field.add(wash);
+      let seed = 11; const rand = () => { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
+      const palette = ['#ff7a59', '#ffd166', '#7bdff2', '#b28dff', '#f4f5f7', '#5b7cff'];
+      const BAR_COUNT = 56, SPAN = 13;
+      const bars = [];
+      for (let i = 0; i < BAR_COUNT; i++) {
+        const w = 0.022 + rand() * 0.07, h = 2 + rand() * 5.5;
+        const color = new THREE.Color(palette[Math.floor(rand() * palette.length)]).multiplyScalar(0.45 + rand() * 0.75);
+        const bar = new THREE.Mesh(new THREE.BoxGeometry(w, h, 0.04), new THREE.MeshBasicMaterial({ color, toneMapped: false }));
+        bar.userData.x = (i / BAR_COUNT) * SPAN - SPAN / 2; bar.userData.speed = 0.14 + rand() * 0.22;
+        bar.position.set(bar.userData.x, (rand() - 0.5) * 2.2, 0); bars.push(bar); field.add(bar);
+      }
+
+      const holder = new THREE.Group(); scene.add(holder);
+      const glass = new THREE.MeshPhysicalMaterial({
+        color: FINISHES.clear.color, metalness: 0, roughness: 0.04, transmission: 1, thickness: 2.1, ior: 1.5,
+        dispersion: 0.35, attenuationColor: FINISHES.clear.attenuationColor, attenuationDistance: FINISHES.clear.attenuationDistance,
+        specularIntensity: 1, clearcoat: 1, clearcoatRoughness: 0.03
+      });
+      const orb = new THREE.Mesh(new THREE.SphereGeometry(1.6, 96, 96), glass); holder.add(orb);
+      const ring = new THREE.Mesh(new THREE.TorusGeometry(2.25, 0.018, 16, 220), new THREE.MeshStandardMaterial({ color: 0xdfe6f2, metalness: 1, roughness: 0.22 }));
+      ring.rotation.x = 1.15; ring.rotation.y = 0.35; holder.add(ring);
+
+      function resize() {
+        const w = Math.max(1, stage.clientWidth), h = Math.max(1, stage.clientHeight);
+        renderer.setSize(w, h, false);
+        camera.aspect = w / h;
+        camera.position.z = w / h < 1 ? 12.5 : 9.5;
+        camera.updateProjectionMatrix();
+        requestRender();
+      }
+      function render(t) {
+        lastT = t;
+        pointer.x += (pointer.tx - pointer.x) * 0.05; pointer.y += (pointer.ty - pointer.y) * 0.05;
+        bars.forEach(b => { let x = b.userData.x + t * b.userData.speed; x = ((x + SPAN / 2) % SPAN + SPAN) % SPAN - SPAN / 2; b.position.x = x; });
+        holder.rotation.y = pointer.x * 0.35 + Math.sin(t * 0.25) * 0.12;
+        holder.rotation.x = -pointer.y * 0.22;
+        orb.rotation.y = t * 0.08;
+        ring.rotation.z = t * 0.12;
+        renderer.render(scene, camera);
+      }
+      function requestRender() { if (!looping && !disposed) render(lastT); }
+      function syncLoop() {
+        const want = visible && tabActive && !reduced.matches && !disposed;
+        if (want && !looping) { renderer.setAnimationLoop(ms => render(ms / 1000)); looping = true; }
+        else if (!want && looping) { renderer.setAnimationLoop(null); looping = false; render(lastT); }
+        status.textContent = reduced.matches ? 'Static frame · reduced motion' : 'Live 3D scene';
+      }
+
+      function setFinish(name, instant) {
+        const f = FINISHES[name]; if (!f) return;
+        const c = new THREE.Color(f.color), a = new THREE.Color(f.attenuationColor);
+        if (gsap && !instant && !reduced.matches) {
+          gsap.to(glass.color, { r: c.r, g: c.g, b: c.b, duration: 0.9, ease: 'power2.inOut' });
+          gsap.to(glass.attenuationColor, { r: a.r, g: a.g, b: a.b, duration: 0.9, ease: 'power2.inOut' });
+          gsap.to(glass, { attenuationDistance: f.attenuationDistance, duration: 0.9, ease: 'power2.inOut', onUpdate: requestRender });
+          gsap.fromTo(orb.scale, { x: 1, y: 1, z: 1 }, { x: 1.06, y: 1.06, z: 1.06, duration: 0.35, yoyo: true, repeat: 1, ease: 'sine.inOut' });
+        } else {
+          glass.color.copy(c); glass.attenuationColor.copy(a); glass.attenuationDistance = f.attenuationDistance; requestRender();
+        }
+      }
+      document.querySelectorAll('input[name="finish"]').forEach(input => input.addEventListener('change', () => setFinish(input.value)));
+
+      if (gsap && !reduced.matches) {
+        gsap.from(orb.scale, { x: 0.55, y: 0.55, z: 0.55, duration: 1.8, ease: 'expo.out' });
+        gsap.from(orb.rotation, { y: -1.4, x: 0.5, duration: 2.4, ease: 'expo.out' });
+        gsap.from(camera.position, { z: camera.position.z + 4, duration: 2.2, ease: 'power3.out', onUpdate: () => { camera.updateProjectionMatrix(); } });
+        gsap.from(ring.scale, { x: 0.6, y: 0.6, z: 0.6, duration: 2.2, delay: 0.15, ease: 'expo.out' });
+        gsap.from('.eyebrow, h1, .copy p, .actions, .finish', { y: 24, opacity: 0, duration: 1, stagger: 0.09, ease: 'expo.out' });
+      }
+
+      new IntersectionObserver(e => { visible = e[0].isIntersecting; syncLoop(); }, { threshold: 0.02 }).observe(stage);
+      document.addEventListener('visibilitychange', () => { tabActive = !document.hidden; syncLoop(); });
+      reduced.addEventListener?.('change', syncLoop);
+      stage.addEventListener('pointermove', e => { const r = stage.getBoundingClientRect(); pointer.tx = ((e.clientX - r.left) / r.width - 0.5) * 2; pointer.ty = ((e.clientY - r.top) / r.height - 0.5) * 2; });
+      stage.addEventListener('pointerleave', () => { pointer.tx = 0; pointer.ty = 0; });
+      new ResizeObserver(resize).observe(stage);
+      canvas.addEventListener('webglcontextlost', e => { e.preventDefault(); tabActive = false; status.textContent = 'WebGL paused · restore the tab to retry'; syncLoop(); });
+      canvas.addEventListener('webglcontextrestored', () => { tabActive = !document.hidden; syncLoop(); });
+      resize(); syncLoop();
+      window.addEventListener('pagehide', () => { disposed = true; renderer.setAnimationLoop(null); renderer.dispose(); }, { once: true });
+    } catch (error) {
+      console.warn('Three.js scene unavailable; showing CSS fallback.', error);
+      status.textContent = '3D unavailable · CSS fallback active';
+      canvas.hidden = true;
+    }
+  </script>
+</body>
+</html>
